@@ -235,7 +235,7 @@ main .section-card:last-child {
   color: #162b5d;
 }
 
-.hero-rotating-word {
+.hero-copy h1 .hero-rotating-word {
   display: inline-block;
   min-width: 3.8ch;
   color: #52b043;
@@ -784,7 +784,7 @@ main .section-card:last-child {
     font-size: clamp(2rem, 8vw, 2.5rem);
   }
 
-  .hero-rotating-word {
+  .hero-copy h1 .hero-rotating-word {
     min-width: 4.8ch;
   }
 
