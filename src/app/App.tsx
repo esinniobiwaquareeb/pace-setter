@@ -552,7 +552,6 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>Copyright © 2026 {BUSINESS_NAME}. All rights reserved.</p>
           <div className="footer-contact">
             <a href={`tel:${PHONE_PRIMARY.replace(/\s+/g, "")}`}>
               <Phone size={16} />
@@ -564,6 +563,7 @@ function Footer() {
             </a>
             <a href={SITE_URL}>{SITE_URL.replace("https://", "")}</a>
           </div>
+          <p>Copyright © 2026 {BUSINESS_NAME}. All rights reserved.</p>
         </div>
       </div>
     </footer>
