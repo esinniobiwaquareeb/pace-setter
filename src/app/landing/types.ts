@@ -20,11 +20,6 @@ export type Faq = {
   answer: string;
 };
 
-export type Area = {
-  title: string;
-  description: string;
-};
-
 export type BookingStep = {
   title: string;
   description: string;

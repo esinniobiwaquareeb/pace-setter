@@ -1,7 +1,14 @@
-import { MessageCircle, Phone } from "lucide-react";
-import { NAV_ITEMS, PHONE_PRIMARY, SITE_URL, WHATSAPP_PRIMARY, BUSINESS_NAME } from "./content";
+import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
+import { NAV_ITEMS, PHONE_PRIMARY, SITE_URL, WHATSAPP_PRIMARY, BUSINESS_NAME, INFO_EMAIL } from "./content";
 import { Logo } from "./Logo";
 import { scrollToSection } from "./utils";
+
+const SOCIAL_LINKS = [
+  { label: "Facebook", href: "#", icon: Facebook },
+  { label: "Instagram", href: "#", icon: Instagram },
+  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "X", href: "#", icon: Twitter },
+];
 
 export function Footer() {
   return (
@@ -30,6 +37,10 @@ export function Footer() {
               <Phone size={16} />
               {PHONE_PRIMARY}
             </a>
+            <a href={`mailto:${INFO_EMAIL}`}>
+              <Mail size={16} />
+              {INFO_EMAIL}
+            </a>
             <a href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
               <MessageCircle size={16} />
               WhatsApp
@@ -39,6 +50,16 @@ export function Footer() {
           <div className="footer-legal" aria-label="Legal links">
             <a href="/privacy-policy.html">Privacy Policy</a>
             <a href="/terms-and-conditions.html">Terms & Conditions</a>
+          </div>
+          <div className="footer-social" aria-label="Social links">
+            {SOCIAL_LINKS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a key={item.label} href={item.href} aria-label={item.label}>
+                  <Icon size={18} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

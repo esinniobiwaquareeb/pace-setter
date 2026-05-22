@@ -1,6 +1,10 @@
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { FAQS } from "./content";
 
 export function FAQ() {
+  const [openQuestion, setOpenQuestion] = useState(0);
+
   return (
     <section id="faq" className="section-card reveal-section" data-reveal>
       <div className="shell">
@@ -10,10 +14,21 @@ export function FAQ() {
         </div>
 
         <div className="faq-list">
-          {FAQS.map((faq) => (
-            <article key={faq.question} className="faq-card">
-              <h3>{faq.question}</h3>
-              <p>{faq.answer}</p>
+          {FAQS.map((faq, index) => (
+            <article key={faq.question} className={`faq-card${openQuestion === index ? " is-open" : ""}`}>
+              <button
+                type="button"
+                className="faq-trigger"
+                aria-expanded={openQuestion === index}
+                onClick={() => setOpenQuestion((current) => (current === index ? -1 : index))}
+              >
+                <span>{faq.question}</span>
+                <ChevronDown size={18} />
+              </button>
+
+              <div className="faq-answer" hidden={openQuestion !== index}>
+                <p>{faq.answer}</p>
+              </div>
             </article>
           ))}
         </div>

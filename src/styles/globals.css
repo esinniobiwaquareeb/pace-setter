@@ -55,6 +55,7 @@ button {
 
 .section-card {
   margin-bottom: 80px;
+  scroll-margin-top: 128px;
 }
 
 .reveal-section {
@@ -446,7 +447,6 @@ main .section-card:last-child {
 }
 
 .areas-grid,
-.process-grid,
 .faq-list {
   display: grid;
   gap: 20px;
@@ -456,19 +456,15 @@ main .section-card:last-child {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.process-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .faq-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
 }
 
 .service-card,
 .review-card,
 .cta-panel,
 .area-card,
-.process-card,
 .faq-card {
   border: 1px solid var(--brand-border);
   border-radius: 28px;
@@ -512,13 +508,11 @@ main .section-card:last-child {
 }
 
 .area-card,
-.process-card,
 .faq-card {
   padding: 22px;
 }
 
 .area-card h3,
-.process-card h3,
 .faq-card h3 {
   margin: 0 0 10px;
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -527,24 +521,151 @@ main .section-card:last-child {
 }
 
 .area-card p,
-.process-card p,
 .faq-card p {
   margin: 0;
   color: var(--brand-text-soft);
   line-height: 1.7;
 }
 
-.process-card span {
+.process-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.process-flow::before {
+  content: "";
+  position: absolute;
+  inset: 34px 12% auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(121, 200, 20, 0) 0%, rgba(121, 200, 20, 0.4) 16%, rgba(11, 47, 120, 0.18) 50%, rgba(121, 200, 20, 0.4) 84%, rgba(121, 200, 20, 0) 100%);
+}
+
+.process-stage {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+.process-stage:nth-child(2) {
+  margin-top: 32px;
+}
+
+.process-stage:nth-child(3) {
+  margin-top: 12px;
+}
+
+.process-stage__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.process-stage__top span {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  border-radius: 50%;
-  background: rgba(121, 200, 20, 0.14);
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(121, 200, 20, 0.16) 0%, rgba(121, 200, 20, 0.26) 100%);
   color: var(--brand-green-deep);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 12px 28px rgba(121, 200, 20, 0.14);
+}
+
+.process-stage__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(121, 200, 20, 0.5), rgba(11, 47, 120, 0.08));
+}
+
+.process-stage__body {
+  padding: 24px;
+  border: 1px solid rgba(220, 231, 245, 0.9);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(121, 200, 20, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 251, 255, 0.98) 100%);
+  box-shadow: 0 12px 32px rgba(11, 47, 120, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.process-stage__body:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(11, 47, 120, 0.08);
+}
+
+.process-stage__eyebrow {
+  margin: 0 0 10px;
+  color: var(--brand-blue);
+  font-size: 0.76rem;
   font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.process-stage__body h3 {
+  margin: 0 0 10px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--brand-navy);
+  font-size: 1.16rem;
+}
+
+.process-stage__body p:last-child {
+  margin: 0;
+  color: var(--brand-text-soft);
+  line-height: 1.75;
+}
+
+.faq-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.faq-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 22px;
+  border: 0;
+  background: transparent;
+  color: var(--brand-navy);
+  text-align: left;
+}
+
+.faq-trigger span {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.faq-trigger svg {
+  flex: 0 0 auto;
+  color: var(--brand-blue);
+  transition: transform 180ms ease;
+}
+
+.faq-card.is-open .faq-trigger svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 22px 22px;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: var(--brand-text-soft);
+  line-height: 1.75;
 }
 
 .review-stars {
@@ -794,6 +915,35 @@ main .section-card:last-child {
   gap: 12px;
 }
 
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--brand-border);
+  border-radius: 50%;
+  background: var(--brand-surface);
+  color: var(--brand-blue);
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.footer-social a:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+  box-shadow: 0 10px 24px rgba(121, 200, 20, 0.12);
+}
+
 .footer-legal a {
   display: inline-flex;
   align-items: center;
@@ -862,7 +1012,6 @@ main .section-card:last-child {
   .booking-card,
   .services-grid,
   .areas-grid,
-  .process-grid,
   .faq-list {
     grid-template-columns: 1fr;
   }
@@ -918,6 +1067,7 @@ main .section-card:last-child {
 
   .section-card {
     margin-bottom: 48px;
+    scroll-margin-top: 110px;
   }
 
   main .section-card:last-child {
@@ -947,7 +1097,7 @@ main .section-card:last-child {
 
   .footer-contact {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 10px;
     width: 100%;
   }
@@ -959,22 +1109,41 @@ main .section-card:last-child {
     border: 1px solid var(--brand-border);
     border-radius: 14px;
     background: var(--brand-surface);
-    min-height: 48px;
+    min-height: 52px;
     font-size: 0.94rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
   }
 
-  .footer-contact a:last-child {
-    grid-column: 1 / -1;
+  .footer-contact a svg {
+    flex: 0 0 auto;
   }
 
   .footer-legal {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 10px;
     padding-top: 4px;
+    width: 100%;
+  }
+
+  .footer-social {
+    gap: 10px;
+    padding-top: 2px;
+  }
+
+  .footer-social a {
+    width: 42px;
+    height: 42px;
   }
 
   .footer-legal a {
-    min-height: 38px;
-    padding: 0 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    white-space: nowrap;
   }
 
   .footer-bottom p {
@@ -1022,7 +1191,6 @@ main .section-card:last-child {
 
   .services-grid,
   .areas-grid,
-  .process-grid,
   .faq-list,
   .form-row--double {
     grid-template-columns: 1fr;
@@ -1036,6 +1204,62 @@ main .section-card:last-child {
   .booking-media {
     min-height: 240px;
     border-radius: 16px;
+  }
+
+  .process-flow {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .process-flow::before {
+    inset: 18px auto 18px 26px;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(121, 200, 20, 0.2), rgba(11, 47, 120, 0.14));
+  }
+
+  .process-stage,
+  .process-stage:nth-child(2),
+  .process-stage:nth-child(3) {
+    margin-top: 0;
+  }
+
+  .process-stage {
+    grid-template-columns: 54px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .process-stage__top {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .process-stage__line {
+    width: 1px;
+    min-height: 100%;
+    background: linear-gradient(180deg, rgba(121, 200, 20, 0.5), rgba(11, 47, 120, 0.08));
+  }
+
+  .process-stage:last-child .process-stage__line {
+    display: none;
+  }
+
+  .process-stage__body {
+    padding: 22px 20px;
+  }
+
+  .faq-trigger {
+    padding: 18px 18px 16px;
+  }
+
+  .faq-trigger span {
+    font-size: 0.98rem;
+  }
+
+  .faq-answer {
+    padding: 0 18px 18px;
   }
 
   .reviews-scroller {

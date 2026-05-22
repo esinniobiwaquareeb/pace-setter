@@ -1,4 +1,4 @@
-import type { Area, BookingStep, Faq, FormState, NavItem, Review, Service } from "./types";
+import type { BookingStep, Faq, FormState, NavItem, Review, Service } from "./types";
 
 export const SITE_URL = "https://www.pacesettercleaning.co.uk";
 export const BUSINESS_NAME = "Pace Setter Cleaning Services LTD";
@@ -17,7 +17,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Areas", href: "#areas" },
   { label: "Reviews", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
   { label: "Book", href: "#book" },
@@ -88,21 +87,6 @@ export const TRUST_POINTS = [
   "Flexible scheduling for regular, one-off, and end-of-tenancy cleaning",
   "Detail-focused standards with client-first communication",
   "Trusted support for cleaner, healthier, more presentable spaces",
-];
-
-export const AREAS: Area[] = [
-  {
-    title: "Homes & Apartments",
-    description: "Routine and one-off cleaning for family homes, apartments, and managed residential properties.",
-  },
-  {
-    title: "Offices & Studios",
-    description: "Professional cleaning for desks, meeting rooms, washrooms, and shared areas that need to stay client-ready.",
-  },
-  {
-    title: "Retail & Commercial Spaces",
-    description: "Consistent cleaning support for customer-facing locations, shared buildings, and busy commercial environments.",
-  },
 ];
 
 export const BOOKING_STEPS: BookingStep[] = [

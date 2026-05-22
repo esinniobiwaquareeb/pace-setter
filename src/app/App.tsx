@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { About } from "./landing/About";
-import { Areas } from "./landing/Areas";
 import { Booking } from "./landing/Booking";
 import { BUSINESS_NAME } from "./landing/content";
 import { CTA } from "./landing/CTA";
@@ -45,7 +44,6 @@ export default function App() {
         <Hero />
         <About />
         <Services />
-        <Areas />
         <Reviews />
         <Process />
         <FAQ />
