@@ -36,12 +36,7 @@ const SERVICES = [
     image:
       "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
   },
-  {
-    title: "End of Tenancy Cleaning",
-    description: "Deep, inspection-ready cleaning for landlords and tenants to leave the property looking brand new.",
-    image:
-      "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
-  },
+
 ];
 
 const REVIEWS = [
