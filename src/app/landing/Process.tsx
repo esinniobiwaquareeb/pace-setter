@@ -1,16 +1,18 @@
-import { BOOKING_STEPS } from "./content";
+import { useSiteContent } from "./SiteContentContext";
 
 export function Process() {
+  const { processIntro, processSteps } = useSiteContent();
+
   return (
     <section className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="section-heading">
-          <h2>How Booking Works</h2>
-          <p>A simple three-step process that helps visitors understand what happens next and makes enquiries feel lower-risk.</p>
+          <h2>{processIntro.heading}</h2>
+          <p>{processIntro.body}</p>
         </div>
 
         <div className="process-flow" aria-label="Booking process">
-          {BOOKING_STEPS.map((step, index) => (
+          {processSteps.map((step, index) => (
             <article key={step.title} className="process-stage">
               <div className="process-stage__top">
                 <span>{`0${index + 1}`}</span>

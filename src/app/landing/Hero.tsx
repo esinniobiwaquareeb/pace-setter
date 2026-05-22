@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
-import { HERO_ROTATING_WORDS } from "./content";
+import { useSiteContent } from "./SiteContentContext";
 import { scrollToSection } from "./utils";
 
 export function Hero() {
+  const { hero } = useSiteContent();
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setWordIndex((current) => (current + 1) % HERO_ROTATING_WORDS.length);
+      setWordIndex((current) => (current + 1) % hero.rotatingWords.length);
     }, 2200);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [hero.rotatingWords.length]);
 
   return (
     <section id="home" className="hero-section section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="hero-panel">
           <div className="hero-copy">
-            <p className="eyebrow">Professional cleaning services for homes, offices, and commercial spaces</p>
+            <p className="eyebrow">{hero.eyebrow}</p>
             <h1>
-              We Don&apos;t Just Clean,{" "}
-              <span key={HERO_ROTATING_WORDS[wordIndex]} className="hero-rotating-word">
-                {HERO_ROTATING_WORDS[wordIndex]}
+              {hero.headlinePrefix}{" "}
+              <span key={hero.rotatingWords[wordIndex]} className="hero-rotating-word">
+                {hero.rotatingWords[wordIndex]}
               </span>
             </h1>
-            <p className="hero-text">
-              Pace Setter Cleaning Services delivers residential cleaning, office cleaning, and commercial cleaning that helps your property look sharper, feel healthier, and stay ready for everyday life or business.
-            </p>
+            <p className="hero-text">{hero.body}</p>
             <a
               className="button button--primary hero-button"
               href="#book"
@@ -36,15 +35,12 @@ export function Hero() {
                 scrollToSection("#book");
               }}
             >
-              Book a Cleaning Today
+              {hero.ctaLabel}
             </a>
           </div>
 
           <div className="hero-image-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80"
-              alt="Professional cleaners working in a bright office"
-            />
+            <img src={hero.image} alt={hero.imageAlt} />
           </div>
         </div>
       </div>

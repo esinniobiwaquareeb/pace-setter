@@ -964,7 +964,216 @@ main .section-card:last-child {
   color: var(--brand-green);
 }
 
+.admin-shell {
+  min-height: 100vh;
+  padding: 40px 24px;
+  background:
+    radial-gradient(circle at top left, rgba(121, 200, 20, 0.08), transparent 26%),
+    linear-gradient(180deg, #f5f7fb 0%, #edf3fb 100%);
+}
+
+.admin-frame,
+.admin-card {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  border: 1px solid var(--brand-border);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 50px rgba(11, 47, 120, 0.08);
+}
+
+.admin-card {
+  max-width: 560px;
+  padding: 32px;
+}
+
+.admin-login {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-kicker {
+  margin: 0 0 8px;
+  color: var(--brand-blue);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.admin-login h1,
+.admin-topbar h1,
+.admin-panel h2 {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--brand-navy);
+}
+
+.admin-login p,
+.admin-topbar p,
+.admin-panel p,
+.admin-booking p,
+.admin-stat span,
+.admin-status {
+  color: var(--brand-text-soft);
+  line-height: 1.7;
+}
+
+.admin-form,
+.admin-content-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-field {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-field span {
+  color: var(--brand-navy);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.admin-field input,
+.admin-field textarea {
+  width: 100%;
+  border: 1px solid var(--brand-border);
+  border-radius: 16px;
+  background: #fbfdff;
+  padding: 14px 16px;
+  color: var(--brand-text);
+  box-sizing: border-box;
+}
+
+.admin-field textarea {
+  min-height: 148px;
+  resize: vertical;
+}
+
+.admin-error {
+  margin: 0;
+  color: #b84933;
+}
+
+.admin-frame {
+  padding: 28px;
+}
+
+.admin-topbar,
+.admin-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.admin-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.admin-tabs button {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid var(--brand-border);
+  border-radius: 999px;
+  background: var(--brand-surface);
+  color: var(--brand-text);
+  font-weight: 600;
+}
+
+.admin-tabs button.is-active {
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-deep) 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-stat,
+.admin-panel {
+  border: 1px solid var(--brand-border);
+  border-radius: 24px;
+  background: #fff;
+  padding: 22px;
+}
+
+.admin-stat strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--brand-navy);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 2rem;
+}
+
+.admin-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-bookings {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-booking {
+  padding: 16px 18px;
+  border: 1px solid var(--brand-border);
+  border-radius: 18px;
+  background: var(--brand-surface-soft);
+}
+
+.admin-booking__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.admin-booking__row strong {
+  color: var(--brand-navy);
+}
+
+.admin-booking p {
+  margin: 6px 0 0;
+}
+
+.admin-panel--content {
+  gap: 24px;
+}
+
+.admin-content-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-field--full {
+  grid-column: 1 / -1;
+}
+
+.admin-status {
+  margin: 0;
+  font-weight: 600;
+}
+
 @media (max-width: 1100px) {
+  .admin-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .nav-desktop,
   .quote-button {
     display: none;
@@ -1040,6 +1249,34 @@ main .section-card:last-child {
 }
 
 @media (max-width: 860px) {
+  .admin-shell {
+    padding: 20px 12px;
+  }
+
+  .admin-frame,
+  .admin-card {
+    border-radius: 24px;
+  }
+
+  .admin-card,
+  .admin-frame {
+    padding: 20px;
+  }
+
+  .admin-topbar,
+  .admin-panel__header,
+  .admin-topbar__actions {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .admin-tabs,
+  .admin-grid,
+  .admin-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
   .shell {
     width: calc(100% - 32px);
   }

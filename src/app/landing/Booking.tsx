@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { BUSINESS_NAME, INFO_EMAIL, INITIAL_FORM, WHATSAPP_PRIMARY } from "./content";
+import { INITIAL_FORM } from "./content";
 import { Field } from "./Field";
+import { useSiteContent } from "./SiteContentContext";
 import type { FormState, SavedBooking } from "./types";
 
 export function Booking() {
+  const { booking, contact } = useSiteContent();
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState("");
@@ -39,7 +41,7 @@ export function Booking() {
     return Object.keys(next).length === 0;
   };
 
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
 
@@ -59,7 +61,7 @@ export function Booking() {
     }
 
     const message = [
-      `Hello ${BUSINESS_NAME},`,
+      `Hello ${contact.businessName},`,
       "",
       "I would like to request a cleaning quote.",
       `Full Name: ${form.name}`,
@@ -70,12 +72,22 @@ export function Booking() {
       `Comment: ${form.details || "No extra comment"}`,
     ].join("\n");
 
+    try {
+      await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(savedBooking),
+      });
+    } catch {
+      // Keep the outbound contact flow working even if the API is unavailable.
+    }
+
     const emailSubject = encodeURIComponent(`Cleaning quote request from ${form.name}`);
     const emailBody = encodeURIComponent(message);
 
-    window.open(`${WHATSAPP_PRIMARY}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-    window.location.href = `mailto:${INFO_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
-    setStatus("Your booking was saved on this device and opened in both WhatsApp and your email app.");
+    window.open(`${contact.whatsappPrimary}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    window.location.href = `mailto:${contact.email}?subject=${emailSubject}&body=${emailBody}`;
+    setStatus(booking.successMessage);
   };
 
   return (
@@ -83,8 +95,8 @@ export function Booking() {
       <div className="shell">
         <div className="booking-card">
           <div className="booking-copy">
-            <h2>Request a Fast Quote for Home or Office Cleaning</h2>
-            <p>Tell us what you need and we will prepare a cleaning quote for your home, office, retail unit, or commercial property. Your request is saved locally, opened in WhatsApp, and drafted to our email for faster follow-up.</p>
+            <h2>{booking.heading}</h2>
+            <p>{booking.body}</p>
 
             <form className="booking-form" onSubmit={submit} noValidate>
               <div className="form-row form-row--double">
@@ -107,7 +119,7 @@ export function Booking() {
 
               <div className="booking-actions">
                 <button className="button button--primary button--small" type="submit" disabled={!canSubmit}>
-                  Submit Your Request
+                  {booking.submitLabel}
                 </button>
                 {status ? <p>{status}</p> : null}
               </div>
@@ -115,12 +127,12 @@ export function Booking() {
 
             {savedBookings.length > 0 ? (
               <div className="saved-bookings">
-                <strong>Recent saved enquiries</strong>
+                <strong>{booking.recentLabel}</strong>
                 <div className="saved-bookings__list">
-                  {savedBookings.map((booking) => (
-                    <article key={booking.createdAt} className="saved-booking">
-                      <span>{booking.name}</span>
-                      <small>{booking.address || booking.frequency || "Cleaning request saved locally"}</small>
+                  {savedBookings.map((savedBooking) => (
+                    <article key={savedBooking.createdAt} className="saved-booking">
+                      <span>{savedBooking.name}</span>
+                      <small>{savedBooking.address || savedBooking.frequency || savedBooking.details || savedBooking.phone || booking.fallbackRecentText}</small>
                     </article>
                   ))}
                 </div>
@@ -129,10 +141,7 @@ export function Booking() {
           </div>
 
           <div className="booking-media">
-            <img
-              src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80"
-              alt="Cleaner mopping a bright floor near a window"
-            />
+            <img src={booking.image} alt={booking.imageAlt} />
           </div>
         </div>
       </div>

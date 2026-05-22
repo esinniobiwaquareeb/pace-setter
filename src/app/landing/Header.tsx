@@ -1,11 +1,13 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { NAV_ITEMS, WHATSAPP_PRIMARY } from "./content";
+import { NAV_ITEMS } from "./content";
+import { useSiteContent } from "./SiteContentContext";
 import { useActiveSection, useScrolled } from "./hooks";
 import { Logo } from "./Logo";
 import { scrollToSection } from "./utils";
 
 export function Header() {
+  const { contact } = useSiteContent();
   const scrolled = useScrolled();
   const [active, setActive] = useActiveSection();
   const [open, setOpen] = useState(false);
@@ -36,7 +38,7 @@ export function Header() {
           </nav>
 
           <div className="topbar-actions">
-            <a className="button button--primary quote-button" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+            <a className="button button--primary quote-button" href={contact.whatsappPrimary} target="_blank" rel="noreferrer">
               Get a Free Quote
             </a>
 
@@ -59,7 +61,7 @@ export function Header() {
                 {item.label}
               </button>
             ))}
-            <a className="button button--primary" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+            <a className="button button--primary" href={contact.whatsappPrimary} target="_blank" rel="noreferrer">
               Get a Free Quote
             </a>
           </nav>

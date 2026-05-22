@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
-import { NAV_ITEMS, PHONE_PRIMARY, SITE_URL, WHATSAPP_PRIMARY, BUSINESS_NAME, INFO_EMAIL } from "./content";
+import { NAV_ITEMS } from "./content";
+import { useSiteContent } from "./SiteContentContext";
 import { Logo } from "./Logo";
 import { scrollToSection } from "./utils";
 
@@ -11,6 +12,8 @@ const SOCIAL_LINKS = [
 ];
 
 export function Footer() {
+  const { contact } = useSiteContent();
+
   return (
     <footer className="site-footer section-card">
       <div className="shell footer-panel">
@@ -25,27 +28,27 @@ export function Footer() {
             ))}
           </nav>
 
-          <a className="button button--primary button--small" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+          <a className="button button--primary button--small" href={contact.whatsappPrimary} target="_blank" rel="noreferrer">
             Get a Free Quote
           </a>
         </div>
 
         <div className="footer-bottom">
-          <p>Copyright © 2026 {BUSINESS_NAME}. All rights reserved.</p>
+          <p>Copyright © 2026 {contact.businessName}. All rights reserved.</p>
           <div className="footer-contact">
-            <a href={`tel:${PHONE_PRIMARY.replace(/\s+/g, "")}`}>
+            <a href={`tel:${contact.phonePrimary.replace(/\s+/g, "")}`}>
               <Phone size={16} />
-              {PHONE_PRIMARY}
+              {contact.phonePrimary}
             </a>
-            <a href={`mailto:${INFO_EMAIL}`}>
+            <a href={`mailto:${contact.email}`}>
               <Mail size={16} />
-              {INFO_EMAIL}
+              {contact.email}
             </a>
-            <a href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+            <a href={contact.whatsappPrimary} target="_blank" rel="noreferrer">
               <MessageCircle size={16} />
               WhatsApp
             </a>
-            <a href={SITE_URL}>{SITE_URL.replace("https://", "")}</a>
+            <a href={contact.websiteUrl}>{contact.websiteUrl.replace("https://", "")}</a>
           </div>
           <div className="footer-legal" aria-label="Legal links">
             <a href="/privacy-policy.html">Privacy Policy</a>

@@ -1,17 +1,19 @@
 import { Star } from "lucide-react";
-import { REVIEWS } from "./content";
+import { useSiteContent } from "./SiteContentContext";
 
 export function Reviews() {
+  const { reviewsIntro, reviews } = useSiteContent();
+
   return (
     <section id="reviews" className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="section-heading">
-          <h2>What Clients Say About Our Cleaning Services</h2>
-          <p>Feedback from homeowners, landlords, and business clients who wanted reliable cleaning, clear communication, and spaces that genuinely looked better after each visit.</p>
+          <h2>{reviewsIntro.heading}</h2>
+          <p>{reviewsIntro.body}</p>
         </div>
 
         <div className="reviews-scroller">
-          {REVIEWS.map((review) => (
+          {reviews.map((review) => (
             <article key={review.name} className="review-card">
               <div className="review-stars">
                 {Array.from({ length: 5 }).map((_, index) => (
