@@ -5,8 +5,8 @@ export function Services() {
     <section id="services" className="section-card">
       <div className="shell">
         <div className="section-heading">
-          <h2>Our Services</h2>
-          <p>Professional cleaning for any space or occasion.</p>
+          <h2>Residential, Office, and Commercial Cleaning Services</h2>
+          <p>Explore professional cleaning services designed for homes, workplaces, shared buildings, and customer-facing spaces that need to stay clean, healthy, and presentable.</p>
         </div>
 
         <div className="services-grid">

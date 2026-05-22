@@ -1,19 +1,32 @@
-import { WHATSAPP_PRIMARY } from "./content";
+import { useEffect, useState } from "react";
+import { HERO_ROTATING_WORDS } from "./content";
 import { scrollToSection } from "./utils";
 
 export function Hero() {
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setWordIndex((current) => (current + 1) % HERO_ROTATING_WORDS.length);
+    }, 2200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="hero-section section-card">
       <div className="shell">
         <div className="hero-panel">
           <div className="hero-copy">
-            <p className="eyebrow">Clean Without Compromise</p>
+            <p className="eyebrow">Professional cleaning services for homes, offices, and commercial spaces</p>
             <h1>
-              We Don&apos;t Just Clean, <span>We Care</span>
+              We Don&apos;t Just Clean,{" "}
+              <span key={HERO_ROTATING_WORDS[wordIndex]} className="hero-rotating-word">
+                {HERO_ROTATING_WORDS[wordIndex]}
+              </span>
             </h1>
             <p className="hero-text">
-              From sparkling homes to spotless workplaces, we provide professional cleaning services that
-              keep your environment fresh, healthy, and welcoming.
+              Pace Setter Cleaning Services delivers residential cleaning, office cleaning, and commercial cleaning that helps your property look sharper, feel healthier, and stay ready for everyday life or business.
             </p>
             <a
               className="button button--primary hero-button"

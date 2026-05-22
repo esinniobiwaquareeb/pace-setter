@@ -11,7 +11,7 @@ import { Services } from "./landing/Services";
 
 export default function App() {
   useEffect(() => {
-    document.title = `${BUSINESS_NAME} | Professional Cleaning Across the UK`;
+    document.title = `${BUSINESS_NAME} | Residential, Office & Commercial Cleaning Services UK`;
   }, []);
 
   return (

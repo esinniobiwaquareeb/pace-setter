@@ -7,9 +7,9 @@ export function About() {
       <div className="shell">
         <div className="split-card">
           <div className="split-copy">
-            <h2>About Us</h2>
+            <h2>Trusted Cleaning Services With Professional Standards</h2>
             <p>
-              At Pace Setter Cleaning Services LTD, we are committed to delivering reliable, professional, and high-quality cleaning solutions tailored to homes, offices, and commercial spaces. With a focus on excellence, attention to detail, and client satisfaction, we take pride in creating clean, safe, and welcoming environments. Our dedicated team combines efficiency with professionalism to provide services you can trust every time.
+              Pace Setter Cleaning Services LTD provides reliable residential cleaning, office cleaning, and commercial cleaning with a strong focus on detail, presentation, and customer satisfaction. We help homes feel fresher, workplaces stay professional, and properties remain ready for visitors, clients, tenants, or handover.
             </p>
 
             <div className="trust-list">

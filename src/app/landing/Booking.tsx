@@ -83,8 +83,8 @@ export function Booking() {
       <div className="shell">
         <div className="booking-card">
           <div className="booking-copy">
-            <h2>Let&apos;s Get Started Discuss</h2>
-            <p>Your home and workplace deserve the best cleaning care. Fill out the form and we&apos;ll get back to you with a personalized plan.</p>
+            <h2>Request a Fast Quote for Home or Office Cleaning</h2>
+            <p>Tell us what you need and we will prepare a cleaning quote for your home, office, retail unit, or commercial property. Your request is saved locally, opened in WhatsApp, and drafted to our email for faster follow-up.</p>
 
             <form className="booking-form" onSubmit={submit} noValidate>
               <div className="form-row form-row--double">

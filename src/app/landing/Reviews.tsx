@@ -6,8 +6,8 @@ export function Reviews() {
     <section id="reviews" className="section-card">
       <div className="shell">
         <div className="section-heading">
-          <h2>What Our Clients Say</h2>
-          <p>Read what our happy clients have to say about us.</p>
+          <h2>What Clients Say About Our Cleaning Services</h2>
+          <p>Feedback from homeowners, landlords, and business clients who wanted reliable cleaning, clear communication, and spaces that genuinely looked better after each visit.</p>
         </div>
 
         <div className="reviews-scroller">

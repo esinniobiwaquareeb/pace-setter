@@ -6,6 +6,12 @@ export const WHATSAPP_PRIMARY = "https://wa.me/447894239785";
 export const WHATSAPP_SECONDARY = "https://wa.me/447884310461";
 export const PHONE_PRIMARY = "+44 7894 239785";
 export const INFO_EMAIL = "info@pacesettercleaning.co.uk";
+export const HERO_ROTATING_WORDS = [
+  "We Care",
+  "We Restore",
+  "We Refresh",
+  "We Deliver",
+];
 
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "#home" },
@@ -18,17 +24,20 @@ export const NAV_ITEMS: NavItem[] = [
 export const SERVICES: Service[] = [
   {
     title: "Residential Cleaning",
-    description: "Keep your home fresh with our regular cleaning, covering kitchens, bathrooms, floors, and surfaces.",
+    description:
+      "Reliable residential cleaning services for kitchens, bathrooms, bedrooms, living areas, floors, and high-touch surfaces, helping your home stay fresh, healthy, and guest-ready.",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Office Cleaning",
-    description: "Structured cleaning for workspaces to maintain a professional, organized environment with minimal disruption.",
+    description:
+      "Professional office cleaning for desks, meeting rooms, washrooms, reception areas, and shared spaces, designed to keep your workplace clean, organised, and client-ready.",
     image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Commercial Cleaning",
-    description: "Reliable cleaning for retail and shared buildings to ensure a welcoming experience for staff and visitors.",
+    description:
+      "Commercial cleaning services for retail spaces, shared buildings, and customer-facing environments where presentation, hygiene, and daily consistency matter.",
     image: "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
   },
 ];
@@ -67,10 +76,10 @@ export const REVIEWS: Review[] = [
 ];
 
 export const TRUST_POINTS = [
-  "Affordable packages",
-  "100% satisfaction guarantee",
-  "Flexible scheduling for homes and workplaces",
-  "Clear communication from quote to completion",
+  "Professional home, office, and commercial cleaning services",
+  "Flexible scheduling for regular, one-off, and end-of-tenancy cleaning",
+  "Detail-focused standards with client-first communication",
+  "Trusted support for cleaner, healthier, more presentable spaces",
 ];
 
 export const INITIAL_FORM: FormState = {
