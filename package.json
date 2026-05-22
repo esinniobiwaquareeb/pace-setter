@@ -1,8 +1,9 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "pace-setter-cleaning-services",
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "homepage": "https://www.pacesettercleaning.co.uk",
   "scripts": {
     "build": "vite build",
     "dev": "vite"

@@ -79,7 +79,7 @@ export function Booking() {
   };
 
   return (
-    <section id="book" className="section-card">
+    <section id="book" className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="booking-card">
           <div className="booking-copy">

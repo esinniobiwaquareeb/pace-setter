@@ -36,6 +36,10 @@ export function Footer() {
             </a>
             <a href={SITE_URL}>{SITE_URL.replace("https://", "")}</a>
           </div>
+          <div className="footer-legal" aria-label="Legal links">
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-and-conditions.html">Terms & Conditions</a>
+          </div>
         </div>
       </div>
     </footer>

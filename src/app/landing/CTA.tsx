@@ -3,7 +3,7 @@ import { WHATSAPP_SECONDARY } from "./content";
 
 export function CTA() {
   return (
-    <section className="section-card">
+    <section className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="cta-panel">
           <h2>Ready to Book Professional Cleaning Services?</h2>

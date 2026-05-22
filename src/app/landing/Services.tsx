@@ -2,7 +2,7 @@ import { SERVICES } from "./content";
 
 export function Services() {
   return (
-    <section id="services" className="section-card">
+    <section id="services" className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="section-heading">
           <h2>Residential, Office, and Commercial Cleaning Services</h2>

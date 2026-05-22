@@ -1,4 +1,4 @@
-import type { FormState, NavItem, Review, Service } from "./types";
+import type { Area, BookingStep, Faq, FormState, NavItem, Review, Service } from "./types";
 
 export const SITE_URL = "https://www.pacesettercleaning.co.uk";
 export const BUSINESS_NAME = "Pace Setter Cleaning Services LTD";
@@ -17,7 +17,9 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Areas", href: "#areas" },
   { label: "Reviews", href: "#reviews" },
+  { label: "FAQ", href: "#faq" },
   { label: "Book", href: "#book" },
 ];
 
@@ -39,6 +41,12 @@ export const SERVICES: Service[] = [
     description:
       "Commercial cleaning services for retail spaces, shared buildings, and customer-facing environments where presentation, hygiene, and daily consistency matter.",
     image: "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "End of Tenancy Cleaning",
+    description:
+      "End of tenancy cleaning for landlords, agents, and tenants who need a property looking fresher, cleaner, and ready for inspection, handover, or new occupants.",
+    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
@@ -80,6 +88,59 @@ export const TRUST_POINTS = [
   "Flexible scheduling for regular, one-off, and end-of-tenancy cleaning",
   "Detail-focused standards with client-first communication",
   "Trusted support for cleaner, healthier, more presentable spaces",
+];
+
+export const AREAS: Area[] = [
+  {
+    title: "Homes & Apartments",
+    description: "Routine and one-off cleaning for family homes, apartments, and managed residential properties.",
+  },
+  {
+    title: "Offices & Studios",
+    description: "Professional cleaning for desks, meeting rooms, washrooms, and shared areas that need to stay client-ready.",
+  },
+  {
+    title: "Retail & Commercial Spaces",
+    description: "Consistent cleaning support for customer-facing locations, shared buildings, and busy commercial environments.",
+  },
+];
+
+export const BOOKING_STEPS: BookingStep[] = [
+  {
+    title: "Tell Us What You Need",
+    description: "Share your property type, schedule, and cleaning requirements through the booking form.",
+  },
+  {
+    title: "Get a Fast Quote",
+    description: "We open your request in WhatsApp and email so your enquiry is easy to review and follow up quickly.",
+  },
+  {
+    title: "Confirm Your Clean",
+    description: "Once the details are agreed, we arrange a convenient cleaning time and keep communication simple.",
+  },
+];
+
+export const FAQS: Faq[] = [
+  {
+    question: "What cleaning services do you offer?",
+    answer:
+      "We provide residential cleaning, office cleaning, commercial cleaning, and end of tenancy cleaning for properties that need reliable professional care.",
+  },
+  {
+    question: "Do you offer one-off and regular cleaning?",
+    answer:
+      "Yes. We can discuss one-off cleans, recurring cleaning schedules, and flexible arrangements based on the property and your preferred frequency.",
+  },
+  {
+    question: "How quickly can I get a quote?",
+    answer:
+      "The booking form opens your enquiry directly in WhatsApp and email, which helps us review your request quickly and respond with the next steps faster.",
+  },
+  {
+    question: "Do you work with both homes and businesses?",
+    answer:
+      "Yes. We support households, landlords, offices, retail spaces, and broader commercial environments that need dependable cleaning standards.",
+  },
 ];
 
 export const INITIAL_FORM: FormState = {

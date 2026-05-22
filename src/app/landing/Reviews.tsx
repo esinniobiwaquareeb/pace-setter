@@ -3,7 +3,7 @@ import { REVIEWS } from "./content";
 
 export function Reviews() {
   return (
-    <section id="reviews" className="section-card">
+    <section id="reviews" className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="section-heading">
           <h2>What Clients Say About Our Cleaning Services</h2>

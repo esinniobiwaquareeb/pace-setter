@@ -14,7 +14,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="home" className="hero-section section-card">
+    <section id="home" className="hero-section section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="hero-panel">
           <div className="hero-copy">

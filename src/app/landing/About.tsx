@@ -3,7 +3,7 @@ import { TRUST_POINTS, WHATSAPP_PRIMARY } from "./content";
 
 export function About() {
   return (
-    <section id="about" className="section-card">
+    <section id="about" className="section-card reveal-section" data-reveal>
       <div className="shell">
         <div className="split-card">
           <div className="split-copy">

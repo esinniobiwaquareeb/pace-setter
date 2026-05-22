@@ -15,6 +15,21 @@ export type Review = {
   text: string;
 };
 
+export type Faq = {
+  question: string;
+  answer: string;
+};
+
+export type Area = {
+  title: string;
+  description: string;
+};
+
+export type BookingStep = {
+  title: string;
+  description: string;
+};
+
 export type FormState = {
   name: string;
   email: string;
