@@ -1,19 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-  ArrowRight,
-  BadgeCheck,
-  BriefcaseBusiness,
-  Building2,
-  Check,
-  ChevronDown,
-  Clock3,
-  House,
-  MessageCircle,
-  Phone,
-  ShieldCheck,
-  Sparkles,
-  Star,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, Menu, MessageCircle, Phone, Star, X } from "lucide-react";
 import paceSetterLogo from "../imports/pace-setter.png";
 
 const SITE_URL = "https://www.pacesettercleaning.co.uk";
@@ -21,14 +7,13 @@ const BUSINESS_NAME = "Pace Setter Cleaning Services LTD";
 const WHATSAPP_PRIMARY = "https://wa.me/447894239785";
 const WHATSAPP_SECONDARY = "https://wa.me/447884310461";
 const PHONE_PRIMARY = "+44 7894 239785";
-const PHONE_SECONDARY = "+44 7884 310461";
+const INFO_EMAIL = "info@pacesettercleaning.co.uk";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
+  { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },
   { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
   { label: "Book", href: "#book" },
 ];
 
@@ -36,132 +21,95 @@ const SERVICES = [
   {
     title: "Residential Cleaning",
     description:
-      "Reliable home cleaning for busy households, with careful attention to kitchens, bathrooms, surfaces, and finishing details.",
-    icon: House,
+      "Ideal for busy households that want a consistently fresh home. We focus on kitchens, bathrooms, dusting, surfaces, floors, and the finishing details that make rooms feel settled and properly cared for.",
+    image:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Office Cleaning",
     description:
-      "Consistent cleaning for focused teams, delivered before opening, after hours, or around your operational schedule.",
-    icon: BriefcaseBusiness,
+      "Structured office cleaning for workspaces that need to feel organised and professional. We help maintain desks, meeting rooms, shared spaces, washrooms, and touchpoints with minimal disruption to your team.",
+    image:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Commercial Cleaning",
     description:
-      "Professional upkeep for retail units, shared buildings, and high-traffic spaces where presentation matters every day.",
-    icon: Building2,
+      "For retail units, shared buildings, and customer-facing environments where presentation matters every day. We support a cleaner, more welcoming experience for staff, tenants, and visitors.",
+    image:
+      "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "End of Tenancy Cleaning",
     description:
-      "Deep, inspection-ready cleaning designed to help properties feel refreshed for landlords, agents, and incoming tenants.",
-    icon: BadgeCheck,
+      "Deep, inspection-ready cleaning for landlords, agents, and tenants preparing for handover. Designed to leave the property looking refreshed, presentable, and ready for the next stage.",
+    image:
+      "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
   },
-];
-
-const TRUST_POINTS = [
-  "Flexible appointments built around your schedule",
-  "Professional standards with careful finishing",
-  "Clear communication before, during, and after each visit",
-  "Trusted for homes, offices, and commercial spaces across the UK",
-];
-
-const STATS = [
-  { value: "500+", label: "happy clients supported" },
-  { value: "7 days", label: "a week availability for bookings" },
-  { value: "4 core", label: "service categories delivered well" },
 ];
 
 const REVIEWS = [
   {
-    name: "Sarah L.",
-    location: "London",
-    quote:
-      "The team felt organised from the first message. They arrived on time, worked carefully, and left the place looking genuinely refreshed.",
+    name: "Sarah J.",
+    role: "Homeowner",
+    text: "Quick, efficient, and genuinely easy to deal with. The team paid attention to the details and left the house feeling calm and refreshed.",
   },
   {
     name: "David R.",
-    location: "Manchester",
-    quote:
-      "We needed a dependable office cleaning partner and they delivered exactly that. Professional, responsive, and very easy to work with.",
+    role: "Small Business Owner",
+    text: "Professional team, on time, and very thorough. They understood that our office needed to stay presentable for clients and handled it well.",
   },
   {
-    name: "Lisa W.",
-    location: "Birmingham",
-    quote:
-      "Our end-of-tenancy clean was handled brilliantly. The flat looked fantastic, and the whole booking process felt simple and reassuring.",
+    name: "Liya W.",
+    role: "Property Manager",
+    text: "They went above and beyond to clean every corner. The property looked much better for handover and the whole process felt organised.",
+  },
+  {
+    name: "Mariam T.",
+    role: "Tenant",
+    text: "Booking was straightforward and communication was clear from start to finish. I appreciated how professional the team felt on the day.",
+  },
+  {
+    name: "James K.",
+    role: "Facilities Coordinator",
+    text: "Reliable support for a busy commercial environment. Clean results, punctual visits, and no unnecessary back and forth.",
+  },
+  {
+    name: "Helen O.",
+    role: "Landlord",
+    text: "The end-of-tenancy clean made a strong difference. The space looked brighter, fresher, and much more ready for viewings.",
   },
 ];
 
-const FAQS = [
-  {
-    question: "What types of spaces do you clean?",
-    answer:
-      "We provide cleaning for homes, offices, commercial premises, and end-of-tenancy properties, with each visit tailored to the space and schedule.",
-  },
-  {
-    question: "How do I request a quote?",
-    answer:
-      "Use the booking form and we will open a pre-filled WhatsApp request with your details. That gives you an immediate, trackable contact path instead of a fake success state.",
-  },
-  {
-    question: "Can I arrange recurring cleaning?",
-    answer:
-      "Yes. Weekly, bi-weekly, and custom recurring schedules can be discussed during the quote conversation.",
-  },
+const TRUST_POINTS = [
+  "Affordable packages",
+  "100% satisfaction guarantee",
+  "Flexible scheduling for homes and workplaces",
+  "Clear communication from quote to completion",
 ];
 
 type FormState = {
   name: string;
   email: string;
-  phone: string;
   address: string;
   frequency: string;
-  service: string;
+  phone: string;
   details: string;
 };
+
+type SavedBooking = FormState & { createdAt: string };
 
 const INITIAL_FORM: FormState = {
   name: "",
   email: "",
-  phone: "",
   address: "",
   frequency: "",
-  service: "",
+  phone: "",
   details: "",
 };
 
 function scrollToSection(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function useActiveSection() {
-  const [active, setActive] = useState("#home");
-
-  useEffect(() => {
-    const sections = NAV_ITEMS.map((item) => document.querySelector(item.href)).filter(Boolean);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visibleEntry?.target.id) {
-          setActive(`#${visibleEntry.target.id}`);
-        }
-      },
-      {
-        rootMargin: "-25% 0px -55% 0px",
-        threshold: [0.15, 0.4, 0.7],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section as Element));
-
-    return () => observer.disconnect();
-  }, []);
-
-  return [active, setActive] as const;
 }
 
 function useScrolled(offset = 12) {
@@ -177,24 +125,41 @@ function useScrolled(offset = 12) {
   return scrolled;
 }
 
+function useActiveSection() {
+  const [active, setActive] = useState("#home");
+
+  useEffect(() => {
+    const sections = NAV_ITEMS.map((item) => document.querySelector(item.href)).filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const match = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (match?.target.id) setActive(`#${match.target.id}`);
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: [0.2, 0.5, 0.8] },
+    );
+
+    sections.forEach((section) => observer.observe(section as Element));
+    return () => observer.disconnect();
+  }, []);
+
+  return [active, setActive] as const;
+}
+
 function Logo() {
   return (
     <button className="brand" type="button" onClick={() => scrollToSection("#home")} aria-label="Go to homepage">
       <img src={paceSetterLogo} alt={BUSINESS_NAME} />
-      <span>
-        <strong>Pace Setter</strong>
-        <small>Cleaning Services LTD</small>
-      </span>
+      <span>Pace Setter</span>
     </button>
   );
 }
 
-function Nav() {
+function Header() {
   const scrolled = useScrolled();
   const [active, setActive] = useActiveSection();
   const [open, setOpen] = useState(false);
 
-  const handleNavigate = (href: string) => {
+  const navigate = (href: string) => {
     setActive(href);
     setOpen(false);
     scrollToSection(href);
@@ -202,53 +167,52 @@ function Nav() {
 
   return (
     <header className={`site-header${scrolled ? " site-header--scrolled" : ""}`}>
-      <div className="shell nav-shell">
-        <Logo />
+      <div className="shell">
+        <div className="topbar">
+          <Logo />
 
-        <nav className="nav-desktop" aria-label="Primary">
-          {NAV_ITEMS.map((item) => (
+          <nav className="nav-desktop" aria-label="Primary">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.href}
+                type="button"
+                className={item.href === active ? "is-active" : ""}
+                onClick={() => navigate(item.href)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <div className="topbar-actions">
+            <a className="button button--primary quote-button" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+              Get a Free Quote
+            </a>
+
             <button
-              key={item.href}
               type="button"
-              className={active === item.href ? "is-active" : ""}
-              onClick={() => handleNavigate(item.href)}
+              className="menu-button"
+              aria-label="Toggle menu"
+              aria-expanded={open}
+              onClick={() => setOpen((value) => !value)}
             >
-              {item.label}
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
-          ))}
-        </nav>
-
-        <div className="nav-actions">
-          <a className="button button--primary button--compact nav-quote" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-            Get a Free Quote
-          </a>
-
-          <button
-            type="button"
-            className={`menu-toggle${open ? " is-open" : ""}`}
-            aria-expanded={open}
-            aria-controls="mobile-navigation"
-            aria-label="Toggle navigation menu"
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          </div>
         </div>
-      </div>
 
-      <div id="mobile-navigation" className={`mobile-panel${open ? " is-open" : ""}`}>
-        <nav className="mobile-nav" aria-label="Mobile">
-          {NAV_ITEMS.map((item) => (
-            <button key={item.href} type="button" onClick={() => handleNavigate(item.href)}>
-              {item.label}
-            </button>
-          ))}
-          <a className="button button--primary mobile-cta" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-            Message Us on WhatsApp
-          </a>
-        </nav>
+        {open ? (
+          <nav className="nav-mobile" aria-label="Mobile">
+            {NAV_ITEMS.map((item) => (
+              <button key={item.href} type="button" onClick={() => navigate(item.href)}>
+                {item.label}
+              </button>
+            ))}
+            <a className="button button--primary" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+              Get a Free Quote
+            </a>
+          </nav>
+        ) : null}
       </div>
     </header>
   );
@@ -256,70 +220,79 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="home" className="hero-section">
-      <div className="shell hero-grid">
-        <div className="hero-copy">
-          <span className="eyebrow">Professional cleaning for homes, offices, and commercial spaces</span>
-          <h1>Cleaning that looks premium, feels effortless, and keeps your space ready for what matters.</h1>
-          <p className="hero-lead">
-            Pace Setter delivers reliable, detail-focused cleaning with a polished client experience from the first message to the final walkthrough.
-          </p>
-
-          <div className="hero-actions">
-            <a className="button button--primary" href="#book" onClick={(event) => { event.preventDefault(); scrollToSection("#book"); }}>
-              Book a clean
-              <ArrowRight size={18} />
-            </a>
-            <a className="button button--ghost" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-              <MessageCircle size={18} />
-              WhatsApp us
+    <section id="home" className="hero-section section-card">
+      <div className="shell">
+        <div className="hero-panel">
+          <div className="hero-copy">
+            <p className="eyebrow">Clean Without Compromise</p>
+            <h1>
+              We Don&apos;t Just Clean, <span>We Care</span>
+            </h1>
+            <p className="hero-text">
+              From sparkling homes to spotless workplaces, we provide professional cleaning services that keep your
+              environment fresh, healthy, and welcoming.
+            </p>
+            <a className="button button--primary hero-button" href="#book" onClick={(event) => { event.preventDefault(); scrollToSection("#book"); }}>
+              Book a Cleaning Today
             </a>
           </div>
 
-          <div className="hero-proof">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="stat-card">
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
+          <div className="hero-image-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80"
+              alt="Professional cleaners working in a bright office"
+            />
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="hero-visual" aria-hidden="true">
-          <div className="hero-visual__panel hero-visual__panel--primary">
-            <div className="hero-badge">
-              <Sparkles size={18} />
-              Fresh, calm, presentation-ready spaces
-            </div>
-            <h2>Built for busy households and serious businesses.</h2>
+function About() {
+  return (
+    <section id="about" className="section-card">
+      <div className="shell">
+        <div className="split-card">
+          <div className="split-copy">
+            <h2>Why Customers Trust Us</h2>
             <p>
-              Better routines, better presentation, and a cleaning experience that feels professional all the way through.
+              At Pace Setter, we believe a clean space is a happier space. With years of professional experience,
+              we&apos;ve built a reputation for being reliable, affordable, and detail-oriented.
             </p>
+
+            <div className="trust-list">
+              {TRUST_POINTS.map((item) => (
+                <div key={item} className="trust-item">
+                  <CheckCircle2 size={18} />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a className="button button--primary button--small" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+              Get a Free Quote
+            </a>
+
+            <div className="member-strip">
+              <div className="member-avatars" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+              <div>
+                <strong>Join 500+</strong>
+                <p>Satisfied customers</p>
+              </div>
+            </div>
           </div>
 
-          <div className="hero-visual__stack">
-            <div className="hero-visual__card">
-              <ShieldCheck size={20} />
-              <div>
-                <strong>Reliable standards</strong>
-                <span>Consistent execution with clear communication</span>
-              </div>
-            </div>
-            <div className="hero-visual__card">
-              <Clock3 size={20} />
-              <div>
-                <strong>Flexible scheduling</strong>
-                <span>Appointments arranged around your routine</span>
-              </div>
-            </div>
-            <div className="hero-visual__card">
-              <BadgeCheck size={20} />
-              <div>
-                <strong>Detail-first finish</strong>
-                <span>The final impression matters just as much as the clean</span>
-              </div>
-            </div>
+          <div className="split-media">
+            <img
+              src="https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1200&q=80"
+              alt="Cleaning products and a gloved hand wiping a table"
+            />
           </div>
         </div>
       </div>
@@ -329,108 +302,21 @@ function Hero() {
 
 function Services() {
   return (
-    <section id="services" className="section section--soft">
+    <section id="services" className="section-card">
       <div className="shell">
         <div className="section-heading">
-          <span className="eyebrow">Core services</span>
-          <h2>Professional cleaning services designed around real-life use.</h2>
-          <p>
-            We focused the offer on the services most people actually need, then presented them with clearer positioning and stronger trust signals.
-          </p>
+          <h2>Our Services</h2>
+          <p>Focused, professional cleaning services for homes, offices, commercial spaces, and end-of-tenancy needs.</p>
         </div>
 
-        <div className="service-grid">
-          {SERVICES.map((service) => {
-            const Icon = service.icon;
-
-            return (
-              <article key={service.title} className="service-card">
-                <div className="service-card__icon">
-                  <Icon size={22} />
-                </div>
+        <div className="services-grid">
+          {SERVICES.map((service) => (
+            <article key={service.title} className="service-card">
+              <img src={service.image} alt={service.title} />
+              <div className="service-card__body">
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <a href="#book" onClick={(event) => { event.preventDefault(); scrollToSection("#book"); }}>
-                  Request this service
-                  <ArrowRight size={16} />
-                </a>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyUs() {
-  return (
-    <section id="why-us" className="section">
-      <div className="shell why-grid">
-        <div>
-          <span className="eyebrow">Why clients choose us</span>
-          <h2>More polished, more trustworthy, and easier to book.</h2>
-          <p className="section-copy">
-            The site now communicates a more premium service level and removes the biggest trust breaker from the previous build: a fake form submission flow. Every contact action now leads somewhere real.
-          </p>
-
-          <div className="check-list">
-            {TRUST_POINTS.map((point) => (
-              <div key={point} className="check-list__item">
-                <span>
-                  <Check size={16} />
-                </span>
-                <p>{point}</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <aside className="trust-panel">
-          <p className="trust-panel__label">Quick response path</p>
-          <h3>Send your request straight into WhatsApp with all the booking details included.</h3>
-          <p>
-            Instead of pretending a request was sent, the form now prepares a structured message containing name, contact details, property info, and service needs.
-          </p>
-          <div className="contact-stack">
-            <a href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-              <MessageCircle size={18} />
-              {PHONE_PRIMARY}
-            </a>
-            <a href={WHATSAPP_SECONDARY} target="_blank" rel="noreferrer">
-              <Phone size={18} />
-              {PHONE_SECONDARY}
-            </a>
-          </div>
-        </aside>
-      </div>
-    </section>
-  );
-}
-
-function Reviews() {
-  return (
-    <section id="reviews" className="section section--soft">
-      <div className="shell">
-        <div className="section-heading">
-          <span className="eyebrow">Client feedback</span>
-          <h2>Trust is easier to feel when the service sounds credible.</h2>
-          <p>These review cards were rewritten to read more like grounded customer feedback and less like generic placeholder marketing copy.</p>
-        </div>
-
-        <div className="review-grid">
-          {REVIEWS.map((review) => (
-            <article key={review.name} className="review-card">
-              <div className="stars" aria-label="Five star review">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} size={16} fill="currentColor" />
-                ))}
-              </div>
-              <p>{review.quote}</p>
-              <footer>
-                <strong>{review.name}</strong>
-                <span>{review.location}, UK</span>
-              </footer>
             </article>
           ))}
         </div>
@@ -439,34 +325,30 @@ function Reviews() {
   );
 }
 
-function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0);
-
+function Reviews() {
   return (
-    <section id="faq" className="section">
-      <div className="shell faq-layout">
-        <div>
-          <span className="eyebrow">Frequently asked questions</span>
-          <h2>Everything important, answered clearly.</h2>
-          <p className="section-copy">
-            Adding strong FAQ content helps both visitors and search engines understand the service offer with less ambiguity.
-          </p>
+    <section id="reviews" className="section-card">
+      <div className="shell">
+        <div className="section-heading">
+          <h2>What Our Clients Say</h2>
+          <p>We can replace these with verified Google or WhatsApp testimonials as soon as you share them. For now, the section is built to feel clean, readable, and horizontally scrollable.</p>
         </div>
 
-        <div className="faq-list">
-          {FAQS.map((faq, index) => {
-            const open = openIndex === index;
-
-            return (
-              <article key={faq.question} className={`faq-item${open ? " is-open" : ""}`}>
-                <button type="button" onClick={() => setOpenIndex(open ? -1 : index)} aria-expanded={open}>
-                  <span>{faq.question}</span>
-                  <ChevronDown size={18} />
-                </button>
-                {open ? <p>{faq.answer}</p> : null}
-              </article>
-            );
-          })}
+        <div className="reviews-scroller">
+          {REVIEWS.map((review) => (
+            <article key={review.name} className="review-card">
+              <div className="review-stars">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} size={15} fill="currentColor" />
+                ))}
+              </div>
+              <p>{review.text}</p>
+              <div className="review-meta">
+                <strong>{review.name}</strong>
+                <span>{review.role}</span>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -476,10 +358,23 @@ function FAQ() {
 function Booking() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [lastAction, setLastAction] = useState("");
+  const [status, setStatus] = useState("");
+  const [savedBookings, setSavedBookings] = useState<SavedBooking[]>([]);
+
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem("pace-setter-bookings");
+      if (stored) {
+        const parsed = JSON.parse(stored) as SavedBooking[];
+        setSavedBookings(parsed.slice(0, 3));
+      }
+    } catch {
+      setSavedBookings([]);
+    }
+  }, []);
 
   const canSubmit = useMemo(() => {
-    return form.name.trim() && form.phone.trim() && form.service.trim();
+    return form.name.trim() && form.phone.trim();
   }, [form]);
 
   const updateField = (key: keyof FormState, value: string) => {
@@ -488,129 +383,113 @@ function Booking() {
   };
 
   const validate = () => {
-    const nextErrors: Partial<Record<keyof FormState, string>> = {};
-
-    if (!form.name.trim()) nextErrors.name = "Please enter your name.";
-    if (!form.phone.trim()) nextErrors.phone = "Please add a phone number.";
-    if (!form.service.trim()) nextErrors.service = "Please choose a service type.";
-    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      nextErrors.email = "Please enter a valid email address.";
-    }
-
-    setErrors(nextErrors);
-    return Object.keys(nextErrors).length === 0;
+    const next: Partial<Record<keyof FormState, string>> = {};
+    if (!form.name.trim()) next.name = "Please enter your full name.";
+    if (!form.phone.trim()) next.phone = "Please enter your phone number.";
+    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = "Please enter a valid email.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
+
+    const savedBooking: SavedBooking = {
+      ...form,
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const stored = window.localStorage.getItem("pace-setter-bookings");
+      const parsed = stored ? (JSON.parse(stored) as SavedBooking[]) : [];
+      const next = [savedBooking, ...parsed].slice(0, 20);
+      window.localStorage.setItem("pace-setter-bookings", JSON.stringify(next));
+      setSavedBookings(next.slice(0, 3));
+    } catch {
+      // Keep contact flow working even if storage is unavailable.
+    }
 
     const message = [
       `Hello ${BUSINESS_NAME},`,
       "",
       "I would like to request a cleaning quote.",
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
+      `Full Name: ${form.name}`,
       `Email: ${form.email || "Not provided"}`,
-      `Service: ${form.service}`,
-      `Frequency: ${form.frequency || "To be discussed"}`,
-      `Address: ${form.address || "To be discussed"}`,
-      `Details: ${form.details || "No extra details provided"}`,
+      `Property Address: ${form.address || "Not provided"}`,
+      `Frequency of Cleaning: ${form.frequency || "Not provided"}`,
+      `Phone Number: ${form.phone}`,
+      `Comment: ${form.details || "No extra comment"}`,
     ].join("\n");
 
+    const emailSubject = encodeURIComponent(`Cleaning quote request from ${form.name}`);
+    const emailBody = encodeURIComponent(message);
+
     window.open(`${WHATSAPP_PRIMARY}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-    setLastAction("Your details were prepared for WhatsApp. Finish sending the message in the new tab.");
+    window.location.href = `mailto:${INFO_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
+    setStatus("Your booking was saved on this device and opened in both WhatsApp and your email app.");
   };
 
   return (
-    <section id="book" className="section section--booking">
-      <div className="shell booking-layout">
-        <div className="booking-copy">
-          <span className="eyebrow">Book or request a quote</span>
-          <h2>Tell us what you need and we will start the conversation properly.</h2>
-          <p className="section-copy">
-            This form now works as a real lead capture bridge for a static website. It validates the essentials and opens a structured WhatsApp request instead of showing a misleading success message.
-          </p>
+    <section id="book" className="section-card">
+      <div className="shell">
+        <div className="booking-card">
+          <div className="booking-copy">
+            <h2>Let&apos;s Get Started Discuss</h2>
+            <p>
+              Your home and workplace deserve the best cleaning care. Fill out the form and we&apos;ll get back to you
+              with a personalized plan.
+            </p>
 
-          <div className="contact-stack contact-stack--booking">
-            <a href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-              <MessageCircle size={18} />
-              Primary WhatsApp
-            </a>
-            <a href={WHATSAPP_SECONDARY} target="_blank" rel="noreferrer">
-              <Phone size={18} />
-              Secondary contact line
-            </a>
+            <form className="booking-form" onSubmit={submit} noValidate>
+              <div className="form-row form-row--double">
+                <Field label="Full Name" value={form.name} onChange={(value) => updateField("name", value)} error={errors.name} />
+                <Field label="Email" type="email" value={form.email} onChange={(value) => updateField("email", value)} error={errors.email} />
+              </div>
+
+              <div className="form-row">
+                <Field label="Property Address" value={form.address} onChange={(value) => updateField("address", value)} />
+              </div>
+
+              <div className="form-row form-row--double">
+                <Field label="Frequency of Cleaning" value={form.frequency} onChange={(value) => updateField("frequency", value)} />
+                <Field label="Phone Number" type="tel" value={form.phone} onChange={(value) => updateField("phone", value)} error={errors.phone} />
+              </div>
+
+              <div className="form-row">
+                <Field label="Your Comment..." textarea value={form.details} onChange={(value) => updateField("details", value)} />
+              </div>
+
+              <div className="booking-actions">
+                <button className="button button--primary button--small" type="submit" disabled={!canSubmit}>
+                  Submit Your Request
+                </button>
+                <p>{status || "Submitting saves the booking locally, opens WhatsApp, and drafts an email to info@pacesettercleaning.co.uk."}</p>
+              </div>
+            </form>
+
+            {savedBookings.length > 0 ? (
+              <div className="saved-bookings">
+                <strong>Recent saved enquiries</strong>
+                <div className="saved-bookings__list">
+                  {savedBookings.map((booking) => (
+                    <article key={booking.createdAt} className="saved-booking">
+                      <span>{booking.name}</span>
+                      <small>{booking.address || booking.frequency || "Cleaning request saved locally"}</small>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+
+          <div className="booking-media">
+            <img
+              src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80"
+              alt="Cleaner mopping a bright floor near a window"
+            />
           </div>
         </div>
-
-        <form className="booking-form" onSubmit={handleSubmit} noValidate>
-          <div className="form-grid form-grid--two">
-            <Field
-              label="Full name"
-              value={form.name}
-              onChange={(value) => updateField("name", value)}
-              error={errors.name}
-              required
-            />
-            <Field
-              label="Email address"
-              type="email"
-              value={form.email}
-              onChange={(value) => updateField("email", value)}
-              error={errors.email}
-            />
-          </div>
-
-          <div className="form-grid form-grid--two">
-            <Field
-              label="Phone number"
-              type="tel"
-              value={form.phone}
-              onChange={(value) => updateField("phone", value)}
-              error={errors.phone}
-              required
-            />
-            <Field
-              label="Service needed"
-              value={form.service}
-              onChange={(value) => updateField("service", value)}
-              error={errors.service}
-              required
-              placeholder="Residential, office, commercial, end of tenancy"
-            />
-          </div>
-
-          <Field
-            label="Property address"
-            value={form.address}
-            onChange={(value) => updateField("address", value)}
-            placeholder="Town, postcode, or general area"
-          />
-
-          <Field
-            label="Cleaning frequency"
-            value={form.frequency}
-            onChange={(value) => updateField("frequency", value)}
-            placeholder="One-off, weekly, bi-weekly, monthly"
-          />
-
-          <Field
-            label="Extra details"
-            textarea
-            value={form.details}
-            onChange={(value) => updateField("details", value)}
-            placeholder="Rooms, preferred date, access notes, or any special requests"
-          />
-
-          <div className="form-actions">
-            <button className="button button--primary" type="submit" disabled={!canSubmit}>
-              Send request via WhatsApp
-              <ArrowRight size={18} />
-            </button>
-            <p>{lastAction || "Required fields: name, phone number, and service needed."}</p>
-          </div>
-        </form>
       </div>
     </section>
   );
@@ -623,8 +502,6 @@ function Field({
   error,
   type = "text",
   textarea = false,
-  required = false,
-  placeholder = "",
 }: {
   label: string;
   value: string;
@@ -632,19 +509,13 @@ function Field({
   error?: string;
   type?: string;
   textarea?: boolean;
-  required?: boolean;
-  placeholder?: string;
 }) {
   return (
     <label className="field">
-      <span>
-        {label}
-        {required ? <strong> *</strong> : null}
-      </span>
       {textarea ? (
-        <textarea value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} rows={5} />
+        <textarea value={value} onChange={(event) => onChange(event.target.value)} placeholder={label} rows={5} />
       ) : (
-        <input type={type} value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} />
+        <input type={type} value={value} onChange={(event) => onChange(event.target.value)} placeholder={label} />
       )}
       {error ? <small>{error}</small> : null}
     </label>
@@ -653,18 +524,14 @@ function Field({
 
 function CTA() {
   return (
-    <section className="section cta-section">
-      <div className="shell cta-card">
-        <div>
-          <span className="eyebrow eyebrow--light">Ready when you are</span>
-          <h2>Make the next enquiry feel simple and professional.</h2>
-        </div>
-        <div className="cta-actions">
-          <a className="button button--light" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-            Start on WhatsApp
-          </a>
-          <a className="button button--outline-light" href={`tel:${PHONE_PRIMARY.replace(/\s+/g, "")}`}>
-            Call {PHONE_PRIMARY}
+    <section className="section-card">
+      <div className="shell">
+        <div className="cta-panel">
+          <h2>Ready to enjoy a cleaner space?</h2>
+          <p>Don&apos;t wait, let us transform your home or office into a spotless, stress-free space today.</p>
+          <a className="button button--primary button--small" href={WHATSAPP_SECONDARY} target="_blank" rel="noreferrer">
+            Book a Cleaning Today
+            <ArrowRight size={16} />
           </a>
         </div>
       </div>
@@ -674,41 +541,38 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="shell footer-layout">
-        <div>
+    <footer className="site-footer section-card">
+      <div className="shell footer-panel">
+        <div className="footer-top">
           <Logo />
-          <p>
-            Professional cleaning services for residential, office, commercial, and end-of-tenancy needs across the UK.
-          </p>
-        </div>
 
-        <div className="footer-links">
-          <div>
-            <h3>Navigate</h3>
+          <nav className="footer-nav" aria-label="Footer">
             {NAV_ITEMS.map((item) => (
               <button key={item.href} type="button" onClick={() => scrollToSection(item.href)}>
                 {item.label}
               </button>
             ))}
-          </div>
+          </nav>
 
-          <div>
-            <h3>Contact</h3>
+          <a className="button button--primary button--small" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+            Get a Free Quote
+          </a>
+        </div>
+
+        <div className="footer-bottom">
+          <p>Copyright © 2026 {BUSINESS_NAME}. All rights reserved.</p>
+          <div className="footer-contact">
+            <a href={`tel:${PHONE_PRIMARY.replace(/\s+/g, "")}`}>
+              <Phone size={16} />
+              {PHONE_PRIMARY}
+            </a>
             <a href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
-              WhatsApp primary
+              <MessageCircle size={16} />
+              WhatsApp
             </a>
-            <a href={WHATSAPP_SECONDARY} target="_blank" rel="noreferrer">
-              WhatsApp secondary
-            </a>
-            <a href={`tel:${PHONE_PRIMARY.replace(/\s+/g, "")}`}>{PHONE_PRIMARY}</a>
+            <a href={SITE_URL}>{SITE_URL.replace("https://", "")}</a>
           </div>
         </div>
-      </div>
-
-      <div className="shell footer-bottom">
-        <p>© {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.</p>
-        <a href={SITE_URL}>{SITE_URL.replace("https://", "")}</a>
       </div>
     </footer>
   );
@@ -721,13 +585,12 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <Nav />
+      <Header />
       <main>
         <Hero />
+        <About />
         <Services />
-        <WhyUs />
         <Reviews />
-        <FAQ />
         <Booking />
         <CTA />
       </main>

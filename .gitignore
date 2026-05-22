@@ -1,1 +1,31 @@
 node_modules
+.turbo
+.env
+.next
+.DS_Store
+# --- Turbopack / Next.js ---
+.next/
+.vercel/
+
+# --- TypeScript ---
+*.tsbuildinfo
+
+# --- Logs ---
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Build Artifacts ---
+dist/
+build/
+.open-next/
