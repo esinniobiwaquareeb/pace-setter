@@ -8,7 +8,7 @@ body {
   min-width: 320px;
   font-family: "Inter", sans-serif;
   color: #142b5f;
-  background: #ece8e4;
+  background: #f4f5f7;
 }
 
 a {
@@ -30,26 +30,29 @@ button {
 }
 
 .app-shell {
-  padding: 48px 0 88px;
+  padding: 0 0 64px;
 }
 
 .shell {
-  width: min(1640px, calc(100% - 64px));
+  width: min(1200px, calc(100% - 64px));
   margin: 0 auto;
 }
 
 .section-card {
-  margin-bottom: 38px;
+  margin-bottom: 24px;
 }
 
 .site-header {
   position: sticky;
-  top: 20px;
+  top: 24px;
   z-index: 50;
-  margin-bottom: 34px;
+  margin-bottom: 64px;
 }
 
-.topbar,
+.site-header--scrolled .topbar {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
 .footer-panel {
   border: 1px solid rgba(232, 238, 247, 0.95);
   border-radius: 34px;
@@ -57,7 +60,6 @@ button {
   box-shadow: 0 6px 24px rgba(41, 67, 120, 0.05);
 }
 
-.hero-panel,
 .split-card,
 .booking-card {
   border-radius: 34px;
@@ -69,12 +71,10 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 22px 30px;
-  box-shadow: 0 10px 28px rgba(41, 67, 120, 0.045);
-}
-
-.site-header--scrolled .topbar {
-  box-shadow: 0 14px 34px rgba(41, 67, 120, 0.08);
+  background: #ffffff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.03);
 }
 
 .brand {
@@ -91,8 +91,8 @@ button {
 }
 
 .brand img {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   object-fit: cover;
   background: #fff;
@@ -110,13 +110,14 @@ button {
   border: 0;
   background: transparent;
   color: #182c59;
-  font-size: 0.98rem;
-  padding: 8px 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 16px;
 }
 
 .nav-desktop button.is-active {
   color: #ff7a1a;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .topbar-actions {
@@ -130,12 +131,13 @@ button {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 58px;
+  min-height: 48px;
   padding: 0 32px;
   border-radius: 999px;
   border: 1px solid transparent;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1rem;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -145,13 +147,13 @@ button {
 
 .button--primary {
   background: #ff7a1a;
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(255, 122, 26, 0.24);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(255, 122, 26, 0.2);
 }
 
 .button--small {
-  min-height: 54px;
-  padding: 0 28px;
+  min-height: 40px;
+  padding: 0 16px;
 }
 
 .quote-button {
@@ -173,29 +175,32 @@ button {
 }
 
 .hero-panel {
-  padding: 64px 54px 46px;
-  border: 1px solid rgba(236, 241, 248, 0.92);
+  padding: 0;
 }
 
 .hero-copy {
-  max-width: 980px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
-  padding: 0 22px;
-  border: 1px solid #edf1f7;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
   border-radius: 999px;
-  background: #fff;
-  color: #25365d;
-  font-size: 0.95rem;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.875rem;
   font-style: italic;
-  box-shadow: 0 6px 18px rgba(41, 67, 120, 0.04);
+  box-shadow: none;
+  margin-bottom: 24px;
 }
 
 .hero-copy h1,
@@ -209,10 +214,9 @@ button {
 }
 
 .hero-copy h1 {
-  margin-top: 32px;
-  font-size: clamp(3rem, 5.6vw, 5.4rem);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .hero-copy h1 span {
@@ -232,19 +236,21 @@ button {
 }
 
 .hero-text {
-  max-width: 760px;
-  margin: 28px auto 0;
+  max-width: 640px;
+  margin: 24px auto 32px;
   font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
 }
 
 .hero-button {
-  margin-top: 38px;
+  margin-top: 0;
 }
 
 .hero-image-wrap {
-  margin-top: 60px;
+  margin-top: 48px;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 24px;
 }
 
 .hero-image-wrap img,
@@ -264,8 +270,8 @@ button {
 .split-card {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: 52px;
-  padding: 54px;
+  gap: 32px;
+  padding: 32px;
   border: 1px solid rgba(236, 241, 248, 0.92);
 }
 
@@ -279,19 +285,19 @@ button {
 .booking-copy h2,
 .section-heading h2,
 .cta-panel h2 {
-  font-size: clamp(2rem, 3vw, 3.1rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   line-height: 1.1;
 }
 
 .split-copy p {
   max-width: 600px;
-  margin: 22px 0 0;
+  margin: 12px 0 0;
 }
 
 .trust-list {
   display: grid;
-  gap: 14px;
-  margin: 30px 0 34px;
+  gap: 10px;
+  margin: 16px 0 20px;
 }
 
 .trust-item {
@@ -310,7 +316,7 @@ button {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 34px;
+  margin-top: 20px;
 }
 
 .member-avatars {
@@ -345,23 +351,23 @@ button {
 .booking-media {
   overflow: hidden;
   border-radius: 28px;
-  min-height: 480px;
+  min-height: 320px;
 }
 
 .section-heading {
-  margin-bottom: 34px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .section-heading p {
   max-width: 760px;
-  margin: 16px auto 0;
+  margin: 8px auto 0;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
+  gap: 20px;
 }
 
 .service-card,
@@ -384,7 +390,7 @@ button {
 }
 
 .service-card__body {
-  padding: 22px 20px 24px;
+  padding: 16px;
   background: #f9fbff;
 }
 
@@ -403,8 +409,8 @@ button {
 }
 
 .review-card {
-  min-width: min(360px, 88vw);
-  padding: 28px;
+  min-width: min(320px, 88vw);
+  padding: 20px;
   scroll-snap-align: start;
 }
 
@@ -449,14 +455,14 @@ button {
 .booking-card {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 52px;
-  padding: 54px;
+  gap: 32px;
+  padding: 32px;
   border: 1px solid rgba(236, 241, 248, 0.92);
 }
 
 .booking-copy p {
   max-width: 640px;
-  margin: 24px 0 34px;
+  margin: 12px 0 20px;
 }
 
 .booking-form {
@@ -467,7 +473,7 @@ button {
 .form-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 12px;
 }
 
 .form-row--double {
@@ -483,9 +489,9 @@ button {
 .field textarea {
   width: 100%;
   border: 1px solid #e8eef7;
-  border-radius: 18px;
+  border-radius: 8px;
   background: #fff;
-  padding: 18px 22px;
+  padding: 12px 16px;
   color: #182d5f;
   outline: 0;
   box-shadow: 0 4px 16px rgba(41, 67, 120, 0.04);
@@ -504,7 +510,7 @@ button {
 }
 
 .field textarea {
-  min-height: 154px;
+  min-height: 100px;
   resize: vertical;
 }
 
@@ -523,7 +529,7 @@ button {
 }
 
 .saved-bookings {
-  margin-top: 26px;
+  margin-top: 16px;
   display: grid;
   gap: 14px;
 }
@@ -541,7 +547,7 @@ button {
 .saved-booking {
   display: grid;
   gap: 4px;
-  padding: 14px 16px;
+  padding: 10px 12px;
   border: 1px solid #e8eef7;
   border-radius: 16px;
   background: #fff;
@@ -563,7 +569,7 @@ button {
 }
 
 .cta-panel {
-  padding: 42px 30px;
+  padding: 24px 20px;
   text-align: center;
   background: linear-gradient(180deg, #fff6e9 0%, #fff9f2 100%);
   border: 1px solid rgba(255, 236, 214, 0.95);
@@ -572,11 +578,11 @@ button {
 
 .cta-panel p {
   max-width: 760px;
-  margin: 16px auto 24px;
+  margin: 8px auto 16px;
 }
 
 .footer-panel {
-  padding: 28px 30px;
+  padding: 20px 24px;
 }
 
 .footer-top,
@@ -589,8 +595,8 @@ button {
 }
 
 .footer-bottom {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid #e8eef7;
 }
 
@@ -673,8 +679,6 @@ button {
     margin-bottom: 18px;
   }
 
-  .topbar,
-  .hero-panel,
   .split-card,
   .booking-card,
   .footer-panel {

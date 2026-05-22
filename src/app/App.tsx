@@ -20,29 +20,25 @@ const NAV_ITEMS = [
 const SERVICES = [
   {
     title: "Residential Cleaning",
-    description:
-      "Ideal for busy households that want a consistently fresh home. We focus on kitchens, bathrooms, dusting, surfaces, floors, and the finishing details that make rooms feel settled and properly cared for.",
+    description: "Keep your home fresh with our regular cleaning, covering kitchens, bathrooms, floors, and surfaces.",
     image:
       "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Office Cleaning",
-    description:
-      "Structured office cleaning for workspaces that need to feel organised and professional. We help maintain desks, meeting rooms, shared spaces, washrooms, and touchpoints with minimal disruption to your team.",
+    description: "Structured cleaning for workspaces to maintain a professional, organized environment with minimal disruption.",
     image:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Commercial Cleaning",
-    description:
-      "For retail units, shared buildings, and customer-facing environments where presentation matters every day. We support a cleaner, more welcoming experience for staff, tenants, and visitors.",
+    description: "Reliable cleaning for retail and shared buildings to ensure a welcoming experience for staff and visitors.",
     image:
       "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "End of Tenancy Cleaning",
-    description:
-      "Deep, inspection-ready cleaning for landlords, agents, and tenants preparing for handover. Designed to leave the property looking refreshed, presentable, and ready for the next stage.",
+    description: "Deep, inspection-ready cleaning for landlords and tenants to leave the property looking brand new.",
     image:
       "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
   },
@@ -52,32 +48,32 @@ const REVIEWS = [
   {
     name: "Sarah J.",
     role: "Homeowner",
-    text: "Quick, efficient, and genuinely easy to deal with. The team paid attention to the details and left the house feeling calm and refreshed.",
+    text: "Quick, efficient, and genuinely easy to deal with. The team paid attention to details.",
   },
   {
     name: "David R.",
     role: "Small Business Owner",
-    text: "Professional team, on time, and very thorough. They understood that our office needed to stay presentable for clients and handled it well.",
+    text: "Professional team, on time, and very thorough. They handled our office space perfectly.",
   },
   {
     name: "Liya W.",
     role: "Property Manager",
-    text: "They went above and beyond to clean every corner. The property looked much better for handover and the whole process felt organised.",
+    text: "They went above and beyond to clean every corner. The property looked much better for handover.",
   },
   {
     name: "Mariam T.",
     role: "Tenant",
-    text: "Booking was straightforward and communication was clear from start to finish. I appreciated how professional the team felt on the day.",
+    text: "Booking was straightforward and communication was clear from start to finish.",
   },
   {
     name: "James K.",
     role: "Facilities Coordinator",
-    text: "Reliable support for a busy commercial environment. Clean results, punctual visits, and no unnecessary back and forth.",
+    text: "Reliable support for a busy commercial environment. Clean results, punctual visits.",
   },
   {
     name: "Helen O.",
     role: "Landlord",
-    text: "The end-of-tenancy clean made a strong difference. The space looked brighter, fresher, and much more ready for viewings.",
+    text: "The end-of-tenancy clean made a strong difference. The space looked brighter and fresher.",
   },
 ];
 
@@ -229,8 +225,8 @@ function Hero() {
               We Don&apos;t Just Clean, <span>We Care</span>
             </h1>
             <p className="hero-text">
-              From sparkling homes to spotless workplaces, we provide professional cleaning services that keep your
-              environment fresh, healthy, and welcoming.
+              From sparkling homes to spotless workplaces, we provide professional cleaning services that
+              keep your environment fresh, healthy, and welcoming.
             </p>
             <a className="button button--primary hero-button" href="#book" onClick={(event) => { event.preventDefault(); scrollToSection("#book"); }}>
               Book a Cleaning Today
@@ -257,8 +253,7 @@ function About() {
           <div className="split-copy">
             <h2>Why Customers Trust Us</h2>
             <p>
-              At Pace Setter, we believe a clean space is a happier space. With years of professional experience,
-              we&apos;ve built a reputation for being reliable, affordable, and detail-oriented.
+              We provide reliable, affordable, and detail-oriented cleaning. Your satisfaction is our priority.
             </p>
 
             <div className="trust-list">
@@ -306,7 +301,7 @@ function Services() {
       <div className="shell">
         <div className="section-heading">
           <h2>Our Services</h2>
-          <p>Focused, professional cleaning services for homes, offices, commercial spaces, and end-of-tenancy needs.</p>
+          <p>Professional cleaning for any space or occasion.</p>
         </div>
 
         <div className="services-grid">
@@ -331,7 +326,7 @@ function Reviews() {
       <div className="shell">
         <div className="section-heading">
           <h2>What Our Clients Say</h2>
-          <p>We can replace these with verified Google or WhatsApp testimonials as soon as you share them. For now, the section is built to feel clean, readable, and horizontally scrollable.</p>
+          <p>Read what our happy clients have to say about us.</p>
         </div>
 
         <div className="reviews-scroller">
@@ -436,10 +431,7 @@ function Booking() {
         <div className="booking-card">
           <div className="booking-copy">
             <h2>Let&apos;s Get Started Discuss</h2>
-            <p>
-              Your home and workplace deserve the best cleaning care. Fill out the form and we&apos;ll get back to you
-              with a personalized plan.
-            </p>
+            <p>Fill out the form below and we&apos;ll get back to you with a personalized plan.</p>
 
             <form className="booking-form" onSubmit={submit} noValidate>
               <div className="form-row form-row--double">
@@ -527,8 +519,8 @@ function CTA() {
     <section className="section-card">
       <div className="shell">
         <div className="cta-panel">
-          <h2>Ready to enjoy a cleaner space?</h2>
-          <p>Don&apos;t wait, let us transform your home or office into a spotless, stress-free space today.</p>
+          <h2>Ready for a cleaner space?</h2>
+          <p>Let us transform your environment into a spotless, stress-free space today.</p>
           <a className="button button--primary button--small" href={WHATSAPP_SECONDARY} target="_blank" rel="noreferrer">
             Book a Cleaning Today
             <ArrowRight size={16} />
