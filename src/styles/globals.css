@@ -465,12 +465,16 @@ main .section-card:last-child {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 48px;
   padding: 48px;
-  border: 1px solid rgba(236, 241, 248, 0.92);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+  border: none;
 }
 
 .booking-copy p {
   max-width: 640px;
-  margin: 12px 0 20px;
+  margin: 12px 0 28px;
+  color: #64748b;
 }
 
 .booking-form {
@@ -496,19 +500,21 @@ main .section-card:last-child {
 .field input,
 .field textarea {
   width: 100%;
-  border: 1px solid #e8eef7;
-  border-radius: 8px;
-  background: #fff;
-  padding: 12px 16px;
+  border: 1px solid #f0f3f7;
+  border-radius: 12px;
+  background: #fafafc;
+  padding: 16px 20px;
   color: #182d5f;
+  font-family: inherit;
+  font-size: 0.95rem;
   outline: 0;
-  box-shadow: 0 4px 16px rgba(41, 67, 120, 0.04);
+  box-shadow: none;
   box-sizing: border-box;
 }
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: #4d5d7c;
+  color: #64748b;
 }
 
 .field input:focus,
@@ -638,7 +644,12 @@ main .section-card:last-child {
     display: none;
   }
 
-  .menu-button,
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .nav-mobile {
     display: block;
   }

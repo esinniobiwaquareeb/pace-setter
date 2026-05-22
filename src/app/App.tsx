@@ -246,9 +246,9 @@ function About() {
       <div className="shell">
         <div className="split-card">
           <div className="split-copy">
-            <h2>Why Customers Trust Us</h2>
+            <h2>About Us</h2>
             <p>
-              We provide reliable, affordable, and detail-oriented cleaning. Your satisfaction is our priority.
+              At Pace Setter Cleaning Services LTD, we are committed to delivering reliable, professional, and high-quality cleaning solutions tailored to homes, offices, and commercial spaces. With a focus on excellence, attention to detail, and client satisfaction, we take pride in creating clean, safe, and welcoming environments. Our dedicated team combines efficiency with professionalism to provide services you can trust every time.
             </p>
 
             <div className="trust-list">
@@ -273,7 +273,7 @@ function About() {
               </div>
               <div>
                 <strong>Join 500+</strong>
-                <p>Satisfied customers</p>
+                <p>Satisfied clients</p>
               </div>
             </div>
           </div>
@@ -426,7 +426,7 @@ function Booking() {
         <div className="booking-card">
           <div className="booking-copy">
             <h2>Let&apos;s Get Started Discuss</h2>
-            <p>Fill out the form below and we&apos;ll get back to you with a personalized plan.</p>
+            <p>Your home and workplace deserve the best cleaning care. Fill out the form and we&apos;ll get back to you with a personalized plan.</p>
 
             <form className="booking-form" onSubmit={submit} noValidate>
               <div className="form-row form-row--double">
@@ -451,7 +451,7 @@ function Booking() {
                 <button className="button button--primary button--small" type="submit" disabled={!canSubmit}>
                   Submit Your Request
                 </button>
-                <p>{status || "Submitting saves the booking locally, opens WhatsApp, and drafts an email to info@pacesettercleaning.co.uk."}</p>
+                {status ? <p>{status}</p> : null}
               </div>
             </form>
 
