@@ -6,7 +6,13 @@ export function Logo() {
   return (
     <button className="brand" type="button" onClick={() => scrollToSection("#home")} aria-label="Go to homepage">
       <img src={paceSetterLogo} alt={BUSINESS_NAME} />
-      <span>Pace Setter</span>
+      <span className="brand-text">
+        <strong>
+          <span className="brand-text__pace">Pace</span>{" "}
+          <span className="brand-text__setter">Setter</span>
+        </strong>
+        <small>Cleaning Service</small>
+      </span>
     </button>
   );
 }
