@@ -1,0 +1,16 @@
+{
+  "name": "Pace Setter Cleaning Services LTD",
+  "short_name": "Pace Setter",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f4ef",
+  "theme_color": "#0d2a5c",
+  "icons": [
+    {
+      "src": "/pace-setter-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
