@@ -228,6 +228,7 @@ main .section-card:last-child {
   display: none;
   width: 40px;
   height: 40px;
+  padding: 0;
   border: none;
   border-radius: 50%;
   background: #eef4fb;
@@ -331,12 +332,69 @@ main .section-card:last-child {
 
 .hero-image-wrap img,
 .split-media img,
-.service-card img,
-.booking-media img {
+.service-card img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.booking-media {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.booking-media img {
+  display: block;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+.contact-info-block {
+  padding: 32px;
+  background: var(--surface);
+  border-radius: 28px;
+  border: 1px solid var(--border);
+}
+
+.contact-info-block h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: var(--brand-dark);
+}
+
+.contact-info-block p {
+  color: var(--brand-text);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--brand-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+
+.contact-info-item:hover {
+  color: var(--brand-blue);
+}
+
+.contact-info-item svg {
+  color: var(--brand-accent);
 }
 
 .hero-image-wrap img {
@@ -423,8 +481,7 @@ main .section-card:last-child {
   color: var(--brand-text-soft);
 }
 
-.split-media,
-.booking-media {
+.split-media {
   overflow: hidden;
   border-radius: 28px;
   min-height: 320px;
@@ -1437,8 +1494,7 @@ main .section-card:last-child {
     gap: 20px;
   }
 
-  .split-media,
-  .booking-media {
+  .split-media {
     min-height: 240px;
     border-radius: 16px;
   }

@@ -1,3 +1,4 @@
+import { Phone, Mail, Globe } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { INITIAL_FORM } from "./content";
 import { Field } from "./Field";
@@ -142,6 +143,24 @@ export function Booking() {
 
           <div className="booking-media">
             <img src={booking.image} alt={booking.imageAlt} />
+            <div className="contact-info-block">
+              <h3>Get In Touch</h3>
+              <p>Prefer to speak to someone directly? Reach out through any of these channels:</p>
+              <div className="contact-info-items">
+                <a href={`tel:${contact.phonePrimary.replace(/\s+/g, '')}`} className="contact-info-item">
+                  <Phone size={20} />
+                  <span>{contact.phonePrimary}</span>
+                </a>
+                <a href={`mailto:${contact.email}`} className="contact-info-item">
+                  <Mail size={20} />
+                  <span>{contact.email}</span>
+                </a>
+                <a href={contact.websiteUrl} className="contact-info-item" target="_blank" rel="noreferrer">
+                  <Globe size={20} />
+                  <span>pacesettercleaning.co.uk</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

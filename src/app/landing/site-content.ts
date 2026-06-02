@@ -6,7 +6,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     headlinePrefix: "We Don't Just Clean,",
     rotatingWords: ["We Care", "We Restore", "We Refresh", "We Deliver"],
     body:
-      "Pace Setter Cleaning Services delivers residential cleaning, office cleaning, and commercial cleaning that helps your property look sharper, feel healthier, and stay ready for everyday life or business.",
+      "Pace Setter Cleaning Services delivers residential cleaning, office cleaning, and commercial cleaning that helps your property look sharper, feel healthier, and stay ready for everyday life or business. Fully insured and 5-star rated.",
     ctaLabel: "Book a Cleaning Today",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Professional cleaners working in a bright office",
@@ -14,12 +14,12 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   about: {
     heading: "Trusted Cleaning Services With Professional Standards",
     body:
-      "Pace Setter Cleaning Services LTD provides reliable residential cleaning, office cleaning, and commercial cleaning with a strong focus on detail, presentation, and customer satisfaction. We help homes feel fresher, workplaces stay professional, and properties remain ready for visitors, clients, tenants, or handover.",
+      "Pace Setter Cleaning Services LTD provides reliable residential cleaning, office cleaning, and commercial cleaning with a strong focus on detail, presentation, and customer satisfaction. We help homes feel fresher, workplaces stay professional, and properties remain ready for visitors, clients, tenants, or handover. All our staff are rigorously vetted, uniformed, and carry enhanced DBS checks for your complete peace of mind.",
     trustPoints: [
-      "Professional home, office, and commercial cleaning services",
-      "Flexible scheduling for regular, one-off, and end-of-tenancy cleaning",
+      "Fully insured with enhanced DBS-checked staff",
+      "100% Reliability Guarantee – replacement cover always provided",
       "Detail-focused standards with client-first communication",
-      "Trusted support for cleaner, healthier, more presentable spaces",
+      "Flexible scheduling for regular, one-off, and deep cleaning",
     ],
     ctaLabel: "Get a Free Quote",
     memberHeadline: "Join 500+",
@@ -36,26 +36,38 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     {
       title: "Residential Cleaning",
       description:
-        "Reliable residential cleaning services for kitchens, bathrooms, bedrooms, living areas, floors, and high-touch surfaces, helping your home stay fresh, healthy, and guest-ready.",
+        "Reliable residential cleaning services for kitchens, bathrooms, bedrooms, and living areas. Starting from £20/hr.",
       image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Office Cleaning",
       description:
-        "Professional office cleaning for desks, meeting rooms, washrooms, reception areas, and shared spaces, designed to keep your workplace clean, organised, and client-ready.",
+        "Professional office cleaning for desks, meeting rooms, washrooms, and shared spaces. Bespoke pricing available.",
       image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Commercial Cleaning",
       description:
-        "Commercial cleaning services for retail spaces, shared buildings, and customer-facing environments where presentation, hygiene, and daily consistency matter.",
+        "Commercial cleaning services for retail spaces and customer-facing environments where presentation matters.",
       image: "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
     },
     {
-      title: "End of Tenancy Cleaning",
+      title: "Deep Cleaning",
       description:
-        "End of tenancy cleaning for landlords, agents, and tenants who need a property looking fresher, cleaner, and ready for inspection, handover, or new occupants.",
-      image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
+        "Intensive, top-to-bottom deep cleaning for properties that need a complete refresh. Ideal for spring cleaning.",
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Carpet & Hard Floor",
+      description:
+        "Specialised carpet and hard floor cleaning using professional equipment to restore your floors to their best condition.",
+      image: "https://images.unsplash.com/photo-1558384518-e390c58e578c?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Airbnb Maid Service",
+      description:
+        "Fast, reliable turnaround cleaning for holiday lets and Airbnb properties. Ensuring 5-star reviews every time.",
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
     },
   ],
   reviewsIntro: {
@@ -69,7 +81,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     { name: "Liya W.", role: "Property Manager", text: "They went above and beyond to clean every corner. The property looked much better for handover." },
     { name: "Mariam T.", role: "Tenant", text: "Booking was straightforward and communication was clear from start to finish." },
     { name: "James K.", role: "Facilities Coordinator", text: "Reliable support for a busy commercial environment. Clean results, punctual visits." },
-    { name: "Helen O.", role: "Landlord", text: "The end-of-tenancy clean made a strong difference. The space looked brighter and fresher." },
+    { name: "Helen O.", role: "Landlord", text: "The deep clean made a strong difference. The space looked brighter and fresher." },
   ],
   processIntro: {
     heading: "How Booking Works",
@@ -95,16 +107,20 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   },
   faqs: [
     {
-      question: "What cleaning services do you offer?",
-      answer: "We provide residential cleaning, office cleaning, commercial cleaning, and end of tenancy cleaning for properties that need reliable professional care.",
+      question: "Are your cleaning staff vetted and insured?",
+      answer: "Absolutely. Every member of the Pace Setter team is personally interviewed, fully vetted, and holds an enhanced DBS check. We are also fully insured for your peace of mind.",
+    },
+    {
+      question: "What happens if my regular cleaner is sick?",
+      answer: "We offer a 100% Reliability Guarantee. If your regular cleaner is unwell or on holiday, we will always provide a fully trained replacement to cover your clean.",
+    },
+    {
+      question: "Do you provide your own cleaning equipment?",
+      answer: "Yes, our team arrives fully equipped with professional-grade cleaning supplies and equipment. If you prefer us to use your own specific products, just let us know.",
     },
     {
       question: "Do you offer one-off and regular cleaning?",
       answer: "Yes. We can discuss one-off cleans, recurring cleaning schedules, and flexible arrangements based on the property and your preferred frequency.",
-    },
-    {
-      question: "How quickly can I get a quote?",
-      answer: "The booking form opens your enquiry directly in WhatsApp and email, which helps us review your request quickly and respond with the next steps faster.",
     },
     {
       question: "Do you work with both homes and businesses?",
@@ -136,8 +152,9 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     whatsappPrimary: "https://wa.me/447894239785",
     whatsappSecondary: "https://wa.me/447884310461",
   },
-  updatedAt: "2026-05-22T00:00:00.000Z",
+  updatedAt: "2026-06-01T00:00:00.000Z",
 };
+
 
 export const INITIAL_FORM: FormState = {
   name: "",
