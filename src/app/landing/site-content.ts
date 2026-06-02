@@ -37,37 +37,49 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       title: "Residential Cleaning",
       description:
         "Reliable residential cleaning services for kitchens, bathrooms, bedrooms, and living areas. Starting from £20/hr.",
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Office Cleaning",
       description:
         "Professional office cleaning for desks, meeting rooms, washrooms, and shared spaces. Bespoke pricing available.",
-      image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Commercial Cleaning",
       description:
         "Commercial cleaning services for retail spaces and customer-facing environments where presentation matters.",
-      image: "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Deep Cleaning",
       description:
         "Intensive, top-to-bottom deep cleaning for properties that need a complete refresh. Ideal for spring cleaning.",
-      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Carpet & Hard Floor",
       description:
         "Specialised carpet and hard floor cleaning using professional equipment to restore your floors to their best condition.",
-      image: "https://images.unsplash.com/photo-1558384518-e390c58e578c?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Airbnb Maid Service",
       description:
         "Fast, reliable turnaround cleaning for holiday lets and Airbnb properties. Ensuring 5-star reviews every time.",
       image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Post-Construction Cleaning",
+      description:
+        "Comprehensive after-build cleaning to remove dust, debris, and residue, ensuring new builds and renovations are ready for handover.",
+      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Eco-Friendly Cleaning",
+      description:
+        "Green cleaning solutions using 100% non-toxic, eco-friendly products that are tough on dirt but safe for children, pets, and the environment.",
+      image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=900&q=80",
     },
   ],
   reviewsIntro: {
@@ -135,8 +147,8 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     successMessage: "Your booking was saved and opened in both WhatsApp and your email app.",
     recentLabel: "Recent saved enquiries",
     fallbackRecentText: "Cleaning request saved",
-    image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Cleaner mopping a bright floor near a window",
+    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Clean, brightly lit home interior showing the results of professional cleaning",
   },
   cta: {
     heading: "Ready to Book Professional Cleaning Services?",
@@ -152,7 +164,47 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     whatsappPrimary: "https://wa.me/447894239785",
     whatsappSecondary: "https://wa.me/447884310461",
   },
-  updatedAt: "2026-06-01T00:00:00.000Z",
+  expandedContent: {
+    aboutMission: {
+      heading: "Our Mission: Setting the Standard for Clean",
+      paragraphs: [
+        "Pace Setter Cleaning Services was built on a single, uncompromising principle: spaces should feel as good as they look. We recognized a gap in the market where reliability and deep attention to detail were often missing, leaving clients frustrated with inconsistent results.",
+        "We approach every environment—whether it's a bustling commercial office, a family home, or a fast-turnaround Airbnb—with a bespoke strategy. Our mission is to elevate hygiene, enhance presentation, and return valuable time to our clients so they can focus on what matters most.",
+      ],
+      image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Clean, brightly lit modern living room showing high standards of hygiene",
+      features: [
+        "Bespoke cleaning strategies tailored to each property.",
+        "Rigorous quality control and spot-checks.",
+        "Transparent pricing with no hidden fees.",
+      ],
+    },
+    aboutPhilosophy: {
+      heading: "The Pace Setter Philosophy: Trust Above All",
+      paragraphs: [
+        "We know that inviting a cleaning team into your personal home or secure commercial space requires immense trust. That is why our philosophy is centered completely around security, vetting, and peace of mind.",
+        "Every single member of the Pace Setter team is subjected to an enhanced DBS check, rigorous in-person interviewing, and extensive ongoing training. Furthermore, we operate with a 100% Reliability Guarantee—if your regular cleaner is unwell, we guarantee a fully briefed replacement will cover your clean. You never have to worry about a missed schedule.",
+      ],
+      image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Professional team member cleaning a surface with precision",
+      features: [
+        "100% Reliability Guarantee – you are never left without cover.",
+        "All staff carry Enhanced DBS Checks.",
+        "Comprehensive Public Liability Insurance.",
+      ],
+    },
+    serviceAreas: [
+      "London",
+      "Manchester",
+      "Birmingham",
+      "Leeds",
+      "Liverpool",
+      "Sheffield",
+      "Bristol",
+      "Nottingham",
+    ],
+  },
+  updatedAt: "2026-06-02T00:00:00.000Z",
 };
 
 
@@ -182,6 +234,7 @@ export function mergeSiteContent(content?: Partial<SiteContent> | null): SiteCon
     booking: { ...DEFAULT_SITE_CONTENT.booking, ...content?.booking },
     cta: { ...DEFAULT_SITE_CONTENT.cta, ...content?.cta },
     contact: { ...DEFAULT_SITE_CONTENT.contact, ...content?.contact },
+    expandedContent: { ...DEFAULT_SITE_CONTENT.expandedContent, ...content?.expandedContent },
     updatedAt: content?.updatedAt ?? DEFAULT_SITE_CONTENT.updatedAt,
   };
 }

@@ -1,0 +1,25 @@
+import { useEffect } from "react";
+import { BUSINESS_NAME } from "../landing/content";
+
+interface SEOProps {
+  title: string;
+  description: string;
+}
+
+export function SEO({ title, description }: SEOProps) {
+  useEffect(() => {
+    // Update title
+    document.title = `${title} | ${BUSINESS_NAME}`;
+
+    // Update or create meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("name", "description");
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute("content", description);
+  }, [title, description]);
+
+  return null;
+}

@@ -48,6 +48,10 @@ button {
   padding: 0 0 64px;
 }
 
+main {
+  padding-top: 120px;
+}
+
 .shell {
   width: min(1200px, calc(100% - 64px));
   margin: 0 auto;
@@ -78,14 +82,42 @@ main .section-card:last-child {
 }
 
 .site-header {
-  position: sticky;
-  top: 24px;
-  z-index: 50;
-  margin-bottom: 56px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface);
 }
 
-.site-header--scrolled .topbar {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+.top-bar-contact {
+  background: var(--brand-green-deep);
+  color: #ffffff;
+  padding: 8px 0;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.top-bar-contact a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.top-bar-contact a:hover {
+  opacity: 0.8;
+}
+
+.site-header--scrolled {
+  box-shadow: 0 4px 30px rgba(11, 47, 120, 0.08);
+}
+
+.site-header--scrolled .top-bar-contact {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
 }
 
 .footer-panel {
@@ -136,6 +168,19 @@ main .section-card:last-child {
   font-size: 1.02rem;
   line-height: 1.05;
   letter-spacing: -0.01em;
+}
+
+/* Premium Typography Tweaks */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.65;
+  color: #4a5568;
+}
+
+a {
 }
 
 .brand-text__pace {
@@ -797,6 +842,29 @@ main .section-card:last-child {
   }
 }
 
+.split-card {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 48px;
+  padding: 48px;
+  background: var(--surface);
+  border-radius: 32px;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(11, 47, 120, 0.04);
+}
+
+.split-card--reverse {
+  grid-template-columns: 1fr 1.05fr;
+}
+
+.split-card--reverse .split-copy {
+  order: 2;
+}
+
+.split-card--reverse .split-media {
+  order: 1;
+}
+
 .booking-card {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -1363,6 +1431,10 @@ main .section-card:last-child {
 
   .app-shell {
     padding-bottom: 48px;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
   }
 
   .site-header {

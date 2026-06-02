@@ -20,6 +20,23 @@ export function Header() {
 
   return (
     <header className={`site-header${scrolled ? " site-header--scrolled" : ""}`}>
+      {/* Pronounced Top Bar for Contact Info */}
+      <div className="top-bar-contact">
+        <div className="shell" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "24px", fontSize: "14px", fontWeight: "500" }}>
+            <a href={`tel:${contact.phonePrimary.replace(/\s+/g, "")}`} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <span style={{ opacity: 0.8 }}>Call Us:</span> <strong>{contact.phonePrimary}</strong>
+            </a>
+            <a href={`mailto:${contact.email}`} className="hide-on-mobile" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <span style={{ opacity: 0.8 }}>Email:</span> {contact.email}
+            </a>
+          </div>
+          <div className="hide-on-mobile" style={{ fontSize: "13px", opacity: 0.9 }}>
+            Professional Cleaning Services in the UK
+          </div>
+        </div>
+      </div>
+
       <div className="shell">
         <div className="topbar">
           <Link to="/" onClick={() => setOpen(false)}>

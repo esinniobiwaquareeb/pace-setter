@@ -91,6 +91,20 @@ export type ContactContent = {
   whatsappSecondary: string;
 };
 
+export type RichTextData = {
+  heading: string;
+  paragraphs: string[];
+  image: string;
+  imageAlt: string;
+  features?: string[];
+};
+
+export type ExpandedContent = {
+  aboutMission: RichTextData;
+  aboutPhilosophy: RichTextData;
+  serviceAreas: string[];
+};
+
 export type SiteContent = {
   hero: HeroContent;
   about: AboutContent;
@@ -105,5 +119,6 @@ export type SiteContent = {
   booking: BookingContent;
   cta: CtaContent;
   contact: ContactContent;
+  expandedContent: ExpandedContent;
   updatedAt: string;
 };
