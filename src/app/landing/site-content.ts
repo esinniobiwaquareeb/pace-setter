@@ -10,6 +10,26 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     ctaLabel: "Book a Cleaning Today",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Professional cleaners working in a bright office",
+    gallery: [
+      {
+        label: "Homes",
+        title: "Fresh, calm spaces for everyday living",
+        image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1400&q=82",
+        imageAlt: "Professional cleaner wiping a kitchen surface",
+      },
+      {
+        label: "Offices",
+        title: "Workplaces cleaned around your schedule",
+        image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=82",
+        imageAlt: "Professional cleaners working in a bright office",
+      },
+      {
+        label: "Handover",
+        title: "Detailed cleans for move-outs and managed lets",
+        image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1400&q=82",
+        imageAlt: "Cleaner mopping a bright floor with blue gloves",
+      },
+    ],
   },
   about: {
     heading: "Trusted Cleaning Services With Professional Standards",
@@ -37,49 +57,49 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       title: "Residential Cleaning",
       description:
         "Regular or one-off home cleaning for kitchens, bathrooms, bedrooms, floors, and high-touch surfaces.",
-      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Office Cleaning",
       description:
         "Desk, meeting room, washroom, kitchen, reception, and shared-area cleaning for tidy workplaces.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Commercial Cleaning",
       description:
         "Cleaning for shops, managed buildings, communal areas, and customer-facing premises.",
-      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Deep Cleaning",
       description:
         "A more detailed clean for stubborn build-up, neglected areas, and full property refreshes.",
-      image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Carpet & Hard Floor",
       description:
         "Specialist care for carpets and hard floors that need a cleaner, fresher finish.",
-      image: "https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Airbnb Maid Service",
       description:
         "Fast turnaround cleaning for guest-ready short-let and Airbnb-style properties.",
-      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Post-Construction Cleaning",
       description:
         "After-build cleaning for dust, residue, and handover-ready presentation.",
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Eco-Friendly Cleaning",
       description:
         "Eco-conscious product options where suitable for the property and cleaning brief.",
-      image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1000&q=82",
     },
   ],
   reviewsIntro: {

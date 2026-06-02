@@ -17,7 +17,7 @@ export function HomePage() {
     <>
       <SEO 
         title="Professional Cleaning Services" 
-        description="Premium residential, office, and commercial cleaning services. Fully insured and vetted staff. Book your 5-star clean today."
+        description="Residential, office, commercial, deep, end-of-tenancy, and short-let cleaning with fast quote support by phone, WhatsApp, or email."
       />
       <Hero />
       <TrustSignals />

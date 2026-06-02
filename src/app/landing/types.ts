@@ -56,6 +56,12 @@ export type HeroContent = {
   ctaLabel: string;
   image: string;
   imageAlt: string;
+  gallery: Array<{
+    label: string;
+    title: string;
+    image: string;
+    imageAlt: string;
+  }>;
 };
 
 export type AboutContent = {

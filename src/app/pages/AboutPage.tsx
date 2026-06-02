@@ -20,7 +20,7 @@ export function AboutPage() {
     <>
       <SEO 
         title="About Us" 
-        description="Learn about Pace Setter Cleaning Services. Fully insured, highly vetted, and committed to setting the standard for residential and commercial cleaning."
+        description="Learn how Pace Setter Cleaning Services supports homes, offices, landlords, short-let hosts, and commercial spaces with clear cleaning standards."
       />
       <About />
       <TrustSignals />
