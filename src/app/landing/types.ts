@@ -25,6 +25,16 @@ export type BookingStep = {
   description: string;
 };
 
+export type TrustSignal = {
+  title: string;
+  description: string;
+};
+
+export type QuoteGuide = {
+  title: string;
+  description: string;
+};
+
 export type FormState = {
   name: string;
   email: string;
@@ -103,6 +113,8 @@ export type ExpandedContent = {
   aboutMission: RichTextData;
   aboutPhilosophy: RichTextData;
   serviceAreas: string[];
+  trustSignals: TrustSignal[];
+  quoteGuides: QuoteGuide[];
 };
 
 export type SiteContent = {
@@ -114,6 +126,8 @@ export type SiteContent = {
   reviews: Review[];
   processIntro: SectionIntro;
   processSteps: BookingStep[];
+  trustIntro: SectionIntro;
+  quoteIntro: SectionIntro;
   faqIntro: SectionIntro;
   faqs: Faq[];
   booking: BookingContent;

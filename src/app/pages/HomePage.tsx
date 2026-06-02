@@ -5,6 +5,8 @@ import { Reviews } from "../landing/Reviews";
 import { FAQ } from "../landing/FAQ";
 import { CTA } from "../landing/CTA";
 import { SEO } from "../components/SEO";
+import { TrustSignals } from "../landing/TrustSignals";
+import { QuoteGuide } from "../landing/QuoteGuide";
 
 export function HomePage() {
   useEffect(() => {
@@ -18,7 +20,9 @@ export function HomePage() {
         description="Premium residential, office, and commercial cleaning services. Fully insured and vetted staff. Book your 5-star clean today."
       />
       <Hero />
+      <TrustSignals />
       <Services />
+      <QuoteGuide />
       <Reviews />
       <FAQ />
       <CTA />

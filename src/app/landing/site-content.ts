@@ -2,11 +2,11 @@ import type { FormState, SiteContent } from "./types";
 
 export const DEFAULT_SITE_CONTENT: SiteContent = {
   hero: {
-    eyebrow: "Professional cleaning services for homes, offices, and commercial spaces",
+    eyebrow: "Professional cleaning for homes, offices, landlords, and commercial spaces",
     headlinePrefix: "We Don't Just Clean,",
     rotatingWords: ["We Care", "We Restore", "We Refresh", "We Deliver"],
     body:
-      "Pace Setter Cleaning Services delivers residential cleaning, office cleaning, and commercial cleaning that helps your property look sharper, feel healthier, and stay ready for everyday life or business. Fully insured and 5-star rated.",
+      "Pace Setter Cleaning Services delivers reliable residential, office, commercial, end-of-tenancy, and deep cleaning with clear communication, flexible scheduling, and a practical quote process.",
     ctaLabel: "Book a Cleaning Today",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Professional cleaners working in a bright office",
@@ -14,47 +14,47 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   about: {
     heading: "Trusted Cleaning Services With Professional Standards",
     body:
-      "Pace Setter Cleaning Services LTD provides reliable residential cleaning, office cleaning, and commercial cleaning with a strong focus on detail, presentation, and customer satisfaction. We help homes feel fresher, workplaces stay professional, and properties remain ready for visitors, clients, tenants, or handover. All our staff are rigorously vetted, uniformed, and carry enhanced DBS checks for your complete peace of mind.",
+      "Pace Setter Cleaning Services LTD provides reliable residential cleaning, office cleaning, commercial cleaning, deep cleaning, and end-of-tenancy cleaning with a strong focus on detail, presentation, and customer satisfaction. We help homes feel fresher, workplaces stay professional, and properties remain ready for visitors, clients, tenants, or handover.",
     trustPoints: [
-      "Fully insured with enhanced DBS-checked staff",
-      "100% Reliability Guarantee – replacement cover always provided",
+      "Vetted cleaning team with professional standards",
+      "Reliability-focused scheduling and clear communication",
       "Detail-focused standards with client-first communication",
       "Flexible scheduling for regular, one-off, and deep cleaning",
     ],
     ctaLabel: "Get a Free Quote",
-    memberHeadline: "Join 500+",
-    memberLabel: "Satisfied clients",
+    memberHeadline: "Fast quotes",
+    memberLabel: "For homes, offices, and managed properties",
     image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Cleaning products and a gloved hand wiping a table",
   },
   servicesIntro: {
-    heading: "Residential, Office, and Commercial Cleaning Services",
+    heading: "Residential, Office, Commercial, and Specialist Cleaning Services",
     body:
-      "Explore professional cleaning services designed for homes, workplaces, shared buildings, and customer-facing spaces that need to stay clean, healthy, and presentable.",
+      "Explore professional cleaning services for homes, workplaces, short-let properties, end-of-tenancy handovers, communal spaces, and customer-facing premises that need to stay clean, healthy, and presentable.",
   },
   services: [
     {
       title: "Residential Cleaning",
       description:
-        "Reliable residential cleaning services for kitchens, bathrooms, bedrooms, and living areas. Starting from £20/hr.",
+        "Reliable home cleaning for kitchens, bathrooms, bedrooms, living areas, floors, and high-touch surfaces. Available for one-off or regular cleaning schedules.",
       image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Office Cleaning",
       description:
-        "Professional office cleaning for desks, meeting rooms, washrooms, and shared spaces. Bespoke pricing available.",
+        "Professional office cleaning for desks, meeting rooms, washrooms, kitchens, reception areas, and shared spaces that need to stay staff-ready and client-ready.",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Commercial Cleaning",
       description:
-        "Commercial cleaning services for retail spaces and customer-facing environments where presentation matters.",
+        "Commercial cleaning for retail spaces, managed buildings, communal areas, and customer-facing environments where presentation and hygiene matter.",
       image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Deep Cleaning",
       description:
-        "Intensive, top-to-bottom deep cleaning for properties that need a complete refresh. Ideal for spring cleaning.",
+        "Intensive top-to-bottom cleaning for properties that need a full refresh, including neglected areas, stubborn build-up, and detailed hygiene work.",
       image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
     },
     {
@@ -66,7 +66,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     {
       title: "Airbnb Maid Service",
       description:
-        "Fast, reliable turnaround cleaning for holiday lets and Airbnb properties. Ensuring 5-star reviews every time.",
+        "Fast, reliable turnaround cleaning for short-let and Airbnb-style properties, helping your space feel guest-ready between bookings.",
       image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
     },
     {
@@ -78,7 +78,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     {
       title: "Eco-Friendly Cleaning",
       description:
-        "Green cleaning solutions using 100% non-toxic, eco-friendly products that are tough on dirt but safe for children, pets, and the environment.",
+        "Eco-conscious cleaning options using carefully selected products where suitable for the property, household, and cleaning requirement.",
       image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=900&q=80",
     },
   ],
@@ -113,6 +113,14 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       description: "Once the details are agreed, we arrange a convenient cleaning time and keep communication simple.",
     },
   ],
+  trustIntro: {
+    heading: "Why Clients Choose Pace Setter",
+    body: "A cleaning service should feel dependable before a customer even makes an enquiry. These are the standards we focus on from the first conversation.",
+  },
+  quoteIntro: {
+    heading: "Transparent Quote Guidance",
+    body: "Cleaning prices depend on property size, condition, frequency, and access. We keep the process clear so customers know what affects the quote before they enquire.",
+  },
   faqIntro: {
     heading: "Frequently Asked Questions",
     body: "Helpful answers to the questions people usually ask before booking professional residential, office, or commercial cleaning services.",
@@ -120,11 +128,11 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   faqs: [
     {
       question: "Are your cleaning staff vetted and insured?",
-      answer: "Absolutely. Every member of the Pace Setter team is personally interviewed, fully vetted, and holds an enhanced DBS check. We are also fully insured for your peace of mind.",
+      answer: "Our goal is to give every client confidence in who is entering their space. We recommend confirming any insurance, vetting, or DBS requirements during your quote so the right standard is agreed before work starts.",
     },
     {
       question: "What happens if my regular cleaner is sick?",
-      answer: "We offer a 100% Reliability Guarantee. If your regular cleaner is unwell or on holiday, we will always provide a fully trained replacement to cover your clean.",
+      answer: "For regular cleaning arrangements, we discuss backup plans and scheduling expectations upfront so you are not left guessing if a cleaner becomes unavailable.",
     },
     {
       question: "Do you provide your own cleaning equipment?",
@@ -152,7 +160,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   },
   cta: {
     heading: "Ready to Book Professional Cleaning Services?",
-    body: "Speak with Pace Setter Cleaning Services today for reliable residential cleaning, office cleaning, and commercial cleaning tailored to your schedule and property needs.",
+    body: "Speak with Pace Setter Cleaning Services today for residential cleaning, office cleaning, commercial cleaning, deep cleaning, end-of-tenancy cleaning, and short-let turnaround support tailored to your schedule.",
     buttonLabel: "Book a Cleaning Today",
   },
   contact: {
@@ -169,7 +177,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       heading: "Our Mission: Setting the Standard for Clean",
       paragraphs: [
         "Pace Setter Cleaning Services was built on a single, uncompromising principle: spaces should feel as good as they look. We recognized a gap in the market where reliability and deep attention to detail were often missing, leaving clients frustrated with inconsistent results.",
-        "We approach every environment—whether it's a bustling commercial office, a family home, or a fast-turnaround Airbnb—with a bespoke strategy. Our mission is to elevate hygiene, enhance presentation, and return valuable time to our clients so they can focus on what matters most.",
+        "We approach every environment, whether it is a busy commercial office, a family home, or a fast-turnaround short-let property, with a tailored plan. Our mission is to elevate hygiene, improve presentation, and return valuable time to our clients.",
       ],
       image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Clean, brightly lit modern living room showing high standards of hygiene",
@@ -183,14 +191,14 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       heading: "The Pace Setter Philosophy: Trust Above All",
       paragraphs: [
         "We know that inviting a cleaning team into your personal home or secure commercial space requires immense trust. That is why our philosophy is centered completely around security, vetting, and peace of mind.",
-        "Every single member of the Pace Setter team is subjected to an enhanced DBS check, rigorous in-person interviewing, and extensive ongoing training. Furthermore, we operate with a 100% Reliability Guarantee—if your regular cleaner is unwell, we guarantee a fully briefed replacement will cover your clean. You never have to worry about a missed schedule.",
+        "The right cleaning arrangement should be clear from the start: who is attending, what is included, what access is needed, and what happens if a schedule changes. We keep those details visible so every client knows what to expect.",
       ],
       image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Professional team member cleaning a surface with precision",
       features: [
-        "100% Reliability Guarantee – you are never left without cover.",
-        "All staff carry Enhanced DBS Checks.",
-        "Comprehensive Public Liability Insurance.",
+        "Clear expectations before cleaning begins.",
+        "Vetting and insurance requirements can be confirmed during quoting.",
+        "Reliable communication around schedule changes.",
       ],
     },
     serviceAreas: [
@@ -202,6 +210,42 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       "Sheffield",
       "Bristol",
       "Nottingham",
+    ],
+    trustSignals: [
+      {
+        title: "Clear contact routes",
+        description: "Visitors can enquire by WhatsApp, email, phone, or the quote form, with the request saved for admin follow-up.",
+      },
+      {
+        title: "Service depth",
+        description: "The site now covers domestic, office, commercial, deep, floor, short-let, and post-construction cleaning instead of only broad categories.",
+      },
+      {
+        title: "Quote clarity",
+        description: "Customers are told what affects pricing before they submit, reducing uncertainty without publishing unsupported fixed rates.",
+      },
+      {
+        title: "CMS-ready content",
+        description: "Service information, FAQs, and client feedback can stay current as the business adds more verified proof.",
+      },
+    ],
+    quoteGuides: [
+      {
+        title: "Regular cleaning",
+        description: "Best for homes, offices, and shared spaces that need a recurring weekly, fortnightly, or monthly schedule.",
+      },
+      {
+        title: "One-off and deep cleaning",
+        description: "Quoted after understanding property size, current condition, rooms included, and whether specialist attention is needed.",
+      },
+      {
+        title: "End-of-tenancy and handover",
+        description: "Quoted around inspection requirements, appliances, bathrooms, flooring, access, and deadline.",
+      },
+      {
+        title: "Commercial and contract cleaning",
+        description: "Quoted around site type, operating hours, cleaning frequency, compliance needs, and required cover.",
+      },
     ],
   },
   updatedAt: "2026-06-02T00:00:00.000Z",
@@ -229,12 +273,20 @@ export function mergeSiteContent(content?: Partial<SiteContent> | null): SiteCon
     reviews: content?.reviews ?? DEFAULT_SITE_CONTENT.reviews,
     processIntro: { ...DEFAULT_SITE_CONTENT.processIntro, ...content?.processIntro },
     processSteps: content?.processSteps ?? DEFAULT_SITE_CONTENT.processSteps,
+    trustIntro: { ...DEFAULT_SITE_CONTENT.trustIntro, ...content?.trustIntro },
+    quoteIntro: { ...DEFAULT_SITE_CONTENT.quoteIntro, ...content?.quoteIntro },
     faqIntro: { ...DEFAULT_SITE_CONTENT.faqIntro, ...content?.faqIntro },
     faqs: content?.faqs ?? DEFAULT_SITE_CONTENT.faqs,
     booking: { ...DEFAULT_SITE_CONTENT.booking, ...content?.booking },
     cta: { ...DEFAULT_SITE_CONTENT.cta, ...content?.cta },
     contact: { ...DEFAULT_SITE_CONTENT.contact, ...content?.contact },
-    expandedContent: { ...DEFAULT_SITE_CONTENT.expandedContent, ...content?.expandedContent },
+    expandedContent: {
+      ...DEFAULT_SITE_CONTENT.expandedContent,
+      ...content?.expandedContent,
+      trustSignals: content?.expandedContent?.trustSignals ?? DEFAULT_SITE_CONTENT.expandedContent.trustSignals,
+      quoteGuides: content?.expandedContent?.quoteGuides ?? DEFAULT_SITE_CONTENT.expandedContent.quoteGuides,
+      serviceAreas: content?.expandedContent?.serviceAreas ?? DEFAULT_SITE_CONTENT.expandedContent.serviceAreas,
+    },
     updatedAt: content?.updatedAt ?? DEFAULT_SITE_CONTENT.updatedAt,
   };
 }

@@ -6,6 +6,8 @@ import { CTA } from "../landing/CTA";
 import { SEO } from "../components/SEO";
 import { RichContentBlock } from "../components/RichContentBlock";
 import { useSiteContent } from "../landing/SiteContentContext";
+import { QuoteGuide } from "../landing/QuoteGuide";
+import { ServiceAreas } from "../landing/ServiceAreas";
 
 export function ServicesPage() {
   const { services } = useSiteContent();
@@ -22,6 +24,7 @@ export function ServicesPage() {
       />
       {/* Quick Overview Grid */}
       <Services />
+      <QuoteGuide />
 
       {/* Deep Dives */}
       <div style={{ padding: "80px 0", background: "var(--brand-surface)" }}>
@@ -46,6 +49,7 @@ export function ServicesPage() {
       </div>
 
       <Process />
+      <ServiceAreas />
       <FAQ />
       <CTA />
     </>

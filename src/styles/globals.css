@@ -613,6 +613,106 @@ a {
   font-size: 0.98rem;
 }
 
+.trust-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.trust-signal {
+  padding: 24px;
+  border: 1px solid var(--brand-border);
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--brand-surface-soft) 100%);
+}
+
+.trust-signal__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  background: rgba(121, 200, 20, 0.14);
+  color: var(--brand-green-deep);
+}
+
+.trust-signal h3,
+.quote-guide h2,
+.quote-guide__item h3,
+.service-areas h2 {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--brand-navy);
+}
+
+.trust-signal h3 {
+  font-size: 1.05rem;
+}
+
+.trust-signal p,
+.quote-guide p,
+.quote-guide__item p,
+.service-areas p {
+  margin: 10px 0 0;
+  color: var(--brand-text-soft);
+  line-height: 1.7;
+}
+
+.quote-guide,
+.service-areas {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 36px;
+  align-items: start;
+  padding: 42px;
+  border-radius: 30px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+}
+
+.quote-guide__intro p,
+.service-areas > div:first-child p {
+  max-width: 560px;
+}
+
+.quote-guide__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quote-guide__item {
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--brand-surface-soft);
+  border: 1px solid var(--brand-border);
+}
+
+.service-area-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.service-area-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--brand-surface-soft);
+  border: 1px solid var(--brand-border);
+  color: var(--brand-text);
+  font-weight: 600;
+}
+
+.service-area-list svg {
+  color: var(--brand-green-deep);
+}
+
 .review-card {
   min-width: min(320px, 88vw);
   padding: 20px;
@@ -1309,6 +1409,15 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .trust-signal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quote-guide,
+  .service-areas {
+    grid-template-columns: 1fr;
+  }
+
   .nav-desktop,
   .quote-button {
     display: none;
@@ -1583,6 +1692,17 @@ a {
   .faq-list,
   .form-row--double {
     grid-template-columns: 1fr;
+  }
+
+  .trust-signal-grid,
+  .quote-guide__list {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-guide,
+  .service-areas {
+    padding: 24px;
+    border-radius: 24px;
   }
 
   .services-grid {
