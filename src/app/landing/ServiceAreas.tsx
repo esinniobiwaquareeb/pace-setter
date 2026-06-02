@@ -10,9 +10,9 @@ export function ServiceAreas() {
         <div className="service-areas">
           <div>
             <p className="admin-kicker">Service Areas</p>
-            <h2>Cleaning Support Across Key UK Locations</h2>
+            <h2>Cleaning Support for the Spaces That Need It Most</h2>
             <p>
-              Cleaning is a local service, so Pace Setter should keep tightening this list around the exact areas it serves best. These locations are CMS-managed and can be narrowed as the business grows.
+              From homes and offices to rentals, retail spaces, and managed buildings, we shape the clean around the property type and schedule.
             </p>
           </div>
 

@@ -1,7 +1,13 @@
+import type { CSSProperties } from "react";
 import { useSiteContent } from "./SiteContentContext";
+
+type MeterStyle = CSSProperties & {
+  "--meter-index": number;
+};
 
 export function QuoteGuide() {
   const { quoteIntro, expandedContent } = useSiteContent();
+  const factors = ["Size", "Condition", "Access", "Frequency"];
 
   return (
     <section className="section-card reveal-section" data-reveal>
@@ -10,6 +16,13 @@ export function QuoteGuide() {
           <div className="quote-guide__intro">
             <h2>{quoteIntro.heading}</h2>
             <p>{quoteIntro.body}</p>
+            <div className="quote-meter" aria-label="Quote factors">
+              {factors.map((factor, index) => (
+                <span key={factor} style={{ "--meter-index": index } as MeterStyle}>
+                  {factor}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="quote-guide__list">

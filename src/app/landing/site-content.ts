@@ -2,11 +2,11 @@ import type { FormState, SiteContent } from "./types";
 
 export const DEFAULT_SITE_CONTENT: SiteContent = {
   hero: {
-    eyebrow: "Professional cleaning for homes, offices, landlords, and commercial spaces",
+    eyebrow: "Cleaning for homes, offices, landlords, and short-let spaces",
     headlinePrefix: "We Don't Just Clean,",
     rotatingWords: ["We Care", "We Restore", "We Refresh", "We Deliver"],
     body:
-      "Pace Setter Cleaning Services delivers reliable residential, office, commercial, end-of-tenancy, and deep cleaning with clear communication, flexible scheduling, and a practical quote process.",
+      "Reliable residential, office, commercial, deep, and end-of-tenancy cleaning with clear quotes and flexible scheduling.",
     ctaLabel: "Book a Cleaning Today",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Professional cleaners working in a bright office",
@@ -14,11 +14,11 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   about: {
     heading: "Trusted Cleaning Services With Professional Standards",
     body:
-      "Pace Setter Cleaning Services LTD provides reliable residential cleaning, office cleaning, commercial cleaning, deep cleaning, and end-of-tenancy cleaning with a strong focus on detail, presentation, and customer satisfaction. We help homes feel fresher, workplaces stay professional, and properties remain ready for visitors, clients, tenants, or handover.",
+      "We help homes, offices, rentals, and commercial spaces feel fresher, healthier, and ready for daily use, inspections, guests, or handover.",
     trustPoints: [
-      "Vetted cleaning team with professional standards",
-      "Reliability-focused scheduling and clear communication",
-      "Detail-focused standards with client-first communication",
+      "Vetted cleaning team",
+      "Clear scheduling and updates",
+      "Detail-focused standards",
       "Flexible scheduling for regular, one-off, and deep cleaning",
     ],
     ctaLabel: "Get a Free Quote",
@@ -30,62 +30,62 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   servicesIntro: {
     heading: "Residential, Office, Commercial, and Specialist Cleaning Services",
     body:
-      "Explore professional cleaning services for homes, workplaces, short-let properties, end-of-tenancy handovers, communal spaces, and customer-facing premises that need to stay clean, healthy, and presentable.",
+      "Choose the cleaning support that fits your space, schedule, and handover needs.",
   },
   services: [
     {
       title: "Residential Cleaning",
       description:
-        "Reliable home cleaning for kitchens, bathrooms, bedrooms, living areas, floors, and high-touch surfaces. Available for one-off or regular cleaning schedules.",
+        "Regular or one-off home cleaning for kitchens, bathrooms, bedrooms, floors, and high-touch surfaces.",
       image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Office Cleaning",
       description:
-        "Professional office cleaning for desks, meeting rooms, washrooms, kitchens, reception areas, and shared spaces that need to stay staff-ready and client-ready.",
+        "Desk, meeting room, washroom, kitchen, reception, and shared-area cleaning for tidy workplaces.",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Commercial Cleaning",
       description:
-        "Commercial cleaning for retail spaces, managed buildings, communal areas, and customer-facing environments where presentation and hygiene matter.",
+        "Cleaning for shops, managed buildings, communal areas, and customer-facing premises.",
       image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Deep Cleaning",
       description:
-        "Intensive top-to-bottom cleaning for properties that need a full refresh, including neglected areas, stubborn build-up, and detailed hygiene work.",
+        "A more detailed clean for stubborn build-up, neglected areas, and full property refreshes.",
       image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Carpet & Hard Floor",
       description:
-        "Specialised carpet and hard floor cleaning using professional equipment to restore your floors to their best condition.",
+        "Specialist care for carpets and hard floors that need a cleaner, fresher finish.",
       image: "https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Airbnb Maid Service",
       description:
-        "Fast, reliable turnaround cleaning for short-let and Airbnb-style properties, helping your space feel guest-ready between bookings.",
+        "Fast turnaround cleaning for guest-ready short-let and Airbnb-style properties.",
       image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Post-Construction Cleaning",
       description:
-        "Comprehensive after-build cleaning to remove dust, debris, and residue, ensuring new builds and renovations are ready for handover.",
+        "After-build cleaning for dust, residue, and handover-ready presentation.",
       image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
     },
     {
       title: "Eco-Friendly Cleaning",
       description:
-        "Eco-conscious cleaning options using carefully selected products where suitable for the property, household, and cleaning requirement.",
+        "Eco-conscious product options where suitable for the property and cleaning brief.",
       image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=900&q=80",
     },
   ],
   reviewsIntro: {
     heading: "What Clients Say About Our Cleaning Services",
     body:
-      "Feedback from homeowners, landlords, and business clients who wanted reliable cleaning, clear communication, and spaces that genuinely looked better after each visit.",
+      "Short feedback from homeowners, landlords, and business clients.",
   },
   reviews: [
     { name: "Sarah J.", role: "Homeowner", text: "Quick, efficient, and genuinely easy to deal with. The team paid attention to details." },
@@ -97,7 +97,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   ],
   processIntro: {
     heading: "How Booking Works",
-    body: "A simple three-step process that helps visitors understand what happens next and makes enquiries feel lower-risk.",
+    body: "Three simple steps from enquiry to confirmed clean.",
   },
   processSteps: [
     {
@@ -115,11 +115,11 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   ],
   trustIntro: {
     heading: "Why Clients Choose Pace Setter",
-    body: "A cleaning service should feel dependable before a customer even makes an enquiry. These are the standards we focus on from the first conversation.",
+    body: "Clear communication, flexible booking, and a team focused on presentable, healthy spaces.",
   },
   quoteIntro: {
     heading: "Transparent Quote Guidance",
-    body: "Cleaning prices depend on property size, condition, frequency, and access. We keep the process clear so customers know what affects the quote before they enquire.",
+    body: "No guesswork. Your quote is shaped by the property, condition, access, and cleaning frequency.",
   },
   faqIntro: {
     heading: "Frequently Asked Questions",
@@ -128,15 +128,15 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   faqs: [
     {
       question: "Are your cleaning staff vetted and insured?",
-      answer: "Our goal is to give every client confidence in who is entering their space. We recommend confirming any insurance, vetting, or DBS requirements during your quote so the right standard is agreed before work starts.",
+      answer: "We discuss vetting, insurance, access, and property requirements before work begins so expectations are clear.",
     },
     {
       question: "What happens if my regular cleaner is sick?",
-      answer: "For regular cleaning arrangements, we discuss backup plans and scheduling expectations upfront so you are not left guessing if a cleaner becomes unavailable.",
+      answer: "For regular arrangements, we agree backup and rescheduling expectations upfront.",
     },
     {
       question: "Do you provide your own cleaning equipment?",
-      answer: "Yes, our team arrives fully equipped with professional-grade cleaning supplies and equipment. If you prefer us to use your own specific products, just let us know.",
+      answer: "Yes. We can bring supplies, or use your preferred products where requested.",
     },
     {
       question: "Do you offer one-off and regular cleaning?",
@@ -150,7 +150,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   booking: {
     heading: "Request a Fast Quote for Home or Office Cleaning",
     body:
-      "Tell us what you need and we will prepare a cleaning quote for your home, office, retail unit, or commercial property. Your request is saved, opened in WhatsApp, and drafted to our email for faster follow-up.",
+      "Tell us what you need. Your request is saved, opened in WhatsApp, and drafted to our email for quick follow-up.",
     submitLabel: "Submit Your Request",
     successMessage: "Your booking was saved and opened in both WhatsApp and your email app.",
     recentLabel: "Recent saved enquiries",
@@ -160,7 +160,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   },
   cta: {
     heading: "Ready to Book Professional Cleaning Services?",
-    body: "Speak with Pace Setter Cleaning Services today for residential cleaning, office cleaning, commercial cleaning, deep cleaning, end-of-tenancy cleaning, and short-let turnaround support tailored to your schedule.",
+    body: "Get a fast quote for residential, office, commercial, deep, end-of-tenancy, or short-let cleaning.",
     buttonLabel: "Book a Cleaning Today",
   },
   contact: {
@@ -176,75 +176,75 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     aboutMission: {
       heading: "Our Mission: Setting the Standard for Clean",
       paragraphs: [
-        "Pace Setter Cleaning Services was built on a single, uncompromising principle: spaces should feel as good as they look. We recognized a gap in the market where reliability and deep attention to detail were often missing, leaving clients frustrated with inconsistent results.",
-        "We approach every environment, whether it is a busy commercial office, a family home, or a fast-turnaround short-let property, with a tailored plan. Our mission is to elevate hygiene, improve presentation, and return valuable time to our clients.",
+        "Clean spaces should feel calm, healthy, and ready to use. That is the standard we work toward on every job.",
+        "Whether it is a home, office, commercial space, or short-let property, we tailor the clean around the space and the outcome you need.",
       ],
       image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Clean, brightly lit modern living room showing high standards of hygiene",
       features: [
-        "Bespoke cleaning strategies tailored to each property.",
-        "Rigorous quality control and spot-checks.",
-        "Transparent pricing with no hidden fees.",
+        "Tailored cleaning plans",
+        "Practical quality checks",
+        "Clear quote process",
       ],
     },
     aboutPhilosophy: {
       heading: "The Pace Setter Philosophy: Trust Above All",
       paragraphs: [
-        "We know that inviting a cleaning team into your personal home or secure commercial space requires immense trust. That is why our philosophy is centered completely around security, vetting, and peace of mind.",
-        "The right cleaning arrangement should be clear from the start: who is attending, what is included, what access is needed, and what happens if a schedule changes. We keep those details visible so every client knows what to expect.",
+        "Letting a cleaner into your property takes trust. We make the details clear before the job starts.",
+        "You know what is included, what access is needed, and how scheduling will be handled.",
       ],
       image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Professional team member cleaning a surface with precision",
       features: [
         "Clear expectations before cleaning begins.",
-        "Vetting and insurance requirements can be confirmed during quoting.",
-        "Reliable communication around schedule changes.",
+        "Vetting and insurance requirements discussed upfront.",
+        "Reliable updates around schedule changes.",
       ],
     },
     serviceAreas: [
-      "London",
-      "Manchester",
-      "Birmingham",
-      "Leeds",
-      "Liverpool",
-      "Sheffield",
-      "Bristol",
-      "Nottingham",
+      "Homes",
+      "Offices",
+      "Landlords",
+      "Short-let hosts",
+      "Retail spaces",
+      "Managed buildings",
+      "Commercial sites",
+      "Move-out cleans",
     ],
     trustSignals: [
       {
-        title: "Clear contact routes",
-        description: "Visitors can enquire by WhatsApp, email, phone, or the quote form, with the request saved for admin follow-up.",
+        title: "Easy to reach",
+        description: "WhatsApp, phone, email, and quote form all stay close at hand.",
       },
       {
-        title: "Service depth",
-        description: "The site now covers domestic, office, commercial, deep, floor, short-let, and post-construction cleaning instead of only broad categories.",
+        title: "Broad service cover",
+        description: "Homes, offices, short lets, handovers, floors, and after-build cleans.",
       },
       {
-        title: "Quote clarity",
-        description: "Customers are told what affects pricing before they submit, reducing uncertainty without publishing unsupported fixed rates.",
+        title: "Clear quoting",
+        description: "We explain what affects the price before you commit.",
       },
       {
-        title: "CMS-ready content",
-        description: "Service information, FAQs, and client feedback can stay current as the business adds more verified proof.",
+        title: "Built to stay current",
+        description: "Services, FAQs, and client feedback can be updated as the business grows.",
       },
     ],
     quoteGuides: [
       {
         title: "Regular cleaning",
-        description: "Best for homes, offices, and shared spaces that need a recurring weekly, fortnightly, or monthly schedule.",
+        description: "For homes, offices, and shared spaces on a weekly, fortnightly, or monthly schedule.",
       },
       {
         title: "One-off and deep cleaning",
-        description: "Quoted after understanding property size, current condition, rooms included, and whether specialist attention is needed.",
+        description: "For full refreshes, heavier build-up, or rooms that need extra detail.",
       },
       {
         title: "End-of-tenancy and handover",
-        description: "Quoted around inspection requirements, appliances, bathrooms, flooring, access, and deadline.",
+        description: "For move-outs, inspections, appliances, bathrooms, flooring, and deadlines.",
       },
       {
         title: "Commercial and contract cleaning",
-        description: "Quoted around site type, operating hours, cleaning frequency, compliance needs, and required cover.",
+        description: "For site type, operating hours, frequency, access, and required cover.",
       },
     ],
   },

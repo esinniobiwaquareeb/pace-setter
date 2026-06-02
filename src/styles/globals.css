@@ -613,16 +613,78 @@ a {
   font-size: 0.98rem;
 }
 
+.trust-showcase {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 30px;
+  align-items: center;
+  padding: 34px;
+  border: 1px solid var(--brand-border);
+  border-radius: 30px;
+  background:
+    linear-gradient(135deg, rgba(121, 200, 20, 0.08), transparent 34%),
+    #ffffff;
+}
+
+.trust-showcase__visual {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(11, 47, 120, 0.08), transparent 70%),
+    url("https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=900&q=80") center/cover;
+  overflow: hidden;
+}
+
+.clean-orbit {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: min(210px, 70%);
+  padding: 28px 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.clean-orbit span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  background: rgba(121, 200, 20, 0.14);
+  color: var(--brand-green-deep);
+}
+
+.clean-orbit strong {
+  color: var(--brand-navy);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.8rem;
+}
+
+.clean-orbit small {
+  color: var(--brand-text-soft);
+  font-weight: 600;
+}
+
 .trust-signal-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 .trust-signal {
-  padding: 24px;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 18px;
   border: 1px solid var(--brand-border);
-  border-radius: 22px;
+  border-radius: 20px;
   background: linear-gradient(180deg, #ffffff 0%, var(--brand-surface-soft) 100%);
 }
 
@@ -632,7 +694,6 @@ a {
   justify-content: center;
   width: 46px;
   height: 46px;
-  margin-bottom: 18px;
   border-radius: 16px;
   background: rgba(121, 200, 20, 0.14);
   color: var(--brand-green-deep);
@@ -648,7 +709,7 @@ a {
 }
 
 .trust-signal h3 {
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .trust-signal p,
@@ -666,7 +727,7 @@ a {
   grid-template-columns: 0.85fr 1.15fr;
   gap: 36px;
   align-items: start;
-  padding: 42px;
+  padding: 34px;
   border-radius: 30px;
   background: var(--brand-surface);
   border: 1px solid var(--brand-border);
@@ -679,15 +740,56 @@ a {
 
 .quote-guide__list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .quote-guide__item {
-  padding: 20px;
-  border-radius: 20px;
+  padding: 18px 20px;
+  border-radius: 18px;
   background: var(--brand-surface-soft);
   border: 1px solid var(--brand-border);
+}
+
+.quote-guide__item h3 {
+  font-size: 1rem;
+}
+
+.quote-meter {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 22px;
+  background: var(--brand-surface-soft);
+  border: 1px solid var(--brand-border);
+}
+
+.quote-meter::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  height: 2px;
+  background: #dce7f5;
+}
+
+.quote-meter span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--brand-border);
+  color: var(--brand-navy);
+  font-size: 0.88rem;
+  font-weight: 700;
 }
 
 .service-area-list {
@@ -1409,10 +1511,7 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .trust-signal-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  .trust-showcase,
   .quote-guide,
   .service-areas {
     grid-template-columns: 1fr;
@@ -1694,15 +1793,32 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .trust-signal-grid,
-  .quote-guide__list {
-    grid-template-columns: 1fr;
-  }
-
+  .trust-showcase,
   .quote-guide,
   .service-areas {
     padding: 24px;
     border-radius: 24px;
+  }
+
+  .trust-showcase__visual {
+    min-height: 220px;
+  }
+
+  .trust-signal {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .trust-signal__icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .quote-meter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quote-meter::before {
+    display: none;
   }
 
   .services-grid {
