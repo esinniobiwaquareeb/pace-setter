@@ -20,7 +20,7 @@ export function ServicesPage() {
     <>
       <SEO 
         title="Cleaning Services" 
-        description="Comprehensive cleaning solutions for residential, office, and commercial spaces. Tailored packages starting at competitive rates."
+        description="Residential, office, commercial, deep, end-of-tenancy, and short-let cleaning services with clear quoting and flexible scheduling."
       />
       {/* Quick Overview Grid */}
       <Services />
@@ -38,10 +38,13 @@ export function ServicesPage() {
               reverse={index % 2 !== 0}
               data={{
                 heading: service.title,
-                paragraphs: [service.description, "All our services come with a 100% satisfaction guarantee. We provide our own professional-grade equipment and eco-friendly products upon request."],
+                paragraphs: [
+                  service.description,
+                  "We shape each clean around the property, access, timing, and finish you need, then confirm the details clearly before work begins.",
+                ],
                 image: service.image,
                 imageAlt: service.title,
-                features: ["Fully vetted & insured cleaners", "Flexible scheduling", "Satisfaction Guaranteed"]
+                features: ["Clear quote process", "Flexible scheduling", "Service scope agreed upfront"]
               }}
             />
           ))}

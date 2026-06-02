@@ -14,8 +14,8 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       {
         label: "Homes",
         title: "Fresh, calm spaces for everyday living",
-        image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1400&q=82",
-        imageAlt: "Professional cleaner wiping a kitchen surface",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=82",
+        imageAlt: "Clean modern residential home exterior",
       },
       {
         label: "Offices",
@@ -26,8 +26,8 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       {
         label: "Handover",
         title: "Detailed cleans for move-outs and managed lets",
-        image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1400&q=82",
-        imageAlt: "Cleaner mopping a bright floor with blue gloves",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1400&q=82",
+        imageAlt: "Clean apartment interior ready for handover",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     body:
       "We help homes, offices, rentals, and commercial spaces feel fresher, healthier, and ready for daily use, inspections, guests, or handover.",
     trustPoints: [
-      "Vetted cleaning team",
+      "Cleaning team matched to the service brief",
       "Clear scheduling and updates",
       "Detail-focused standards",
       "Flexible scheduling for regular, one-off, and deep cleaning",
@@ -45,7 +45,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     memberHeadline: "Fast quotes",
     memberLabel: "For homes, offices, and managed properties",
     image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Cleaning products and a gloved hand wiping a table",
+    imageAlt: "Professional cleaner carefully wiping a home surface",
   },
   servicesIntro: {
     heading: "Residential, Office, Commercial, and Specialist Cleaning Services",
@@ -69,7 +69,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       title: "Commercial Cleaning",
       description:
         "Cleaning for shops, managed buildings, communal areas, and customer-facing premises.",
-      image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1000&q=82",
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Deep Cleaning",
@@ -87,7 +87,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       title: "Airbnb Maid Service",
       description:
         "Fast turnaround cleaning for guest-ready short-let and Airbnb-style properties.",
-      image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1000&q=82",
+      image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Post-Construction Cleaning",
@@ -99,7 +99,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       title: "Eco-Friendly Cleaning",
       description:
         "Eco-conscious product options where suitable for the property and cleaning brief.",
-      image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1000&q=82",
+      image: "/cleaning-service.webp",
     },
   ],
   reviewsIntro: {
@@ -199,8 +199,8 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
         "Clean spaces should feel calm, healthy, and ready to use. That is the standard we work toward on every job.",
         "Whether it is a home, office, commercial space, or short-let property, we tailor the clean around the space and the outcome you need.",
       ],
-      image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Clean, brightly lit modern living room showing high standards of hygiene",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Well-kept home exterior representing residential cleaning standards",
       features: [
         "Tailored cleaning plans",
         "Practical quality checks",
@@ -213,11 +213,11 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
         "Letting a cleaner into your property takes trust. We make the details clear before the job starts.",
         "You know what is included, what access is needed, and how scheduling will be handled.",
       ],
-      image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Professional team member cleaning a surface with precision",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Professional cleaning team working in an office space",
       features: [
         "Clear expectations before cleaning begins.",
-        "Vetting and insurance requirements discussed upfront.",
+        "Access, insurance, and service requirements discussed upfront.",
         "Reliable updates around schedule changes.",
       ],
     },
