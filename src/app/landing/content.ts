@@ -10,10 +10,10 @@ export const INFO_EMAIL = DEFAULT_SITE_CONTENT.contact.email;
 export { INITIAL_FORM };
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Book", href: "#book" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact Us", href: "/contact" },
 ];

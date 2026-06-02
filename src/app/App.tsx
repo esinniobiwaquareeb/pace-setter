@@ -1,20 +1,20 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router";
 import { AdminApp } from "./admin/AdminApp";
-import { About } from "./landing/About";
-import { Booking } from "./landing/Booking";
 import { BUSINESS_NAME } from "./landing/content";
-import { CTA } from "./landing/CTA";
-import { FAQ } from "./landing/FAQ";
 import { Footer } from "./landing/Footer";
 import { Header } from "./landing/Header";
-import { Hero } from "./landing/Hero";
-import { Process } from "./landing/Process";
-import { Reviews } from "./landing/Reviews";
 import { SiteContentProvider } from "./landing/SiteContentContext";
-import { Services } from "./landing/Services";
 import { DEFAULT_SITE_CONTENT, mergeSiteContent } from "./landing/site-content";
 import type { SiteContent } from "./landing/types";
+
+// Pages
+import { HomePage } from "./pages/HomePage";
+import { AboutPage } from "./pages/AboutPage";
+import { ServicesPage } from "./pages/ServicesPage";
+import { ReviewsPage } from "./pages/ReviewsPage";
+import { FAQPage } from "./pages/FAQPage";
+import { ContactPage } from "./pages/ContactPage";
 
 export default function App() {
   const [content, setContent] = useState<SiteContent>(DEFAULT_SITE_CONTENT);
@@ -42,26 +42,38 @@ export default function App() {
       });
   }, [isAdminRoute]);
 
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.14,
-        rootMargin: "0px 0px -8% 0px",
-      },
-    );
+  const location = useLocation();
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
+  useEffect(() => {
+    // Wait a brief moment for the DOM to update after a route change
+    const timeoutId = setTimeout(() => {
+      const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.14,
+          rootMargin: "0px 0px -8% 0px",
+        },
+      );
+
+      sections.forEach((section) => {
+        // If it was already visible from a previous render, we might need to remove the class
+        // or just let it stay visible. Since we navigate to a new page, these are likely fresh DOM nodes.
+        observer.observe(section);
+      });
+
+      return () => observer.disconnect();
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
+  }, [location.pathname]);
 
   if (isAdminRoute) {
     return <AdminApp />;
@@ -72,14 +84,16 @@ export default function App() {
       <div className="app-shell">
         <Header />
         <main>
-          <Hero />
-          <About />
-          <Services />
-          <Reviews />
-          <Process />
-          <FAQ />
-          <Booking />
-          <CTA />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/reviews" element={<ReviewsPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            {/* Catch all to redirect to home */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
         </main>
         <Footer />
       </div>

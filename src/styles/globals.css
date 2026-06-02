@@ -169,8 +169,17 @@ main .section-card:last-child {
   gap: 16px;
 }
 
+.nav-desktop button:hover,
+.nav-desktop a:hover,
+.footer-nav button:hover,
+.footer-nav a:hover {
+  color: var(--brand-green);
+}
+
 .nav-desktop button,
-.footer-nav button {
+.nav-desktop a,
+.footer-nav button,
+.footer-nav a {
   border: 0;
   background: transparent;
   color: var(--brand-text);
@@ -179,7 +188,8 @@ main .section-card:last-child {
   padding: 8px 16px;
 }
 
-.nav-desktop button.is-active {
+.nav-desktop button.is-active,
+.nav-desktop a.is-active {
   color: var(--brand-green);
   font-weight: 600;
 }
@@ -1254,7 +1264,13 @@ main .section-card:last-child {
     padding: 16px;
   }
 
-  .nav-mobile button {
+  .nav-mobile button:hover,
+  .nav-mobile a:hover {
+    color: var(--brand-green);
+  }
+
+  .nav-mobile button,
+  .nav-mobile a {
     display: block;
     width: 100%;
     border: 0;
@@ -1265,6 +1281,12 @@ main .section-card:last-child {
     padding: 12px 16px;
     margin-bottom: 4px;
     font-weight: 500;
+  }
+
+  .nav-mobile button.is-active,
+  .nav-mobile a.is-active {
+    color: var(--brand-green);
+    background: rgba(121, 200, 20, 0.08);
   }
 
   .nav-mobile .button {
@@ -1298,7 +1320,8 @@ main .section-card:last-child {
     max-width: 320px;
   }
 
-  .footer-nav button {
+  .footer-nav button,
+  .footer-nav a {
     width: 100%;
     text-align: center;
     padding: 10px 8px;

@@ -1,39 +1,40 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { NAV_ITEMS } from "./content";
 import { useSiteContent } from "./SiteContentContext";
-import { useActiveSection, useScrolled } from "./hooks";
+import { useScrolled } from "./hooks";
 import { Logo } from "./Logo";
-import { scrollToSection } from "./utils";
 
 export function Header() {
   const { contact } = useSiteContent();
   const scrolled = useScrolled();
-  const [active, setActive] = useActiveSection();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
-  const navigate = (href: string) => {
-    setActive(href);
+  const handleNavigate = (href: string) => {
     setOpen(false);
-    scrollToSection(href);
+    navigate(href);
   };
 
   return (
     <header className={`site-header${scrolled ? " site-header--scrolled" : ""}`}>
       <div className="shell">
         <div className="topbar">
-          <Logo />
+          <Link to="/" onClick={() => setOpen(false)}>
+            <Logo />
+          </Link>
 
           <nav className="nav-desktop" aria-label="Primary">
             {NAV_ITEMS.map((item) => (
-              <button
+              <Link
                 key={item.href}
-                type="button"
-                className={item.href === active ? "is-active" : ""}
-                onClick={() => navigate(item.href)}
+                to={item.href}
+                className={item.href === location.pathname ? "is-active" : ""}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -57,7 +58,12 @@ export function Header() {
         {open ? (
           <nav className="nav-mobile" aria-label="Mobile">
             {NAV_ITEMS.map((item) => (
-              <button key={item.href} type="button" onClick={() => navigate(item.href)}>
+              <button
+                key={item.href}
+                type="button"
+                className={item.href === location.pathname ? "is-active" : ""}
+                onClick={() => handleNavigate(item.href)}
+              >
                 {item.label}
               </button>
             ))}

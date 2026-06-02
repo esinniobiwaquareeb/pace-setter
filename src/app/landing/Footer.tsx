@@ -1,8 +1,8 @@
 import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
+import { Link } from "react-router";
 import { NAV_ITEMS } from "./content";
 import { useSiteContent } from "./SiteContentContext";
 import { Logo } from "./Logo";
-import { scrollToSection } from "./utils";
 
 const SOCIAL_LINKS = [
   { label: "Facebook", href: "#", icon: Facebook },
@@ -18,13 +18,15 @@ export function Footer() {
     <footer className="site-footer section-card">
       <div className="shell footer-panel">
         <div className="footer-top">
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
 
           <nav className="footer-nav" aria-label="Footer">
             {NAV_ITEMS.map((item) => (
-              <button key={item.href} type="button" onClick={() => scrollToSection(item.href)}>
+              <Link key={item.href} to={item.href}>
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
