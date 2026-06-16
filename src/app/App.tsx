@@ -15,6 +15,7 @@ import { ServicesPage } from "./pages/ServicesPage";
 import { ReviewsPage } from "./pages/ReviewsPage";
 import { FAQPage } from "./pages/FAQPage";
 import { ContactPage } from "./pages/ContactPage";
+import { CareersPage } from "./pages/CareersPage";
 
 export default function App() {
   const [content, setContent] = useState<SiteContent>(DEFAULT_SITE_CONTENT);
@@ -91,6 +92,7 @@ export default function App() {
             <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/careers" element={<CareersPage />} />
             {/* Catch all to redirect to home */}
             <Route path="*" element={<HomePage />} />
           </Routes>

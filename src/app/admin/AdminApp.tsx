@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { DEFAULT_SITE_CONTENT, mergeSiteContent } from "../landing/site-content";
-import type { SavedBooking, SiteContent } from "../landing/types";
+import type { SavedBooking, SiteContent, SavedApplication } from "../landing/types";
 
 type DashboardStats = {
   totalBookings: number;
   totalServices: number;
   totalReviews: number;
   totalFaqs: number;
+  totalApplications: number;
   lastBookingAt: string | null;
+  lastApplicationAt: string | null;
   contentUpdatedAt: string;
 };
 
-type TabKey = "overview" | "bookings" | "content";
+type TabKey = "overview" | "bookings" | "applications" | "content";
 
 function formatDate(value: string | null) {
   if (!value) return "No data yet";
@@ -26,6 +28,7 @@ export function AdminApp() {
   const [tab, setTab] = useState<TabKey>("overview");
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [bookings, setBookings] = useState<SavedBooking[]>([]);
+  const [applications, setApplications] = useState<SavedApplication[]>([]);
   const [content, setContent] = useState<SiteContent>(DEFAULT_SITE_CONTENT);
   const [jsonDrafts, setJsonDrafts] = useState({
     services: JSON.stringify(DEFAULT_SITE_CONTENT.services, null, 2),
@@ -59,20 +62,26 @@ export function AdminApp() {
     ]).then(([dashboard, cms]) => {
       setStats(dashboard.stats as DashboardStats);
       setBookings((dashboard.bookings as SavedBooking[]) ?? []);
+      setApplications((dashboard.applications as SavedApplication[]) ?? []);
       setContent(mergeSiteContent(cms as SiteContent));
     }).catch(() => {
       const storedContent = window.localStorage.getItem("pace-setter-site-content");
       const storedBookings = window.localStorage.getItem("pace-setter-bookings");
+      const storedApplications = window.localStorage.getItem("pace-setter-applications");
       const mergedContent = mergeSiteContent(storedContent ? (JSON.parse(storedContent) as SiteContent) : DEFAULT_SITE_CONTENT);
       const localBookings = storedBookings ? (JSON.parse(storedBookings) as SavedBooking[]) : [];
+      const localApplications = storedApplications ? (JSON.parse(storedApplications) as SavedApplication[]) : [];
       setContent(mergedContent);
       setBookings(localBookings);
+      setApplications(localApplications);
       setStats({
         totalBookings: localBookings.length,
         totalServices: mergedContent.services.length,
         totalReviews: mergedContent.reviews.length,
         totalFaqs: mergedContent.faqs.length,
+        totalApplications: localApplications.length,
         lastBookingAt: localBookings[0]?.createdAt ?? null,
+        lastApplicationAt: localApplications[0]?.createdAt ?? null,
         contentUpdatedAt: mergedContent.updatedAt,
       });
     });
@@ -184,6 +193,15 @@ export function AdminApp() {
     }
   };
 
+  const downloadCv = (base64Data: string, fileName: string) => {
+    const link = document.createElement("a");
+    link.href = base64Data;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (!ready) {
     return <div className="admin-shell"><div className="admin-card"><p>Loading admin...</p></div></div>;
   }
@@ -194,7 +212,7 @@ export function AdminApp() {
         <div className="admin-card admin-login">
           <div>
             <p className="admin-kicker">Admin</p>
-            <h1>Pace Setter dashboard</h1>
+            <h1>Pacesetter dashboard</h1>
             <p>Use your admin password to view bookings, site stats, and update the live website content.</p>
           </div>
 
@@ -216,7 +234,7 @@ export function AdminApp() {
       <div className="admin-frame">
         <div className="admin-topbar">
           <div>
-            <p className="admin-kicker">Pace Setter Admin</p>
+            <p className="admin-kicker">Pacesetter Admin</p>
             <h1>Dashboard</h1>
           </div>
           <div className="admin-topbar__actions">
@@ -226,9 +244,9 @@ export function AdminApp() {
         </div>
 
         <div className="admin-tabs">
-          {(["overview", "bookings", "content"] as TabKey[]).map((item) => (
+          {(["overview", "bookings", "applications", "content"] as TabKey[]).map((item) => (
             <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
-              {item === "overview" ? "Overview" : item === "bookings" ? "Bookings" : "CMS"}
+              {item === "overview" ? "Overview" : item === "bookings" ? "Bookings" : item === "applications" ? "Applicants" : "CMS"}
             </button>
           ))}
         </div>
@@ -240,6 +258,10 @@ export function AdminApp() {
               <strong>{stats?.totalBookings ?? 0}</strong>
             </article>
             <article className="admin-stat">
+              <span>Applicants</span>
+              <strong>{stats?.totalApplications ?? 0}</strong>
+            </article>
+            <article className="admin-stat">
               <span>Services</span>
               <strong>{stats?.totalServices ?? 0}</strong>
             </article>
@@ -247,13 +269,10 @@ export function AdminApp() {
               <span>Reviews</span>
               <strong>{stats?.totalReviews ?? 0}</strong>
             </article>
-            <article className="admin-stat">
-              <span>FAQs</span>
-              <strong>{stats?.totalFaqs ?? 0}</strong>
-            </article>
             <article className="admin-panel">
               <h2>Latest activity</h2>
               <p>Last booking: {formatDate(stats?.lastBookingAt ?? null)}</p>
+              <p>Last application: {formatDate(stats?.lastApplicationAt ?? null)}</p>
               <p>Content updated: {formatDate(stats?.contentUpdatedAt ?? null)}</p>
             </article>
           </section>
@@ -274,6 +293,45 @@ export function AdminApp() {
                   <p>{booking.address || "No address provided"}</p>
                   <p>{booking.frequency || "No frequency provided"}</p>
                   <p>{booking.details || "No extra note"}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {tab === "applications" ? (
+          <section className="admin-panel">
+            <h2>Job Applications</h2>
+            <div className="admin-bookings">
+              {applications.length === 0 ? <p>No applications received yet.</p> : null}
+              {applications.map((app) => (
+                <article key={app.createdAt} className="admin-booking">
+                  <div className="admin-booking__row">
+                    <strong>{app.name}</strong>
+                    <span>{formatDate(app.createdAt)}</span>
+                  </div>
+                  <p>{app.phone} • {app.email}</p>
+                  <p><strong>Position:</strong> {app.role}</p>
+                  <p><strong>Preferred Location:</strong> {app.location}</p>
+                  <p><strong>Availability:</strong> {app.availability}</p>
+                  <p><strong>Prior Experience:</strong> {app.experience}</p>
+                  <p><strong>Cover Note:</strong> {app.notes || "No cover note provided"}</p>
+                  {app.cvName && app.cvBase64 ? (
+                    <div style={{ marginTop: "12px" }}>
+                      <button
+                        type="button"
+                        className="button button--secondary button--small"
+                        onClick={() => downloadCv(app.cvBase64!, app.cvName!)}
+                        style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                      >
+                        Download CV ({app.cvName})
+                      </button>
+                    </div>
+                  ) : (
+                    <p style={{ fontStyle: "italic", fontSize: "0.85rem", color: "var(--brand-text-soft)", marginTop: "12px" }}>
+                      No CV file uploaded.
+                    </p>
+                  )}
                 </article>
               ))}
             </div>

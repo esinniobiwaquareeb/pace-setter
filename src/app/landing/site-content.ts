@@ -54,52 +54,39 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   },
   services: [
     {
-      title: "Residential Cleaning",
-      description:
-        "Regular or one-off home cleaning for kitchens, bathrooms, bedrooms, floors, and high-touch surfaces.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=82",
+      title: "Airbnb Maid Service",
+      description: "Fast turnaround cleaning, linen changing, and restocking for guest-ready short-let properties.",
+      image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1000&q=82",
     },
     {
-      title: "Office Cleaning",
-      description:
-        "Desk, meeting room, washroom, kitchen, reception, and shared-area cleaning for tidy workplaces.",
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=82",
-    },
-    {
-      title: "Commercial Cleaning",
-      description:
-        "Cleaning for shops, managed buildings, communal areas, and customer-facing premises.",
+      title: "Communal Area Cleaning",
+      description: "Dedicated maintenance for lobbies, hallways, stairwells, and shared spaces in residential or commercial blocks.",
       image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=82",
     },
     {
       title: "Deep Cleaning",
-      description:
-        "A more detailed clean for stubborn build-up, neglected areas, and full property refreshes.",
+      description: "A thorough top-to-bottom refresh targeting limescale, grease, and built-up dust in hard-to-reach areas.",
       image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=1000&q=82",
     },
     {
-      title: "Carpet & Hard Floor",
-      description:
-        "Specialist care for carpets and hard floors that need a cleaner, fresher finish.",
+      title: "Contract Cleaning",
+      description: "Regular, scheduled cleaning contracts tailored to keep business premises, retail stores, and offices pristine.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=82",
+    },
+    {
+      title: "Emergency Cleaning",
+      description: "Rapid-response cleaning for unexpected spillages, property handovers, or urgent post-event needs.",
+      image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1000&q=82",
+    },
+    {
+      title: "Carpet & Hard Floor Cleaning",
+      description: "Professional extraction cleaning for carpets and deep scrubbing/sealing for hard floors.",
       image: "https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?auto=format&fit=crop&w=1000&q=82",
     },
     {
-      title: "Airbnb Maid Service",
-      description:
-        "Fast turnaround cleaning for guest-ready short-let and Airbnb-style properties.",
-      image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1000&q=82",
-    },
-    {
-      title: "Post-Construction Cleaning",
-      description:
-        "After-build cleaning for dust, residue, and handover-ready presentation.",
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=82",
-    },
-    {
-      title: "Eco-Friendly Cleaning",
-      description:
-        "Eco-conscious product options where suitable for the property and cleaning brief.",
-      image: "/cleaning-service.webp",
+      title: "External Window Cleaning",
+      description: "Safe, high-reach window washing for crystal clear glass, sills, and frames.",
+      image: "https://images.unsplash.com/photo-1603712726207-4f4b40a9a6a0?auto=format&fit=crop&w=1000&q=82",
     },
   ],
   reviewsIntro: {
@@ -134,7 +121,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     },
   ],
   trustIntro: {
-    heading: "Why Clients Choose Pace Setter",
+    heading: "Why Clients Choose Pacesetter",
     body: "Clear communication, flexible booking, and a team focused on presentable, healthy spaces.",
   },
   quoteIntro: {
@@ -184,13 +171,20 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     buttonLabel: "Book a Cleaning Today",
   },
   contact: {
-    businessName: "Pace Setter Cleaning Services LTD",
+    businessName: "Pacesetter Cleaning Services LTD",
     phonePrimary: "+44 7894 239785",
     phoneSecondary: "+44 7884 310461",
     email: "info@pacesettercleaning.co.uk",
     websiteUrl: "https://www.pacesettercleaning.co.uk",
     whatsappPrimary: "https://wa.me/447894239785",
     whatsappSecondary: "https://wa.me/447884310461",
+    instagram: "https://www.instagram.com/pacesettercleaning",
+    tiktok: "https://www.tiktok.com/@pacesettercleaning",
+    facebook: "https://www.facebook.com/pacesettercleaning",
+    youtube: "https://youtube.com/@pacesettercleaning",
+    linkedin: "https://www.linkedin.com/company/pacesettercleaning/",
+    addressLondon: "Flat 15 St. Matthews House, Phelp Street, London, England, SE17 2PJ",
+    addressLiverpool: "75 Gentwood Road, Liverpool, Merseyside, L36 2QJ",
   },
   expandedContent: {
     aboutMission: {
@@ -208,7 +202,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
       ],
     },
     aboutPhilosophy: {
-      heading: "The Pace Setter Philosophy: Trust Above All",
+      heading: "The Pacesetter Philosophy: Trust Above All",
       paragraphs: [
         "Letting a cleaner into your property takes trust. We make the details clear before the job starts.",
         "You know what is included, what access is needed, and how scheduling will be handled.",

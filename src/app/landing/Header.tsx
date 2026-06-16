@@ -22,17 +22,23 @@ export function Header() {
     <header className={`site-header${scrolled ? " site-header--scrolled" : ""}`}>
       {/* Pronounced Top Bar for Contact Info */}
       <div className="top-bar-contact">
-        <div className="shell" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ display: "flex", gap: "24px", fontSize: "14px", fontWeight: "500" }}>
-            <a href={`tel:${contact.phonePrimary.replace(/\s+/g, "")}`} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <span style={{ opacity: 0.8 }}>Call Us:</span> <strong>{contact.phonePrimary}</strong>
+        <div className="shell top-bar-contact-inner" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "16px", fontSize: "13px", fontWeight: "500", flexWrap: "wrap" }}>
+            <span style={{ opacity: 0.85 }}>Call or WhatsApp:</span>
+            <a href={`https://wa.me/${contact.phonePrimary.replace(/[^0-9]/g, "")}`} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <strong>{contact.phonePrimary}</strong>
             </a>
-            <a href={`mailto:${contact.email}`} className="hide-on-mobile" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <span style={{ opacity: 0.8 }}>Email:</span> {contact.email}
+            <span style={{ opacity: 0.5 }}>|</span>
+            <a href={`https://wa.me/${contact.phoneSecondary.replace(/[^0-9]/g, "")}`} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <strong>{contact.phoneSecondary}</strong>
             </a>
           </div>
-          <div className="hide-on-mobile" style={{ fontSize: "13px", opacity: 0.9 }}>
-            Professional Cleaning Services in the UK
+          <div className="hide-on-mobile" style={{ display: "flex", gap: "16px", fontSize: "13px", alignItems: "center" }}>
+            <a href={`mailto:${contact.email}`}>
+              <span style={{ opacity: 0.85 }}>Email:</span> {contact.email}
+            </a>
+            <span style={{ opacity: 0.5 }}>|</span>
+            <span style={{ opacity: 0.9 }}>London & Liverpool</span>
           </div>
         </div>
       </div>
@@ -65,7 +71,7 @@ export function Header() {
               className="menu-button"
               aria-label="Toggle menu"
               aria-expanded={open}
-              onClick={() => setOpen((value) => !value)}
+              onClick={() => setOpen((value: any) => !value)}
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>

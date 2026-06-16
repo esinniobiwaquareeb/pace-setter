@@ -7,6 +7,7 @@ import { CTA } from "../landing/CTA";
 import { SEO } from "../components/SEO";
 import { TrustSignals } from "../landing/TrustSignals";
 import { QuoteGuide } from "../landing/QuoteGuide";
+import { Industries } from "../landing/Industries";
 
 export function HomePage() {
   useEffect(() => {
@@ -22,6 +23,7 @@ export function HomePage() {
       <Hero />
       <TrustSignals />
       <Services />
+      <Industries />
       <QuoteGuide />
       <Reviews />
       <FAQ />

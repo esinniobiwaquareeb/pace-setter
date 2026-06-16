@@ -24,7 +24,7 @@ export function Services() {
               <h3>{activeService.title}</h3>
               <p>{activeService.description}</p>
               <div className="services-showcase__controls" aria-label="Choose a featured cleaning service">
-                {services.slice(0, 5).map((service, index) => (
+                {services.map((service, index) => (
                   <button
                     key={service.title}
                     type="button"

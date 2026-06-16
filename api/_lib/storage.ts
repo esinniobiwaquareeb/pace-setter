@@ -1,12 +1,12 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { DEFAULT_SITE_CONTENT, mergeSiteContent } from "../../src/app/landing/site-content";
-import type { SavedBooking, SiteContent } from "../../src/app/landing/types";
+import type { SavedBooking, SiteContent, SavedApplication } from "../../src/app/landing/types";
 
 const CONTENT_PATHNAME = "cms/content.json";
 const BOOKINGS_PATHNAME = "records/bookings.json";
 
-function getDataFile(name: "content" | "bookings") {
+function getDataFile(name: "content" | "bookings" | "applications") {
   return path.join(process.cwd(), "data", `${name}.json`);
 }
 
@@ -108,4 +108,23 @@ export async function saveBookings(bookings: SavedBooking[]) {
   }
 
   await writeJsonFile(getDataFile("bookings"), bookings);
+}
+
+const APPLICATIONS_PATHNAME = "records/applications.json";
+
+export async function getApplications() {
+  if (hasBlobToken()) {
+    return await getBlobJson<SavedApplication[]>(APPLICATIONS_PATHNAME, []);
+  }
+
+  return await readJsonFile<SavedApplication[]>(getDataFile("applications"), []);
+}
+
+export async function saveApplications(applications: SavedApplication[]) {
+  if (hasBlobToken()) {
+    await putBlobJson(APPLICATIONS_PATHNAME, applications);
+    return;
+  }
+
+  await writeJsonFile(getDataFile("applications"), applications);
 }

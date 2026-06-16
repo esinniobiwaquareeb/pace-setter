@@ -9,7 +9,7 @@ interface SEOProps {
 const SITE_URL = "https://www.pacesettercleaning.co.uk";
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 const OG_IMAGE_ALT =
-  "Pace Setter Cleaning Service branded preview for residential, office, commercial, and specialist cleaning.";
+  "Pacesetter Cleaning Service branded preview for residential, office, commercial, and specialist cleaning.";
 
 function upsertMeta(selector: string, attribute: "name" | "property", key: string, content: string) {
   let meta = document.querySelector(selector);

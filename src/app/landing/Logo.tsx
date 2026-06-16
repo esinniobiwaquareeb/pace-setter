@@ -9,8 +9,7 @@ export function Logo() {
       <img src="/pace-setter-logo.png" alt={contact.businessName} />
       <span className="brand-text">
         <strong>
-          <span className="brand-text__pace">Pace</span>{" "}
-          <span className="brand-text__setter">Setter</span>
+          <span className="brand-text__pace">Pace</span><span className="brand-text__setter">setter</span>
         </strong>
         <small>Cleaning Service</small>
       </span>

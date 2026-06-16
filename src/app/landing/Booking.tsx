@@ -1,4 +1,4 @@
-import { Phone, Mail, Globe } from "lucide-react";
+import { Phone, Mail, Globe, MessageCircle, MapPin } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { INITIAL_FORM } from "./content";
 import { Field } from "./Field";
@@ -146,19 +146,69 @@ export function Booking() {
             <div className="contact-info-block">
               <h3>Get In Touch</h3>
               <p>Prefer to speak to someone directly? Reach out through any of these channels:</p>
-              <div className="contact-info-items">
-                <a href={`tel:${contact.phonePrimary.replace(/\s+/g, '')}`} className="contact-info-item">
-                  <Phone size={20} />
-                  <span>{contact.phonePrimary}</span>
-                </a>
-                <a href={`mailto:${contact.email}`} className="contact-info-item">
-                  <Mail size={20} />
-                  <span>{contact.email}</span>
-                </a>
-                <a href={contact.websiteUrl} className="contact-info-item" target="_blank" rel="noreferrer">
-                  <Globe size={20} />
-                  <span>pacesettercleaning.co.uk</span>
-                </a>
+              <div className="contact-info-items" style={{ display: "grid", gap: "20px" }}>
+                {/* Phone Numbers */}
+                <div style={{ display: "grid", gap: "6px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: "600", fontSize: "0.95rem" }}>
+                    <Phone size={18} style={{ color: "var(--brand-green)" }} />
+                    <span>Call Us</span>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "4px", paddingLeft: "26px" }}>
+                    <a href={`tel:${contact.phonePrimary.replace(/\s+/g, '')}`} style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
+                      {contact.phonePrimary}
+                    </a>
+                    <a href={`tel:${contact.phoneSecondary.replace(/\s+/g, '')}`} style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
+                      {contact.phoneSecondary}
+                    </a>
+                  </div>
+                </div>
+
+                {/* WhatsApp */}
+                <div style={{ display: "grid", gap: "6px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: "600", fontSize: "0.95rem" }}>
+                    <MessageCircle size={18} style={{ color: "var(--brand-green)" }} />
+                    <span>WhatsApp</span>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "4px", paddingLeft: "26px" }}>
+                    <a href={contact.whatsappPrimary} target="_blank" rel="noreferrer" style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
+                      Chat on WhatsApp (Line 1)
+                    </a>
+                    <a href={contact.whatsappSecondary} target="_blank" rel="noreferrer" style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
+                      Chat on WhatsApp (Line 2)
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div style={{ display: "grid", gap: "6px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: "600", fontSize: "0.95rem" }}>
+                    <Mail size={18} style={{ color: "var(--brand-green)" }} />
+                    <span>Email</span>
+                  </div>
+                  <div style={{ paddingLeft: "26px" }}>
+                    <a href={`mailto:${contact.email}`} style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
+                      {contact.email}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Locations */}
+                <div style={{ display: "grid", gap: "6px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: "600", fontSize: "0.95rem" }}>
+                    <MapPin size={18} style={{ color: "var(--brand-green)" }} />
+                    <span>Our Locations</span>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "12px", paddingLeft: "26px", color: "var(--brand-text-soft)", fontSize: "0.9rem", lineHeight: "1.4" }}>
+                    <div>
+                      <strong style={{ color: "var(--brand-text)" }}>Head Office (London):</strong>
+                      <p style={{ margin: "2px 0 0" }}>{contact.addressLondon}</p>
+                    </div>
+                    <div>
+                      <strong style={{ color: "var(--brand-text)" }}>Operations (Liverpool):</strong>
+                      <p style={{ margin: "2px 0 0" }}>{contact.addressLiverpool}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

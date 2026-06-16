@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ShieldCheck, Award, ThumbsUp } from "lucide-react";
 import { useSiteContent } from "./SiteContentContext";
 import { scrollToSection } from "./utils";
 
@@ -61,6 +62,22 @@ export function Hero() {
                 Call for a quick quote
               </a>
             </div>
+
+            <div className="hero-trust-badges" aria-label="Trust Badges">
+              <div className="hero-trust-badge">
+                <ShieldCheck size={18} className="trust-badge-icon" />
+                <span>Fully Insured</span>
+              </div>
+              <div className="hero-trust-badge">
+                <Award size={18} className="trust-badge-icon" />
+                <span>Reliable & Professional</span>
+              </div>
+              <div className="hero-trust-badge">
+                <ThumbsUp size={18} className="trust-badge-icon" />
+                <span>Satisfaction Guaranteed</span>
+              </div>
+            </div>
+
             <div className="hero-proof" aria-label="Cleaning service options">
               <span>Residential</span>
               <span>Office</span>

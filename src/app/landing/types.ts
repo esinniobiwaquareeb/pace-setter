@@ -105,6 +105,13 @@ export type ContactContent = {
   websiteUrl: string;
   whatsappPrimary: string;
   whatsappSecondary: string;
+  instagram?: string;
+  tiktok?: string;
+  facebook?: string;
+  youtube?: string;
+  linkedin?: string;
+  addressLondon?: string;
+  addressLiverpool?: string;
 };
 
 export type RichTextData = {
@@ -141,4 +148,21 @@ export type SiteContent = {
   contact: ContactContent;
   expandedContent: ExpandedContent;
   updatedAt: string;
+};
+
+export type JobApplication = {
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  location: string;
+  availability: string;
+  experience: string;
+  notes: string;
+  cvName?: string;
+  cvBase64?: string;
+};
+
+export type SavedApplication = JobApplication & {
+  createdAt: string;
 };
