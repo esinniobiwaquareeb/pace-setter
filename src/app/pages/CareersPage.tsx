@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Briefcase, Calendar, Award } from "lucide-react";
 import { useSiteContent } from "../landing/SiteContentContext";
 import { SEO } from "../components/SEO";
 import { Field } from "../landing/Field";
-import type { JobApplication } from "../landing/types";
+import type { JobApplication, SavedApplication } from "../landing/types";
 
 export function CareersPage() {
   const { contact } = useSiteContent();
@@ -82,10 +82,19 @@ export function CareersPage() {
     event.preventDefault();
     if (!validate()) return;
 
-    const savedApplication = {
+    const savedApplication: SavedApplication = {
       ...form,
       createdAt: new Date().toISOString(),
     };
+
+    try {
+      const stored = window.localStorage.getItem("pace-setter-applications");
+      const parsed = stored ? (JSON.parse(stored) as SavedApplication[]) : [];
+      const next = [savedApplication, ...parsed].slice(0, 200);
+      window.localStorage.setItem("pace-setter-applications", JSON.stringify(next));
+    } catch {
+      // Keep contact flow working even if storage is unavailable.
+    }
 
     const message = [
       `Hello ${contact.businessName},`,

@@ -276,6 +276,19 @@ a {
   box-shadow: 0 4px 14px rgba(121, 200, 20, 0.24);
 }
 
+.button--secondary {
+  background: #f4f7fb;
+  border: 1px solid var(--brand-border);
+  color: var(--brand-text);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.button--secondary:hover {
+  background: #eaeff6;
+  border-color: var(--brand-green-light, #a3e635);
+  color: var(--brand-text-dark, #0f172a);
+}
+
 .button--small {
   min-height: 40px;
   padding: 0 16px;
