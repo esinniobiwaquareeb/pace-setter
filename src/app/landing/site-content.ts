@@ -86,7 +86,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     {
       title: "External Window Cleaning",
       description: "Safe, high-reach window washing for crystal clear glass, sills, and frames.",
-      image: "https://images.unsplash.com/photo-1603712726207-4f4b40a9a6a0?auto=format&fit=crop&w=1000&q=82",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=82",
     },
   ],
   reviewsIntro: {

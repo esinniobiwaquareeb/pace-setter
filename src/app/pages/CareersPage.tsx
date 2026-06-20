@@ -20,7 +20,7 @@ export function CareersPage() {
     cvBase64: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof JobApplication, string>>>({});
-  const [fileError, setFileError] = useState("");
+  // const [fileError, setFileError] = useState(""); // CV upload — temporarily disabled
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -36,34 +36,35 @@ export function CareersPage() {
     setErrors((current) => ({ ...current, [key]: "" }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.type !== "application/pdf") {
-        setFileError("Please upload a PDF file.");
-        setForm((current) => ({ ...current, cvName: "", cvBase64: "" }));
-        return;
-      }
-      if (file.size > 2 * 1024 * 1024) {
-        setFileError("File size must be under 2MB.");
-        setForm((current) => ({ ...current, cvName: "", cvBase64: "" }));
-        return;
-      }
-      setFileError("");
-      const reader = new FileReader();
-      reader.onload = () => {
-        setForm((current) => ({
-          ...current,
-          cvName: file.name,
-          cvBase64: reader.result as string,
-        }));
-      };
-      reader.onerror = () => {
-        setFileError("Error reading file. Please try again.");
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // CV upload — temporarily disabled
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     if (file.type !== "application/pdf") {
+  //       setFileError("Please upload a PDF file.");
+  //       setForm((current) => ({ ...current, cvName: "", cvBase64: "" }));
+  //       return;
+  //     }
+  //     if (file.size > 2 * 1024 * 1024) {
+  //       setFileError("File size must be under 2MB.");
+  //       setForm((current) => ({ ...current, cvName: "", cvBase64: "" }));
+  //       return;
+  //     }
+  //     setFileError("");
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setForm((current) => ({
+  //         ...current,
+  //         cvName: file.name,
+  //         cvBase64: reader.result as string,
+  //       }));
+  //     };
+  //     reader.onerror = () => {
+  //       setFileError("Error reading file. Please try again.");
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const validate = () => {
     const next: Partial<Record<keyof JobApplication, string>> = {};
@@ -107,7 +108,7 @@ export function CareersPage() {
       `Preferred Location: ${form.location}`,
       `Availability: ${form.availability}`,
       `Previous Cleaning Experience: ${form.experience}`,
-      form.cvName ? `Attached CV Filename: ${form.cvName}` : "CV: Not provided via portal",
+      // form.cvName ? `Attached CV Filename: ${form.cvName}` : "CV: Not provided via portal", // CV upload — temporarily disabled
       "",
       `Cover Note: ${form.notes || "No cover note provided."}`,
       "",
@@ -262,8 +263,8 @@ export function CareersPage() {
                   </div>
                 </div>
 
-                {/* CV File Upload Field */}
-                <div className="form-row">
+                {/* CV File Upload Field — temporarily disabled */}
+                {/* <div className="form-row">
                   <div className="field-group" style={{ display: "grid", gap: "6px" }}>
                     <label className="field-label">Upload CV (PDF format, max 2MB)</label>
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -307,7 +308,7 @@ export function CareersPage() {
                       </p>
                     ) : null}
                   </div>
-                </div>
+                </div> */
 
                 <div className="form-row">
                   <Field
