@@ -4,6 +4,7 @@ import { Services } from "../landing/Services";
 import { Reviews } from "../landing/Reviews";
 import { FAQ } from "../landing/FAQ";
 import { CTA } from "../landing/CTA";
+import { CareersCTA } from "../landing/CareersCTA";
 import { SEO } from "../components/SEO";
 import { TrustSignals } from "../landing/TrustSignals";
 import { QuoteGuide } from "../landing/QuoteGuide";
@@ -27,6 +28,7 @@ export function HomePage() {
       <QuoteGuide />
       <Reviews />
       <FAQ />
+      <CareersCTA />
       <CTA />
     </>
   );
