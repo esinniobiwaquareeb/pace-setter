@@ -20,24 +20,6 @@ export function ServiceAreas() {
               <span className="coverage-city">London</span>
               <span className="coverage-city">Liverpool</span>
             </div>
-
-            <div className="office-locations">
-              <div className="office-card">
-                <div className="office-card__header">
-                  <Building size={18} className="office-icon" />
-                  <h3>Head Office (London)</h3>
-                </div>
-                <p>{contact.addressLondon || "Flat 15 St. Matthews House, Phelp Street, London, England, SE17 2PJ"}</p>
-              </div>
-
-              <div className="office-card">
-                <div className="office-card__header">
-                  <Building size={18} className="office-icon" />
-                  <h3>Operations (Liverpool)</h3>
-                </div>
-                <p>{contact.addressLiverpool || "75 Gentwood Road, Liverpool, Merseyside, L36 2QJ"}</p>
-              </div>
-            </div>
           </div>
 
           {/* Environments column */}

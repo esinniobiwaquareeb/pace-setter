@@ -183,8 +183,8 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     facebook: "https://www.facebook.com/pacesettercleaning",
     youtube: "https://youtube.com/@pacesettercleaning",
     linkedin: "https://www.linkedin.com/company/pacesettercleaning/",
-    addressLondon: "Flat 15 St. Matthews House, Phelp Street, London, England, SE17 2PJ",
-    addressLiverpool: "75 Gentwood Road, Liverpool, Merseyside, L36 2QJ",
+    addressLondon: "",
+    addressLiverpool: "",
   },
   expandedContent: {
     aboutMission: {
