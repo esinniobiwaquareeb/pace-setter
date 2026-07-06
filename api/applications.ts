@@ -114,7 +114,7 @@ export async function POST(request: Request) {
 
     try {
       await resend.emails.send({
-        from: "Pacesetter Careers <onboarding@resend.dev>",
+        from: "Pacesetter Careers <noreply@pacesettercleaning.co.uk>",
         to: [recipientEmail],
         replyTo: saved.email,
         subject: `Job Application: ${saved.name} — ${saved.email}`,

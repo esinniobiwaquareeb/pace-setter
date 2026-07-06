@@ -140,20 +140,22 @@ function apiDevPlugin() {
 
           if (resendKey) {
             try {
-              await fetch('https://api.resend.com/emails', {
+              const resendRes = await fetch('https://api.resend.com/emails', {
                 method: 'POST',
                 headers: {
                   'Authorization': `Bearer ${resendKey}`,
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                  from: 'Pacesetter Careers <onboarding@resend.dev>',
+                  from: 'Pacesetter Careers <noreply@pacesettercleaning.co.uk>',
                   to: [recipientEmail],
                   reply_to: application.email ?? undefined,
                   subject: `Job Application: ${application.name ?? ''} — ${application.email ?? ''}`,
                   html,
                 }),
               })
+              const resendBody = await resendRes.json()
+              console.log('[Resend dev] status:', resendRes.status, '| response:', JSON.stringify(resendBody))
             } catch (err) {
               console.error('[Resend dev] Failed to send email:', err)
             }
