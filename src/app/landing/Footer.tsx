@@ -65,29 +65,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Coverage & Addresses */}
+          {/* Column 3: Contact & Locations */}
           <div className="footer-col">
-            <h3>Locations</h3>
-            <p className="footer-coverage-title">Areas We Cover:</p>
-            <div className="footer-coverage-cities">
-              <span>London</span> • <span>Liverpool</span>
-            </div>
-            
-            <div className="footer-office-addresses">
-              <div className="footer-address">
-                <strong>London (Head Office):</strong>
-                <p>{contact.addressLondon}</p>
-              </div>
-              <div className="footer-address">
-                <strong>Liverpool (Operations):</strong>
-                <p>{contact.addressLiverpool}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 4: Contact info */}
-          <div className="footer-col">
-            <h3>Contact Us</h3>
+            <h3>Contact & Locations</h3>
             <div className="footer-contact-info">
               <a href={`tel:${contact.phonePrimary.replace(/\s+/g, "")}`}>
                 <Phone size={16} />
@@ -99,16 +79,23 @@ export function Footer() {
               </a>
               <a href={contact.whatsappPrimary} target="_blank" rel="noreferrer">
                 <MessageCircle size={16} />
-                <span>WhatsApp Line 1</span>
+                <span>{contact.phonePrimary} (WhatsApp)</span>
               </a>
               <a href={contact.whatsappSecondary} target="_blank" rel="noreferrer">
                 <MessageCircle size={16} />
-                <span>WhatsApp Line 2</span>
+                <span>{contact.phoneSecondary} (WhatsApp)</span>
               </a>
               <a href={`mailto:${contact.email}`}>
                 <Mail size={16} />
                 <span>{contact.email}</span>
               </a>
+            </div>
+
+            <div style={{ marginTop: "24px" }}>
+              <p className="footer-coverage-title" style={{ marginBottom: "8px" }}>Areas We Cover:</p>
+              <div className="footer-coverage-cities" style={{ marginBottom: 0 }}>
+                <span>London</span> • <span>Liverpool</span>
+              </div>
             </div>
           </div>
         </div>

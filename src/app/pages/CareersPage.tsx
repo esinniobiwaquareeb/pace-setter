@@ -363,6 +363,7 @@ export function CareersPage() {
               <img
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=82"
                 alt="Join Pacesetter Cleaning Services team"
+                style={{ height: "240px", minHeight: "auto", objectFit: "cover" }}
               />
               <div className="contact-info-block">
                 <h3>Our Hiring Standards</h3>

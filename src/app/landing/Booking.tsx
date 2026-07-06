@@ -142,7 +142,7 @@ export function Booking() {
           </div>
 
           <div className="booking-media">
-            <img src={booking.image} alt={booking.imageAlt} />
+            <img src={booking.image} alt={booking.imageAlt} style={{ height: "240px", minHeight: "auto", objectFit: "cover" }} />
             <div className="contact-info-block">
               <h3>Get In Touch</h3>
               <p>Prefer to speak to someone directly? Reach out through any of these channels:</p>
@@ -171,10 +171,10 @@ export function Booking() {
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "4px", paddingLeft: "26px" }}>
                     <a href={contact.whatsappPrimary} target="_blank" rel="noreferrer" style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
-                      Chat on WhatsApp (Line 1)
+                      {contact.phonePrimary} (WhatsApp)
                     </a>
                     <a href={contact.whatsappSecondary} target="_blank" rel="noreferrer" style={{ color: "var(--brand-text-soft)", textDecoration: "none" }}>
-                      Chat on WhatsApp (Line 2)
+                      {contact.phoneSecondary} (WhatsApp)
                     </a>
                   </div>
                 </div>
@@ -198,15 +198,8 @@ export function Booking() {
                     <MapPin size={18} style={{ color: "var(--brand-green)" }} />
                     <span>Our Locations</span>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "12px", paddingLeft: "26px", color: "var(--brand-text-soft)", fontSize: "0.9rem", lineHeight: "1.4" }}>
-                    <div>
-                      <strong style={{ color: "var(--brand-text)" }}>Head Office (London):</strong>
-                      <p style={{ margin: "2px 0 0" }}>{contact.addressLondon}</p>
-                    </div>
-                    <div>
-                      <strong style={{ color: "var(--brand-text)" }}>Operations (Liverpool):</strong>
-                      <p style={{ margin: "2px 0 0" }}>{contact.addressLiverpool}</p>
-                    </div>
+                  <div style={{ paddingLeft: "26px", color: "var(--brand-text-soft)", fontSize: "0.9rem" }}>
+                    London • Liverpool
                   </div>
                 </div>
               </div>
