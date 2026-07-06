@@ -160,7 +160,7 @@ export type JobApplication = {
   experience: string;
   notes: string;
   cvName?: string;
-  cvBase64?: string;
+  cvUrl?: string;
 };
 
 export type SavedApplication = JobApplication & {

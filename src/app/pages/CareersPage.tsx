@@ -1,9 +1,11 @@
 import { useEffect, useState, useMemo } from "react";
-import { Phone, Mail, MapPin, Briefcase, Calendar, Award } from "lucide-react";
+import { MapPin, Briefcase, Calendar, Award, Upload, CheckCircle, Loader } from "lucide-react";
 import { useSiteContent } from "../landing/SiteContentContext";
 import { SEO } from "../components/SEO";
 import { Field } from "../landing/Field";
 import type { JobApplication, SavedApplication } from "../landing/types";
+
+type UploadState = "idle" | "uploading" | "done" | "error";
 
 export function CareersPage() {
   const { contact } = useSiteContent();
@@ -17,52 +19,89 @@ export function CareersPage() {
     experience: "Yes",
     notes: "",
     cvName: "",
-    cvBase64: "",
+    cvUrl: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof JobApplication, string>>>({});
-  const [fileError, setFileError] = useState(""); // CV upload — temporarily disabled
-  const [status, setStatus] = useState("");
+  const [fileError, setFileError] = useState("");
+  const [uploadState, setUploadState] = useState<UploadState>("idle");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const canSubmit = useMemo(() => {
-    return form.name.trim() && form.phone.trim() && form.email.trim();
-  }, [form]);
+    return (
+      !submitting &&
+      uploadState !== "uploading" &&
+      form.name.trim() &&
+      form.phone.trim() &&
+      form.email.trim()
+    );
+  }, [form, submitting, uploadState]);
 
   const updateField = (key: keyof JobApplication, value: string) => {
     setForm((current) => ({ ...current, [key]: value }));
     setErrors((current) => ({ ...current, [key]: "" }));
   };
 
-  // CV upload — temporarily disabled
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // ── CV upload: fires immediately on file select ──────────────────────────
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.type !== "application/pdf") {
-        setFileError("Please upload a PDF file.");
-        setForm((current) => ({ ...current, cvName: "", cvBase64: "" }));
-        return;
-      }
-      if (file.size > 2 * 1024 * 1024) {
-        setFileError("File size must be under 2MB.");
-        setForm((current) => ({ ...current, cvName: "", cvBase64: "" }));
-        return;
-      }
-      setFileError("");
+    if (!file) return;
+
+    // Client-side validation
+    if (file.type !== "application/pdf") {
+      setFileError("Please upload a PDF file.");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setFileError("File size must be under 5 MB.");
+      return;
+    }
+
+    setFileError("");
+    setUploadState("uploading");
+
+    // Read as base64 data-URL
+    const fileBase64 = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = () => {
-        setForm((current) => ({
-          ...current,
-          cvName: file.name,
-          cvBase64: reader.result as string,
-        }));
-      };
-      reader.onerror = () => {
-        setFileError("Error reading file. Please try again.");
-      };
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
       reader.readAsDataURL(file);
+    }).catch(() => null);
+
+    if (!fileBase64) {
+      setFileError("Could not read the file. Please try again.");
+      setUploadState("error");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/upload-cv", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ fileName: file.name, fileBase64 }),
+      });
+
+      const data = (await response.json()) as { url?: string; error?: string };
+
+      if (!response.ok || data.error) {
+        setFileError(data.error ?? "Upload failed. Please try again.");
+        setUploadState("error");
+        return;
+      }
+
+      setForm((current) => ({
+        ...current,
+        cvName: file.name,
+        cvUrl: data.url ?? "",
+      }));
+      setUploadState("done");
+    } catch {
+      setFileError("Network error during upload. Please try again.");
+      setUploadState("error");
     }
   };
 
@@ -82,56 +121,93 @@ export function CareersPage() {
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
+    setSubmitting(true);
 
     const savedApplication: SavedApplication = {
       ...form,
       createdAt: new Date().toISOString(),
     };
 
+    // Persist locally
     try {
       const stored = window.localStorage.getItem("pace-setter-applications");
       const parsed = stored ? (JSON.parse(stored) as SavedApplication[]) : [];
-      const next = [savedApplication, ...parsed].slice(0, 200);
-      window.localStorage.setItem("pace-setter-applications", JSON.stringify(next));
+      window.localStorage.setItem(
+        "pace-setter-applications",
+        JSON.stringify([savedApplication, ...parsed].slice(0, 200))
+      );
     } catch {
-      // Keep contact flow working even if storage is unavailable.
+      // Non-fatal
     }
 
-    const message = [
-      `Hello ${contact.businessName},`,
-      "",
-      "I would like to apply to join your team.",
-      `Full Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Phone Number: ${form.phone}`,
-      `Preferred Role: ${form.role}`,
-      `Preferred Location: ${form.location}`,
-      `Availability: ${form.availability}`,
-      `Previous Cleaning Experience: ${form.experience}`,
-      form.cvName ? `Attached CV Filename: ${form.cvName}` : "CV: Not provided via portal", // CV upload — temporarily disabled
-      "",
-      `Cover Note: ${form.notes || "No cover note provided."}`,
-      "",
-      "Note: Candidate's CV file was logged. Please check for attachments in this email.",
-    ].join("\n");
-
+    // Send to server — API saves to storage and returns a mailto: href
     try {
-      await fetch("/api/applications", {
+      const response = await fetch("/api/applications", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(savedApplication),
       });
+
+      const data = (await response.json()) as { ok?: boolean; mailtoHref?: string };
+
+      if (data.mailtoHref) {
+        window.location.href = data.mailtoHref;
+      }
     } catch {
-      // Outbound mail works even if database log fails
+      // Non-fatal — application is still saved locally
     }
 
-    const emailSubject = encodeURIComponent(`Job Application: ${form.name} - ${form.role} (${form.location})`);
-    const emailBody = encodeURIComponent(message);
-
-    // Redirect to draft email client
-    window.location.href = `mailto:${contact.email}?subject=${emailSubject}&body=${emailBody}`;
-    setStatus("Thank you! Your application has been logged. We have opened your email client—please attach your PDF CV to the draft before hitting send!");
+    setSubmitting(false);
+    setSubmitted(true);
   };
+
+  // ── Success screen ────────────────────────────────────────────────────────
+  if (submitted) {
+    return (
+      <>
+        <SEO
+          title="Application Submitted | Careers"
+          description="Thank you for applying to Pacesetter Cleaning Services."
+        />
+        <div style={{ paddingTop: "80px" }} />
+        <section className="section-card reveal-section is-visible">
+          <div className="shell">
+            <div
+              style={{
+                maxWidth: "540px",
+                margin: "0 auto",
+                textAlign: "center",
+                padding: "64px 24px",
+              }}
+            >
+              <CheckCircle
+                size={64}
+                style={{ color: "var(--brand-green)", margin: "0 auto 24px" }}
+              />
+              <h2 style={{ marginBottom: "12px" }}>Application Received!</h2>
+              <p style={{ color: "var(--brand-text-soft)", fontSize: "1.05rem", lineHeight: 1.65 }}>
+                Thank you, <strong>{form.name}</strong>. Your application has been logged and your
+                email client has been opened with the details — just hit <strong>Send</strong> to
+                complete your submission.
+              </p>
+              {form.cvUrl && (
+                <p
+                  style={{
+                    marginTop: "16px",
+                    fontSize: "0.9rem",
+                    color: "var(--brand-green-dark)",
+                    fontWeight: 600,
+                  }}
+                >
+                  ✓ Your CV was uploaded successfully and is included in the email.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
 
   return (
     <>
@@ -147,7 +223,8 @@ export function CareersPage() {
               <p className="admin-kicker">Careers</p>
               <h2>Work With Pacesetter</h2>
               <p>
-                We are looking for reliable, professional, and detail-oriented cleaners to join our growing teams in London and Liverpool. Fill out your details below to apply.
+                We are looking for reliable, professional, and detail-oriented cleaners to join our
+                growing teams in London and Liverpool. Fill out your details below to apply.
               </p>
 
               <form className="booking-form" onSubmit={submit} noValidate>
@@ -164,17 +241,7 @@ export function CareersPage() {
                       className="field-input select-input"
                       value={form.location}
                       onChange={(e) => updateField("location", e.target.value)}
-                      style={{
-                        width: "100%",
-                        height: "48px",
-                        borderRadius: "14px",
-                        border: "1px solid var(--brand-border)",
-                        padding: "0 16px",
-                        background: "#fdfdfb",
-                        color: "var(--brand-text)",
-                        fontFamily: "inherit",
-                        fontSize: "0.95rem"
-                      }}
+                      style={{ width: "100%", height: "48px", borderRadius: "14px", border: "1px solid var(--brand-border)", padding: "0 16px", background: "#fdfdfb", color: "var(--brand-text)", fontFamily: "inherit", fontSize: "0.95rem" }}
                     >
                       <option value="London">London</option>
                       <option value="Liverpool">Liverpool</option>
@@ -189,17 +256,7 @@ export function CareersPage() {
                       className="field-input select-input"
                       value={form.role}
                       onChange={(e) => updateField("role", e.target.value)}
-                      style={{
-                        width: "100%",
-                        height: "48px",
-                        borderRadius: "14px",
-                        border: "1px solid var(--brand-border)",
-                        padding: "0 16px",
-                        background: "#fdfdfb",
-                        color: "var(--brand-text)",
-                        fontFamily: "inherit",
-                        fontSize: "0.95rem"
-                      }}
+                      style={{ width: "100%", height: "48px", borderRadius: "14px", border: "1px solid var(--brand-border)", padding: "0 16px", background: "#fdfdfb", color: "var(--brand-text)", fontFamily: "inherit", fontSize: "0.95rem" }}
                     >
                       <option value="Residential Cleaner">Residential Cleaner</option>
                       <option value="Commercial Cleaner">Commercial Cleaner</option>
@@ -215,21 +272,11 @@ export function CareersPage() {
                       className="field-input select-input"
                       value={form.availability}
                       onChange={(e) => updateField("availability", e.target.value)}
-                      style={{
-                        width: "100%",
-                        height: "48px",
-                        borderRadius: "14px",
-                        border: "1px solid var(--brand-border)",
-                        padding: "0 16px",
-                        background: "#fdfdfb",
-                        color: "var(--brand-text)",
-                        fontFamily: "inherit",
-                        fontSize: "0.95rem"
-                      }}
+                      style={{ width: "100%", height: "48px", borderRadius: "14px", border: "1px solid var(--brand-border)", padding: "0 16px", background: "#fdfdfb", color: "var(--brand-text)", fontFamily: "inherit", fontSize: "0.95rem" }}
                     >
                       <option value="Flexible">Flexible Hours</option>
                       <option value="Full-time">Full-Time (35+ hrs/week)</option>
-                      <option value="Part-time">Part-Time (10-25 hrs/week)</option>
+                      <option value="Part-time">Part-Time (10–25 hrs/week)</option>
                       <option value="Weekends">Weekends Only</option>
                     </select>
                   </div>
@@ -239,74 +286,90 @@ export function CareersPage() {
                   <label className="field-label" style={{ marginBottom: 0 }}>Do you have professional cleaning experience?</label>
                   <div style={{ display: "flex", gap: "24px", alignItems: "center", marginTop: "4px" }}>
                     <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", color: "var(--brand-text-soft)" }}>
-                      <input
-                        type="radio"
-                        name="experience"
-                        value="Yes"
-                        checked={form.experience === "Yes"}
-                        onChange={() => updateField("experience", "Yes")}
-                        style={{ accentColor: "var(--brand-green)" }}
-                      />
+                      <input type="radio" name="experience" value="Yes" checked={form.experience === "Yes"} onChange={() => updateField("experience", "Yes")} style={{ accentColor: "var(--brand-green)" }} />
                       <span>Yes, I have experience</span>
                     </label>
                     <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", color: "var(--brand-text-soft)" }}>
-                      <input
-                        type="radio"
-                        name="experience"
-                        value="No"
-                        checked={form.experience === "No"}
-                        onChange={() => updateField("experience", "No")}
-                        style={{ accentColor: "var(--brand-green)" }}
-                      />
+                      <input type="radio" name="experience" value="No" checked={form.experience === "No"} onChange={() => updateField("experience", "No")} style={{ accentColor: "var(--brand-green)" }} />
                       <span>No experience (training provided)</span>
                     </label>
                   </div>
                 </div>
 
-                {/* CV File Upload Field — temporarily disabled */}
+                {/* CV Upload — uploads to Cloudinary on file select */}
                 <div className="form-row">
-                  <div className="field-group" style={{ display: "grid", gap: "6px" }}>
-                    <label className="field-label">Upload CV (PDF format, max 2MB)</label>
-                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div className="field-group" style={{ display: "grid", gap: "8px" }}>
+                    <label className="field-label">Upload CV (PDF, max 5 MB)</label>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "14px 16px",
+                        border: `2px dashed ${uploadState === "done" ? "var(--brand-green)" : uploadState === "error" ? "var(--destructive, #e53e3e)" : "var(--brand-border)"}`,
+                        borderRadius: "14px",
+                        background: uploadState === "done" ? "rgba(72,199,116,0.06)" : "#fdfdfb",
+                        transition: "border-color 0.2s, background 0.2s",
+                      }}
+                    >
                       <input
                         type="file"
                         accept="application/pdf"
                         onChange={handleFileChange}
                         id="cv-file-input"
+                        disabled={uploadState === "uploading"}
                         style={{ display: "none" }}
                       />
                       <label
                         htmlFor="cv-file-input"
-                        className="button button--secondary button--small"
                         style={{
-                          margin: 0,
-                          cursor: "pointer",
-                          backgroundColor: "#f4f7fb",
-                          border: "1px solid var(--brand-border)",
-                          color: "var(--brand-text)",
-                          padding: "8px 20px",
-                          borderRadius: "14px",
-                          fontWeight: "600",
-                          fontSize: "0.9rem"
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          cursor: uploadState === "uploading" ? "not-allowed" : "pointer",
+                          background: "var(--brand-green)",
+                          color: "#fff",
+                          padding: "8px 18px",
+                          borderRadius: "10px",
+                          fontWeight: 700,
+                          fontSize: "0.88rem",
+                          whiteSpace: "nowrap",
+                          opacity: uploadState === "uploading" ? 0.7 : 1,
+                          transition: "opacity 0.2s",
                         }}
                       >
-                        Choose PDF file
+                        {uploadState === "uploading" ? (
+                          <Loader size={14} style={{ animation: "spin 1s linear infinite" }} />
+                        ) : (
+                          <Upload size={14} />
+                        )}
+                        {uploadState === "uploading" ? "Uploading…" : "Choose PDF"}
                       </label>
-                      {form.cvName ? (
-                        <span style={{ fontSize: "0.88rem", color: "var(--brand-green-dark)", fontWeight: "600" }}>
-                          ✓ {form.cvName}
-                        </span>
-                      ) : (
-                        <span style={{ fontSize: "0.88rem", color: "var(--brand-text-soft)" }}>
-                          No file selected
-                        </span>
-                      )}
+
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        {uploadState === "done" && form.cvName ? (
+                          <span style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.88rem", color: "var(--brand-green-dark)", fontWeight: 600 }}>
+                            <CheckCircle size={15} />
+                            {form.cvName}
+                          </span>
+                        ) : uploadState === "uploading" ? (
+                          <span style={{ fontSize: "0.85rem", color: "var(--brand-text-soft)" }}>Uploading your CV…</span>
+                        ) : (
+                          <span style={{ fontSize: "0.85rem", color: "var(--brand-text-soft)" }}>No file selected</span>
+                        )}
+                      </div>
                     </div>
-                    {fileError ? (
-                      <p style={{ color: "var(--destructive)", fontSize: "0.82rem", margin: "4px 0 0" }}>
+
+                    {fileError && (
+                      <p style={{ color: "var(--destructive, #e53e3e)", fontSize: "0.82rem", margin: "2px 0 0" }}>
                         {fileError}
                       </p>
-                    ) : null}
+                    )}
+                    {uploadState === "done" && (
+                      <p style={{ fontSize: "0.8rem", color: "var(--brand-text-soft)", margin: "2px 0 0" }}>
+                        CV uploaded securely. A download link will be included in your application email.
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -320,16 +383,27 @@ export function CareersPage() {
                 </div>
 
                 <div className="booking-actions">
-                  <button className="button button--primary button--small" type="submit" disabled={!canSubmit}>
-                    Submit Job Application
+                  <button
+                    className="button button--primary button--small"
+                    type="submit"
+                    disabled={!canSubmit}
+                    style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+                  >
+                    {submitting ? (
+                      <><Loader size={15} style={{ animation: "spin 1s linear infinite" }} /> Submitting…</>
+                    ) : (
+                      "Submit Job Application"
+                    )}
                   </button>
-                  {status ? <p style={{ color: "var(--brand-green-dark)", fontWeight: "600", fontSize: "0.95rem", margin: "8px 0 0" }}>{status}</p> : null}
                 </div>
               </form>
             </div>
 
             <div className="booking-media">
-              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=82" alt="Join Pacesetter Cleaning Services team" />
+              <img
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=82"
+                alt="Join Pacesetter Cleaning Services team"
+              />
               <div className="contact-info-block">
                 <h3>Our Hiring Standards</h3>
                 <p>What we look for in our team members:</p>
@@ -340,7 +414,7 @@ export function CareersPage() {
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", color: "var(--brand-text-soft)", fontSize: "0.9rem" }}>
                     <Briefcase size={18} style={{ color: "var(--brand-green)", flexShrink: 0, marginTop: "2px" }} />
-                    <span><strong>Reliable & Punctual:</strong> Turning up on schedule and representing our brand professionally.</span>
+                    <span><strong>Reliable &amp; Punctual:</strong> Turning up on schedule and representing our brand professionally.</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", color: "var(--brand-text-soft)", fontSize: "0.9rem" }}>
                     <Calendar size={18} style={{ color: "var(--brand-green)", flexShrink: 0, marginTop: "2px" }} />
@@ -356,6 +430,9 @@ export function CareersPage() {
           </div>
         </div>
       </section>
+
+      {/* Spinner keyframe — scoped inline so no global CSS change needed */}
+      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
     </>
   );
 }
