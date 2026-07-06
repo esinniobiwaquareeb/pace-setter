@@ -159,6 +159,7 @@ export function CareersPage() {
 
     setSubmitting(false);
     setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // ── Success screen ────────────────────────────────────────────────────────
@@ -186,9 +187,7 @@ export function CareersPage() {
               />
               <h2 style={{ marginBottom: "12px" }}>Application Received!</h2>
               <p style={{ color: "var(--brand-text-soft)", fontSize: "1.05rem", lineHeight: 1.65 }}>
-                Thank you, <strong>{form.name}</strong>. Your application has been logged and your
-                email client has been opened with the details — just hit <strong>Send</strong> to
-                complete your submission.
+                Thank you, <strong>{form.name}</strong>. Your application has been received and our team will be in touch shortly.
               </p>
               {form.cvUrl && (
                 <p
