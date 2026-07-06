@@ -179,6 +179,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  
   resolve: {
     alias: {
       // Alias @ to the src directory
