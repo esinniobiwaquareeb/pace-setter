@@ -110,7 +110,7 @@ export function CareersCTA() {
                   marginTop: "24px",
                 }}
               >
-                {["Flexible Hours", "Training Provided", "London & Liverpool", "Immediate Start"].map((perk) => (
+                {["Flexible Hours", "Training Provided", "Immediate Start"].map((perk) => (
                   <span
                     key={perk}
                     style={{
