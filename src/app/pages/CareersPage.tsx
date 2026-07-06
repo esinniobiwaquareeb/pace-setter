@@ -13,8 +13,6 @@ export function CareersPage() {
     name: "",
     email: "",
     phone: "",
-    role: "Residential Cleaner",
-    location: "London",
     availability: "Flexible",
     experience: "Yes",
     notes: "",
@@ -140,19 +138,13 @@ export function CareersPage() {
       // Non-fatal
     }
 
-    // Send to server — API saves to storage and returns a mailto: href
+    // Send to server — API saves to storage and sends email via Resend
     try {
-      const response = await fetch("/api/applications", {
+      await fetch("/api/applications", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(savedApplication),
       });
-
-      const data = (await response.json()) as { ok?: boolean; mailtoHref?: string };
-
-      if (data.mailtoHref) {
-        window.location.href = data.mailtoHref;
-      }
     } catch {
       // Non-fatal — application is still saved locally
     }
@@ -234,37 +226,6 @@ export function CareersPage() {
 
                 <div className="form-row form-row--double">
                   <Field label="Phone Number" type="tel" value={form.phone} onChange={(value) => updateField("phone", value)} error={errors.phone} />
-                  <div className="field-group">
-                    <label className="field-label">Preferred Location</label>
-                    <select
-                      className="field-input select-input"
-                      value={form.location}
-                      onChange={(e) => updateField("location", e.target.value)}
-                      style={{ width: "100%", height: "48px", borderRadius: "14px", border: "1px solid var(--brand-border)", padding: "0 16px", background: "#fdfdfb", color: "var(--brand-text)", fontFamily: "inherit", fontSize: "0.95rem" }}
-                    >
-                      <option value="London">London</option>
-                      <option value="Liverpool">Liverpool</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-row form-row--double">
-                  <div className="field-group">
-                    <label className="field-label">Position / Role</label>
-                    <select
-                      className="field-input select-input"
-                      value={form.role}
-                      onChange={(e) => updateField("role", e.target.value)}
-                      style={{ width: "100%", height: "48px", borderRadius: "14px", border: "1px solid var(--brand-border)", padding: "0 16px", background: "#fdfdfb", color: "var(--brand-text)", fontFamily: "inherit", fontSize: "0.95rem" }}
-                    >
-                      <option value="Residential Cleaner">Residential Cleaner</option>
-                      <option value="Commercial Cleaner">Commercial Cleaner</option>
-                      <option value="Airbnb Maid / Turnover Cleaner">Airbnb Maid / Turnover Cleaner</option>
-                      <option value="Communal Area Cleaner">Communal Area Cleaner</option>
-                      <option value="Carpet & Floor Technician">Carpet & Floor Technician</option>
-                      <option value="Window Cleaner">Window Cleaner</option>
-                    </select>
-                  </div>
                   <div className="field-group">
                     <label className="field-label">Availability</label>
                     <select
