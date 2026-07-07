@@ -1,6 +1,6 @@
-import { requireAuth } from "../_lib/auth";
-import { json } from "../_lib/http";
-import { getBookings, getSiteContent, getApplications } from "../_lib/storage";
+import { requireAuth } from "../_lib/auth.js";
+import { json } from "../_lib/http.js";
+import { getBookings, getSiteContent, getApplications } from "../_lib/storage.js";
 
 export async function GET(request: Request) {
   const unauthorized = requireAuth(request);

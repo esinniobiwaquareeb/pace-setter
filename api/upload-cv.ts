@@ -1,4 +1,4 @@
-import { json } from "./_lib/http";
+import { json } from "./_lib/http.js";
 
 /**
  * POST /api/upload-cv
@@ -46,20 +46,23 @@ export async function POST(request: Request) {
     ? fileBase64.split(",")[1]
     : fileBase64;
 
-  const formData = new FormData();
-  formData.append("file", `data:application/pdf;base64,${base64Data}`);
-  formData.append("public_id", publicId);
-  formData.append("api_key", apiKey);
-  formData.append("timestamp", String(timestamp));
-  formData.append("signature", signature);
-  // Store as raw PDF so the URL is directly downloadable
-  formData.append("resource_type", "auto");
-
   const uploadUrl = `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`;
 
   let result: { secure_url?: string; error?: { message: string } };
   try {
-    const response = await fetch(uploadUrl, { method: "POST", body: formData });
+    const response = await fetch(uploadUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        file: `data:application/pdf;base64,${base64Data}`,
+        public_id: publicId,
+        api_key: apiKey,
+        timestamp: timestamp,
+        signature: signature,
+      }),
+    });
     result = (await response.json()) as typeof result;
   } catch (err) {
     return json({ error: `Upload request failed: ${String(err)}` }, { status: 502 });

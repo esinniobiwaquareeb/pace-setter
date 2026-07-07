@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { DEFAULT_SITE_CONTENT, mergeSiteContent } from "../../src/app/landing/site-content";
+import { DEFAULT_SITE_CONTENT, mergeSiteContent } from "../../src/app/landing/site-content.js";
 import type { SavedBooking, SiteContent, SavedApplication } from "../../src/app/landing/types";
 
 const CONTENT_PATHNAME = "cms/content.json";

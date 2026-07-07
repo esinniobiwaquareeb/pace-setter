@@ -1,5 +1,5 @@
-import { json, readJson } from "./_lib/http";
-import { getBookings, saveBookings } from "./_lib/storage";
+import { json, readJson } from "./_lib/http.js";
+import { getBookings, saveBookings } from "./_lib/storage.js";
 import type { SavedBooking } from "../src/app/landing/types";
 
 export async function POST(request: Request) {

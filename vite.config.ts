@@ -72,18 +72,22 @@ function apiDevPlugin() {
 
           const base64Data = fileBase64.includes(',') ? fileBase64.split(',')[1] : fileBase64
 
-          const formData = new FormData()
-          formData.append('file', `data:application/pdf;base64,${base64Data}`)
-          formData.append('public_id', publicId)
-          formData.append('api_key', apiKey)
-          formData.append('timestamp', String(timestamp))
-          formData.append('signature', signature)
-          formData.append('resource_type', 'auto')
-
           try {
             const cloudRes = await fetch(
               `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
-              { method: 'POST', body: formData }
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  file: `data:application/pdf;base64,${base64Data}`,
+                  public_id: publicId,
+                  api_key: apiKey,
+                  timestamp: timestamp,
+                  signature: signature,
+                }),
+              }
             )
             const data = await cloudRes.json() as { secure_url?: string; error?: { message: string } }
 
@@ -96,6 +100,7 @@ function apiDevPlugin() {
             res.writeHead(200, { 'content-type': 'application/json' })
             res.end(JSON.stringify({ url: data.secure_url }))
           } catch (err) {
+            console.error('[apiDevPlugin] upload-cv error details:', err);
             res.writeHead(502, { 'content-type': 'application/json' })
             res.end(JSON.stringify({ error: `Upload failed: ${String(err)}` }))
           }

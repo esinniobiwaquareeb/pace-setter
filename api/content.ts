@@ -1,5 +1,5 @@
-import { json } from "./_lib/http";
-import { getSiteContent } from "./_lib/storage";
+import { json } from "./_lib/http.js";
+import { getSiteContent } from "./_lib/storage.js";
 
 export async function GET() {
   const content = await getSiteContent();

@@ -1,7 +1,7 @@
-import { requireAuth } from "../_lib/auth";
-import { json, readJson } from "../_lib/http";
-import { getSiteContent, saveSiteContent } from "../_lib/storage";
-import { mergeSiteContent } from "../../src/app/landing/site-content";
+import { requireAuth } from "../_lib/auth.js";
+import { json, readJson } from "../_lib/http.js";
+import { getSiteContent, saveSiteContent } from "../_lib/storage.js";
+import { mergeSiteContent } from "../../src/app/landing/site-content.js";
 import type { SiteContent } from "../../src/app/landing/types";
 
 export async function GET(request: Request) {

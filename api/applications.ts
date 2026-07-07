@@ -1,6 +1,6 @@
 import { Resend } from "resend";
-import { json, readJson } from "./_lib/http";
-import { getApplications, saveApplications } from "./_lib/storage";
+import { json, readJson } from "./_lib/http.js";
+import { getApplications, saveApplications } from "./_lib/storage.js";
 import type { SavedApplication } from "../src/app/landing/types";
 
 export async function POST(request: Request) {

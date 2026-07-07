@@ -1,5 +1,5 @@
-import { clearSessionHeaders } from "../_lib/auth";
-import { json } from "../_lib/http";
+import { clearSessionHeaders } from "../_lib/auth.js";
+import { json } from "../_lib/http.js";
 
 export async function POST() {
   return json(
