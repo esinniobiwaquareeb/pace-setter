@@ -39,8 +39,12 @@ async function readJsonFile<T>(filePath: string, fallback: T): Promise<T> {
 }
 
 async function writeJsonFile(filePath: string, data: unknown) {
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+  try {
+    await mkdir(path.dirname(filePath), { recursive: true });
+    await writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+  } catch (err) {
+    console.error(`[Storage] Failed to write JSON file to ${filePath}:`, err);
+  }
 }
 
 async function getBlobJson<T>(pathname: string, fallback: T): Promise<T> {
