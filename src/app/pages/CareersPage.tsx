@@ -112,8 +112,11 @@ export function CareersPage() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       next.email = "Please enter a valid email address.";
     }
+    if (!form.cvUrl.trim()) {
+      setFileError("Please upload your CV before submitting.");
+    }
     setErrors(next);
-    return Object.keys(next).length === 0;
+    return Object.keys(next).length === 0 && !!form.cvUrl.trim();
   };
 
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -259,7 +262,9 @@ export function CareersPage() {
                 {/* CV Upload — uploads to Cloudinary on file select */}
                 <div className="form-row">
                   <div className="field-group" style={{ display: "grid", gap: "8px" }}>
-                    <label className="field-label">Upload CV (PDF, max 5 MB)</label>
+                    <label className="field-label">
+                      Upload CV (PDF, max 5 MB) <span style={{ color: "var(--destructive, #e53e3e)" }}>*</span>
+                    </label>
                     <div
                       style={{
                         display: "flex",
