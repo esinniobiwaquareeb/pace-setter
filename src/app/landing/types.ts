@@ -42,6 +42,7 @@ export type FormState = {
   frequency: string;
   phone: string;
   details: string;
+  fax?: string;
 };
 
 export type SavedBooking = FormState & {
@@ -161,6 +162,7 @@ export type JobApplication = {
   notes: string;
   cvName?: string;
   cvUrl?: string;
+  fax?: string;
 };
 
 export type SavedApplication = JobApplication & {

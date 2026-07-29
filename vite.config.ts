@@ -121,6 +121,14 @@ function apiDevPlugin() {
             return
           }
 
+          // Honeypot check for dev server
+          if (application.fax && application.fax.trim() !== '') {
+            console.warn('[Honeypot dev] Silently ignored spam application from:', application.email || 'unknown')
+            res.writeHead(200, { 'content-type': 'application/json' })
+            res.end(JSON.stringify({ ok: true }))
+            return
+          }
+
           const recipientEmail = env.APPLICATIONS_EMAIL || 'pacesettercleaning@gmail.com'
           const resendKey = env.RESEND_API_KEY
 

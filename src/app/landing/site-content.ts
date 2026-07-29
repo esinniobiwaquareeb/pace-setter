@@ -273,6 +273,7 @@ export const INITIAL_FORM: FormState = {
   frequency: "",
   phone: "",
   details: "",
+  fax: "",
 };
 
 export function mergeSiteContent(content?: Partial<SiteContent> | null): SiteContent {

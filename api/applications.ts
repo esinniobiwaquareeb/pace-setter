@@ -6,6 +6,12 @@ import type { SavedApplication } from "../src/app/landing/types";
 export async function POST(request: Request) {
   const application = await readJson<SavedApplication>(request);
 
+  // Honeypot check for bots
+  if (application.fax && application.fax.trim() !== "") {
+    console.warn("[Honeypot] Silently ignored spam application from:", application.email || "unknown");
+    return json({ ok: true });
+  }
+
   // ── 1. Persist to storage ──────────────────────────────────────────────────
   const applications = await getApplications();
   const saved: SavedApplication = {

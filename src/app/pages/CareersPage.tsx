@@ -18,6 +18,7 @@ export function CareersPage() {
     notes: "",
     cvName: "",
     cvUrl: "",
+    fax: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof JobApplication, string>>>({});
   const [fileError, setFileError] = useState("");
@@ -222,6 +223,20 @@ export function CareersPage() {
               </p>
 
               <form className="booking-form" onSubmit={submit} noValidate>
+                {/* Honeypot field (hidden from screen readers & visual users) */}
+                <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden", zIndex: -1 }} aria-hidden="true">
+                  <label htmlFor="fax-careers-input">Fax Number</label>
+                  <input
+                    id="fax-careers-input"
+                    type="text"
+                    name="fax"
+                    tabIndex={-1}
+                    value={form.fax || ""}
+                    onChange={(e) => updateField("fax", e.target.value)}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="form-row form-row--double">
                   <Field label="Full Name" value={form.name} onChange={(value) => updateField("name", value)} error={errors.name} />
                   <Field label="Email" type="email" value={form.email} onChange={(value) => updateField("email", value)} error={errors.email} />
