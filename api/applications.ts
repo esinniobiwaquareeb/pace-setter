@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { json, readJson } from "./_lib/http.js";
 import { getApplications, saveApplications } from "./_lib/storage.js";
+import { verifyRecaptcha } from "./_lib/recaptcha.js";
 import type { SavedApplication } from "../src/app/landing/types";
 
 export async function POST(request: Request) {
@@ -10,6 +11,12 @@ export async function POST(request: Request) {
   if (application.fax && application.fax.trim() !== "") {
     console.warn("[Honeypot] Silently ignored spam application from:", application.email || "unknown");
     return json({ ok: true });
+  }
+
+  // reCAPTCHA check
+  const isHuman = await verifyRecaptcha(application.recaptchaToken);
+  if (!isHuman) {
+    return json({ error: "Spam validation failed." }, { status: 400 });
   }
 
   // ── 1. Persist to storage ──────────────────────────────────────────────────

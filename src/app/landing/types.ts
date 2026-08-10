@@ -43,6 +43,7 @@ export type FormState = {
   phone: string;
   details: string;
   fax?: string;
+  recaptchaToken?: string;
 };
 
 export type SavedBooking = FormState & {
@@ -163,6 +164,7 @@ export type JobApplication = {
   cvName?: string;
   cvUrl?: string;
   fax?: string;
+  recaptchaToken?: string;
 };
 
 export type SavedApplication = JobApplication & {

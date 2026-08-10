@@ -129,6 +129,43 @@ function apiDevPlugin() {
             return
           }
 
+          // reCAPTCHA check for dev server
+          const recaptchaSecret = env.RECAPTCHA_SECRET_KEY
+          if (recaptchaSecret) {
+            const token = application.recaptchaToken
+            if (!token) {
+              res.writeHead(400, { 'content-type': 'application/json' })
+              res.end(JSON.stringify({ error: 'No reCAPTCHA token provided.' }))
+              return
+            }
+
+            try {
+              const params = new URLSearchParams({
+                secret: recaptchaSecret,
+                response: token,
+              })
+              const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: params.toString(),
+              })
+              const data = await verifyRes.json() as { success: boolean; score?: number }
+              if (!data.success || (data.score !== undefined && data.score < 0.5)) {
+                console.warn('[reCAPTCHA dev] Blocked bot or failed check. Score:', data.score)
+                res.writeHead(400, { 'content-type': 'application/json' })
+                res.end(JSON.stringify({ error: 'Spam validation failed.' }))
+                return
+              }
+            } catch (err) {
+              console.error('[reCAPTCHA dev] Verification request failed:', err)
+              res.writeHead(502, { 'content-type': 'application/json' })
+              res.end(JSON.stringify({ error: 'Failed to verify reCAPTCHA token.' }))
+              return
+            }
+          } else {
+            console.warn('[reCAPTCHA dev] RECAPTCHA_SECRET_KEY is not set. Bypassing verification.')
+          }
+
           const recipientEmail = env.APPLICATIONS_EMAIL || 'pacesettercleaning@gmail.com'
           const resendKey = env.RESEND_API_KEY
 

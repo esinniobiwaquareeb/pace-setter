@@ -4,6 +4,7 @@ import { useSiteContent } from "../landing/SiteContentContext";
 import { SEO } from "../components/SEO";
 import { Field } from "../landing/Field";
 import type { JobApplication, SavedApplication } from "../landing/types";
+import { getRecaptchaToken } from "../utils/recaptcha";
 
 type UploadState = "idle" | "uploading" | "done" | "error";
 
@@ -125,8 +126,11 @@ export function CareersPage() {
     if (!validate()) return;
     setSubmitting(true);
 
+    const token = await getRecaptchaToken("careers");
+
     const savedApplication: SavedApplication = {
       ...form,
+      recaptchaToken: token || undefined,
       createdAt: new Date().toISOString(),
     };
 

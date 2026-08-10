@@ -4,6 +4,7 @@ import { INITIAL_FORM } from "./content";
 import { Field } from "./Field";
 import { useSiteContent } from "./SiteContentContext";
 import type { FormState, SavedBooking } from "./types";
+import { getRecaptchaToken } from "../utils/recaptcha";
 
 export function Booking() {
   const { booking, contact } = useSiteContent();
@@ -46,8 +47,11 @@ export function Booking() {
     event.preventDefault();
     if (!validate()) return;
 
+    const token = await getRecaptchaToken("booking");
+
     const savedBooking: SavedBooking = {
       ...form,
+      recaptchaToken: token || undefined,
       createdAt: new Date().toISOString(),
     };
 
